@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Che-Wei (Jarvis) Lee | Portfolio</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --primary:   #1E3A8A;
+    --secondary: #3B82F6;
+    --bg:        #F8FAFC;
+    --text:      #111827;
+    --accent:    #14B8A6;
+    --card-bg:   #FFFFFF;
+    --muted:     #6B7280;
+    --border:    #E5E7EB;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+  /* NAVBAR */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--primary);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 2rem; height: 60px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  }
+  nav .logo { color: #fff; font-weight: 700; font-size: 1.1rem; letter-spacing: 1px; }
+  nav ul { list-style: none; display: flex; gap: 1.8rem; }
+  nav ul li a { color: #CBD5E1; text-decoration: none; font-size: .9rem; transition: color .2s; }
+  nav ul li a:hover { color: var(--accent); }
+
+  /* SECTIONS */
+  section { padding: 90px 2rem 60px; max-width: 960px; margin: 0 auto; }
+  h2.section-title {
+    font-size: 1.8rem; color: var(--primary);
+    border-left: 5px solid var(--accent);
+    padding-left: .75rem; margin-bottom: 2rem;
+  }
+
+  /* HERO */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    max-width: 100%; margin: 0; padding: 0;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url('bg.png') center/cover no-repeat;
+    filter: brightness(0.4);
+    z-index: 0;
+  }
+  .hero-content {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 1rem;
+    padding: 120px 2rem 60px;
+    max-width: 700px;
+  }
+  .hero-photo {
+    width: 150px; height: 150px;
+    border-radius: 50%; object-fit: cover;
+    border: 4px solid var(--accent);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    margin-bottom: .5rem;
+  }
+  .hero-tag {
+    background: var(--accent); color: #fff;
+    font-size: .8rem; font-weight: 600; letter-spacing: 2px;
+    padding: .3rem .8rem; border-radius: 20px;
+    text-transform: uppercase;
+  }
+  #hero h1 { font-size: 3.2rem; color: #fff; line-height: 1.1; }
+  #hero h1 span { color: var(--accent); }
+  #hero p.subtitle { font-size: 1.1rem; color: #CBD5E1; max-width: 520px; }
+  .hero-btns { margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+  .btn {
+    display: inline-block; padding: .7rem 1.6rem;
+    border-radius: 8px; font-weight: 600; font-size: .95rem;
+    text-decoration: none; cursor: pointer; border: none; transition: all .2s;
+  }
+  .btn-primary { background: var(--primary); color: #fff; }
+  .btn-primary:hover { background: var(--secondary); }
+  .btn-outline { background: transparent; color: #fff; border: 2px solid #fff; }
+  .btn-outline:hover { background: #fff; color: var(--primary); }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .about-card {
+    background: var(--card-bg); border-radius: 12px;
+    padding: 1.5rem; border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0,0,0,.05);
+  }
+  .about-card h3 { color: var(--secondary); margin-bottom: .75rem; font-size: 1rem; }
+  .about-card p { color: var(--muted); font-size: .95rem; }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+  .skill-cat {
+  background
+    background: var(--card-bg); border-radius: 12px;
+    padding: 1.4rem; border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0,0,0,.05);
+  }
+  .skill-cat h4 {
+    color: var(--primary); font-size: .85rem;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    margin-bottom: 1rem; display: flex; align-items: center; gap: .4rem;
+  }
+  .skill-cat h4::before {
+    content: ''; display: inline-block; width: 8px; height: 8px;
+    background: var(--accent); border-radius: 50%;
+  }
+.tag {
+  display: inline-block; margin: .25rem .2rem;
+  background: #EFF6FF; color: var(--primary);
+  border: 1px solid #BFDBFE;
+  border-radius: 20px; padding: .25rem .75rem; font-size: .82rem; font-weight: 500;
+  transition: background .2s, color .2s, border-color .2s;
+  cursor: default;
+}
+.tag:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+  /* EXPERIENCE */
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: ''; position: absolute; left: .4rem; top: 0; bottom: 0;
+    width: 2px; background: var(--border);
+  }
+  .tl-item { position: relative; margin-bottom: 2.5rem; }
+  .tl-item::before {
+    content: ''; position: absolute; left: -1.65rem; top: .35rem;
+    width: 12px; height: 12px;
+    background: var(--accent); border-radius: 50%;
+    border: 2px solid var(--bg);
+  }
+  .tl-header { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
+  .tl-header h3 { color: var(--primary); font-size: 1.05rem; }
+  .tl-date {
+    background: var(--secondary); color: #fff;
+    font-size: .75rem; padding: .15rem .6rem; border-radius: 12px; height: fit-content;
+  }
+  .tl-sub { color: var(--accent); font-size: .9rem; font-weight: 600; margin-bottom: .6rem; }
+  .tl-item ul { list-style: none; }
+  .tl-item ul li { color: var(--muted); font-size: .9rem; padding: .25rem 0 .25rem 1rem; position: relative; }
+  .tl-item ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
+
+  /* PROJECTS */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .project-card {
+    background: var(--card-bg); border-radius: 14px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0,0,0,.05);
+    padding: 1.6rem;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .project-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(30,58,138,.12); }
+  .project-label { font-size: .75rem; font-weight: 700; letter-spacing: 1.5px; color: var(--accent); text-transform: uppercase; margin-bottom: .5rem; }
+  .project-card h3 { color: var(--primary); font-size: 1.05rem; margin-bottom: .75rem; }
+  .project-card p { color: var(--muted); font-size: .88rem; margin-bottom: 1rem; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .project-tags .tag { background: #F0FDF4; color: #065F46; border-color: #A7F3D0; }
+
+  /* EXTRACURRICULAR */
+  .extra-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 1.5rem; }
+  .extra-card {
+    background: var(--card-bg); border-radius: 12px;
+    padding: 1.4rem; border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0,0,0,.05);
+  }
+  .extra-icon { font-size: 2rem; margin-bottom: .6rem; }
+  .extra-card h4 { color: var(--primary); margin-bottom: .4rem; }
+  .extra-card p { color: var(--muted); font-size: .88rem; }
+  .interests-row { display: flex; flex-wrap: wrap; gap: 1rem; }
+  .interest-chip {
+    background: var(--primary); color: #fff;
+    padding: .5rem 1.2rem; border-radius: 30px;
+    font-size: .9rem; font-weight: 500;
+    display: flex; align-items: center; gap: .5rem;
+  }
+
+  /* CONTACT */
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.5rem; }
+  .contact-item {
+    background: var(--card-bg); border-radius: 12px;
+    padding: 1.4rem; border: 1px solid var(--border);
+    text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.05);
+    text-decoration: none; transition: transform .2s, box-shadow .2s;
+  }
+  .contact-item:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(30,58,138,.1); }
+  .contact-item .icon { font-size: 1.8rem; margin-bottom: .5rem; }
+  .contact-item h4 { color: var(--primary); font-size: .9rem; margin-bottom: .25rem; }
+  .contact-item p { color: var(--muted); font-size: .82rem; word-break: break-all; }
+
+  /* FOOTER */
+  footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); color: var(--muted); font-size: .85rem; }
+
+  /* RESPONSIVE */
+  @media(max-width: 640px) {
+    #hero h1 { font-size: 2.2rem; }
+    .about-grid { grid-template-columns: 1fr; }
+    nav ul { gap: 1rem; }
+    nav ul li a { font-size: .8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">Jarvis</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#extracurricular">Activities</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <img class="hero-photo" src="photo.png" alt="Jarvis Lee" />
+    <div class="hero-tag">Data Analytics Engineer</div>
+    <h1>Che-Wei <span>(Jarvis)</span> Lee</h1>
+    <p class="subtitle">MS Data Analytics Engineering @ Northeastern University · Passionate about turning data into decisions through visualization, machine learning, and cloud analytics.</p>
+    <div class="hero-btns">
+      <a class="btn btn-primary" href="#projects">View Projects</a>
+      <a class="btn btn-outline" href="#contact">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2 class="section-title">About Me</h2>
+  <div class="about-grid">
+    <div class="about-card">
+      <h3>🎓 Education</h3>
+      <p><strong>Northeastern University</strong><br/>M.S. Data Analytics Engineering<br/>Expected May 2027 · Boston, MA</p>
+      <br/>
+      <p><strong>National Changhua University of Education</strong><br/>B.B.A. · January 2025 · Changhua, Taiwan</p>
+    </div>
+    <div class="about-card">
+      <h3>💡 Who I Am</h3>
+      <p>I'm a data analytics engineer with hands-on experience in cloud computing, business intelligence, and sports analytics. Fluent in both Chinese and English, I bridge analytical rigor with practical storytelling — helping organizations act on data, not just collect it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <h2 class="section-title">Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-cat">
+      <h4>Programming</h4>
+      <span class="tag">Python</span><span class="tag">R</span><span class="tag">SQL</span>
+    </div>
+    <div class="skill-cat">
+      <h4>Visualization</h4>
+      <span class="tag">Tableau</span><span class="tag">Matplotlib</span><span class="tag">Seaborn</span><span class="tag">Plotly</span><span class="tag">Power BI</span>
+    </div>
+    <div class="skill-cat">
+      <h4>Cloud</h4>
+      <span class="tag">AWS</span><span class="tag">Google Cloud</span><span class="tag">Microsoft Azure</span>
+    </div>
+    <div class="skill-cat">
+      <h4>Analytics</h4>
+      <span class="tag">Business Analytics</span><span class="tag">Sports Analytics</span><span class="tag">Geospatial Analysis</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <h2 class="section-title">Work Experience</h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-header">
+        <h3>Chunghwa Telecom 中華電信</h3>
+        <span class="tl-date">Jan 2024 – Jun 2024</span>
+      </div>
+      <div class="tl-sub">Cloud Team Intern · Business Analyst · Taipei, Taiwan</div>
+      <ul>
+        <li>Processed and analyzed 3,000+ AWS customer accounts using Excel and Power BI to evaluate monthly usage trends, traffic patterns, and cost structures.</li>
+        <li>Conducted advertising campaign performance analysis by evaluating monthly ROI and traffic metrics, providing data-driven recommendations to optimize budget allocation.</li>
+        <li>Collaborated directly with senior managers and major cloud providers (AWS, Microsoft Azure, Google Cloud) to support strategic partnership initiatives.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-label">Fall 2025</div>
+      <h3>🗺️ City Score Analytics</h3>
+      <p>Built a ZIP-level livability index for Prince William County by integrating 6 public datasets (U.S. Census, Zillow, BLS, Police Crime Data) into a weighted composite scoring model rescaled to 0–100.</p>
+      <div class="project-tags">
+        <span class="tag">Python</span><span class="tag">Plotly</span><span class="tag">GeoPandas</span><span class="tag">Choropleth Maps</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-label">Fall 2024</div>
+      <h3>🏈 NFL Big Data Analytics</h3>
+      <p>Analyzed 2024 NFL advanced statistics using Python and R to evaluate offensive lineup efficiency and identify highest-impact players. Built interactive Power BI dashboards for dynamic season tracking.</p>
+      <div class="project-tags">
+        <span class="tag">Python</span><span class="tag">R</span><span class="tag">Power BI</span><span class="tag">Sports Analytics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXTRACURRICULAR -->
+<section id="extracurricular">
+  <h2 class="section-title">Extracurricular & Interests</h2>
+  <div class="extra-grid" style="margin-bottom:2rem;">
+    <div class="extra-card">
+      <div class="extra-icon">⚾</div>
+      <h4>Baseball Enthusiast</h4>
+      <p>Passionate follower of Taiwan's national baseball team and international competitions including the World Baseball Classic. Tracks players across CPBL, MLB, and NPB leagues.</p>
+    </div>
+    <div class="extra-card">
+      <div class="extra-icon">📊</div>
+      <h4>Sports Analytics Researcher</h4>
+      <p>Applies data analytics techniques to sports performance evaluation, combining statistical modeling with domain knowledge to uncover insights beyond traditional metrics.</p>
+    </div>
+    <div class="extra-card">
+      <div class="extra-icon">☁️</div>
+      <h4>Cloud Technology Explorer</h4>
+      <p>Keeps up with the latest developments in multi-cloud infrastructure and data engineering, with hands-on exposure to AWS, Azure, and Google Cloud platforms.</p>
+    </div>
+  </div>
+  <div class="interests-row">
+    <div class="interest-chip">⚾ Baseball</div>
+    <div class="interest-chip">🌏 Taiwan Sports Culture</div>
+    <div class="interest-chip">📈 Data Visualization</div>
+    <div class="interest-chip">☁️ Cloud Computing</div>
+    <div class="interest-chip">🤖 Machine Learning</div>
+    <div class="interest-chip">🗺️ Geospatial Analysis</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 class="section-title">Contact</h2>
+  <div class="contact-grid">
+    <a class="contact-item" href="mailto:lee.chew@northeastern.edu">
+      <div class="icon">📧</div><h4>Email</h4><p>lee.chew@northeastern.edu</p>
+    </a>
+    <a class="contact-item" href="tel:6172869011">
+      <div class="icon">📱</div><h4>Phone</h4><p>617-286-9011</p>
+    </a>
+    <a class="contact-item" href="https://www.linkedin.com/in/che-wei-lee-6b377a276/" target="_blank">
+      <div class="icon">💼</div><h4>LinkedIn</h4><p>che-wei-lee-6b377a276</p>
+    </a>
+    <a class="contact-item" href="#">
+      <div class="icon">🐙</div><h4>GitHub</h4><p>Coming Soon</p>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Che-Wei (Jarvis) Lee · Built with HTML, CSS & ❤️ · Boston, MA</p>
+</footer>
+
+</body>
+</html>
