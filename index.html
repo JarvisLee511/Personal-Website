@@ -27,19 +27,17 @@
   html { scroll-behavior: smooth; }
   body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; font-size: 20px; }
 
-  /* NAV */
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: #0B1120; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; height: 64px; box-shadow: 0 2px 12px rgba(0,0,0,0.4); }
   nav .logo { color: #fff; font-weight: 700; font-size: 22px; letter-spacing: 1px; }
   nav ul { list-style: none; display: flex; gap: 2rem; }
   nav ul li a { color: #94A3B8; text-decoration: none; font-size: 18px; transition: color .2s; }
   nav ul li a:hover { color: var(--accent); }
-  .lang-toggle { display: flex; align-items: center; gap: .3rem; margin-left: 1.5rem; }
+  .lang-toggle { display: flex; align-items: center; gap: .3rem; }
   .lang-btn { background: none; border: none; font-size: 15px; font-weight: 600; cursor: pointer; padding: .2rem .4rem; border-radius: 4px; transition: color .2s; }
   .lang-btn.active { color: var(--accent); }
   .lang-btn:not(.active) { color: #475569; }
   .lang-btn:not(.active):hover { color: #94A3B8; }
   .lang-divider { color: #334155; font-size: 14px; }
-
   .mobile-lang { display: none; }
   .desktop-lang { display: flex; }
   .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; background: none; border: none; padding: .4rem; z-index: 101; }
@@ -47,17 +45,10 @@
   .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
   .hamburger.open span:nth-child(2) { opacity: 0; }
   .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-  .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; background: none; border: none; padding: .4rem; z-index: 101; }
-  .hamburger span { display: block; width: 26px; height: 3px; background: #94A3B8; border-radius: 3px; transition: all .3s; }
-  .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-  .hamburger.open span:nth-child(2) { opacity: 0; }
-  .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-  /* SECTIONS */
   section { padding: 120px 2rem 90px; max-width: min(1280px, 90vw); margin: 0 auto; }
   h2.section-title { font-size: 48px; font-weight: 700; line-height: 1.2; color: var(--accent); border-left: 5px solid var(--accent); padding-left: 1rem; margin-bottom: 2rem; }
 
-  /* HERO */
   #hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; max-width: 100%; margin: 0; padding: 0; overflow: hidden; }
   .hero-bg { position: absolute; inset: 0; background: url('bg.png') center/cover no-repeat; filter: brightness(0.4); z-index: 0; }
   #hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 180px; z-index: 1; background: linear-gradient(to bottom, transparent, #0F172A); }
@@ -68,7 +59,6 @@
   #hero p.subtitle { font-size: 22px; color: #CBD5E1; max-width: 700px; }
   .hero-btns { margin-top: 1.2rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
 
-  /* BUTTONS */
   .btn { display: inline-block; padding: .8rem 2rem; border-radius: 8px; font-weight: 600; font-size: 17px; text-decoration: none; cursor: pointer; border: none; transition: all .2s; }
   .btn-accent { background: #14B8A6; color: #fff; }
   .btn-accent:hover { background: #0D9488; }
@@ -77,7 +67,6 @@
   .btn-outline { background: transparent; color: #fff; border: 2px solid #fff; }
   .btn-outline:hover { background: #fff; color: #0F172A; }
 
-  /* ABOUT */
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
   .about-grid-full { margin-top: 2rem; }
   .about-card { background: var(--card-bg); border-radius: 20px; padding: 2rem; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: all 0.25s ease; }
@@ -89,7 +78,6 @@
   .course-card h3 { font-size: 26px; font-weight: 600; color: var(--secondary); margin-bottom: 1rem; }
   .course-section-label { font-size: 14px; font-weight: 700; color: #38BDF8; letter-spacing: 1px; text-transform: uppercase; margin-bottom: .5rem; margin-top: .75rem; }
 
-  /* SKILLS */
   .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
   .skill-cat { background: var(--card-bg); border-radius: 20px; padding: 1.8rem; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: all 0.25s ease; }
   .skill-cat:hover { background: #263548; transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.3); border-color: var(--accent); }
@@ -97,7 +85,6 @@
   .tag { display: inline-block; margin: .3rem .2rem; background: #1E3A5F; color: #7DD3FC; border: 1px solid #2D5A8E; border-radius: 20px; padding: .4rem 1rem; font-size: 16px; font-weight: 500; transition: background .2s, color .2s, border-color .2s; cursor: default; }
   .tag:hover { background: #38BDF8; color: #0F172A; border-color: #38BDF8; }
 
-  /* EXPERIENCE */
   .tl-item { margin-bottom: 2.5rem; }
   .tl-card { background: var(--card-bg); border-radius: 20px; padding: 2rem; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: all 0.25s ease; }
   .tl-card:hover { background: #263548; transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.3); border-color: var(--accent); }
@@ -109,7 +96,6 @@
   .tl-item ul li { font-size: 19px; line-height: 1.75; color: var(--muted); padding: .3rem 0 .3rem 1.4rem; position: relative; }
   .tl-item ul li::before { content: '•'; position: absolute; left: 0; color: var(--accent); }
 
-  /* PROJECTS */
   .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
   .project-card { background: var(--card-bg); border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.2); padding: 2rem; transition: transform .2s, box-shadow .2s, border-color .2s; cursor: pointer; display: flex; flex-direction: column; }
   .project-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); border-color: var(--accent); }
@@ -124,7 +110,6 @@
   .btn-view-all:hover { border-color: var(--accent); color: var(--accent); }
   #extra-projects { display: none; margin-top: 1.5rem; }
 
-  /* MODAL */
   .modal-overlay { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.75); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 2rem; }
   .modal-overlay.active { display: flex; }
   .modal { background: #1E293B; border-radius: 24px; max-width: 760px; width: 100%; max-height: 88vh; overflow-y: auto; padding: 2.5rem; position: relative; box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
@@ -147,7 +132,6 @@
   .result-chip .label { font-size: 14px; color: #94A3B8; margin-top: .2rem; transition: color .2s; }
   .result-chip:hover .label { color: #0F172A; }
 
-  /* GALLERY */
   .gallery { position: relative; width: 100%; margin-bottom: 1.5rem; }
   .gallery-main { width: 100%; height: 240px; border-radius: 12px; overflow: hidden; background: #0F172A; border: 1px solid #334155; position: relative; cursor: zoom-in; }
   .gallery-main img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
@@ -159,7 +143,6 @@
   .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
   .gallery-zoom-hint { position: absolute; bottom: .5rem; right: .5rem; background: rgba(0,0,0,0.6); color: #94A3B8; font-size: 13px; padding: .2rem .5rem; border-radius: 6px; pointer-events: none; }
 
-  /* LIGHTBOX */
   .lightbox { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.92); align-items: center; justify-content: center; }
   .lightbox.active { display: flex; }
   .lightbox img { max-width: 90vw; max-height: 88vh; border-radius: 12px; box-shadow: 0 8px 40px rgba(0,0,0,0.8); }
@@ -171,7 +154,6 @@
   .lightbox-next { right: 1.2rem; }
   .lightbox-counter { position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); color: #94A3B8; font-size: 16px; }
 
-  /* ACTIVITIES */
   .extra-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
   .extra-card { background: var(--card-bg); border-radius: 20px; padding: 28px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: all 0.25s ease; }
   .extra-card:hover { background: #263548; transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.3); border-color: var(--accent); }
@@ -182,7 +164,6 @@
   .extra-card ul li::before { content: '•'; position: absolute; left: 0; color: var(--accent); }
   .extra1-img { width: 50%; display: block; margin: 0 auto 1rem; height: auto; object-fit: contain; border-radius: 12px; background: #0F172A; }
 
-  /* CONTACT */
   .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1.5rem; }
   .contact-item { background: var(--card-bg); border-radius: 20px; padding: 1.8rem; border: 1px solid var(--border); text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-decoration: none; transition: transform .2s, box-shadow .2s, border-color .2s; }
   .contact-item:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); border-color: var(--accent); }
@@ -192,7 +173,6 @@
 
   footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 15px; }
 
-  /* MOBILE */
   @media(max-width: 768px) {
     body { font-size: 16px; }
     .hamburger { display: flex !important; }
@@ -202,7 +182,6 @@
     nav ul { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: #0B1120; padding: 1rem 2rem 1.5rem; gap: 1rem; box-shadow: 0 8px 20px rgba(0,0,0,0.5); }
     nav ul.open { display: flex; }
     nav ul li a { font-size: 18px; padding: .3rem 0; }
-    .lang-toggle { margin-left: 0; }
     #hero h1 { font-size: 34px; }
     #hero p.subtitle { font-size: 16px; }
     .hero-photo { width: 120px; height: 120px; }
@@ -285,11 +264,11 @@
       <h3 data-en="🎓 Education" data-zh="🎓 教育背景">🎓 Education</h3>
       <p data-en="<strong>Northeastern University</strong><br/>M.S. Data Analytics Engineering<br/>Expected May 2027 · Boston, MA<br>GPA: 4.0/4.0" data-zh="<strong>美國東北大學</strong><br/>資料分析工程碩士<br/>預計 2027 年 5 月畢業・美國麻州波士頓<br>GPA：4.0 / 4.0"><strong>Northeastern University</strong><br/>M.S. Data Analytics Engineering<br/>Expected May 2027 · Boston, MA<br>GPA: 4.0/4.0</p>
       <br/>
-      <p data-en="<strong>National Changhua University of Education</strong><br/>Bachelor of Business Administration<br/>January 2025 · Changhua, Taiwan"       data-zh="<strong>國立彰化師範大學</strong><br/>商業學士（企業管理）<br/>2025 年 1 月・台灣彰化"><strong>National Changhua University of Education</strong><br/>Bachelor of Business Administration<br/>January 2025 · Changhua, Taiwan</p>
+      <p data-en="<strong>National Changhua University of Education</strong><br/>Bachelor of Business Administration<br/>January 2025 · Changhua, Taiwan" data-zh="<strong>國立彰化師範大學</strong><br/>商業學士（企業管理）<br/>2025 年 1 月・台灣彰化"><strong>National Changhua University of Education</strong><br/>Bachelor of Business Administration<br/>January 2025 · Changhua, Taiwan</p>
     </div>
     <div class="about-card">
       <h3 data-en="💡 Who I Am" data-zh="💡 關於我">💡 Who I Am</h3>
-      <p data-en="I am a graduate student in Data Analytics Engineering at Northeastern University, passionate about turning complex data into clear, actionable business insights.<br><br>I specialize in machine learning, data visualization, and cross-functional storytelling to drive real-world business impact."       data-zh="我目前就讀於東北大學資料分析工程碩士，專注於將複雜資料轉化為清晰且具行動性的商業洞察。專長涵蓋機器學習、資料視覺化與跨部門資料溝通，致力於透過分析驅動實際商業價值。<br><br>我擅長從資料探索、建模分析到商業儀表板呈現，將技術能力與商業思維結合，協助決策者快速掌握關鍵資訊並產生行動。">I am a graduate student in Data Analytics Engineering at Northeastern University, passionate about turning complex data into clear, actionable business insights.<br><br>I specialize in machine learning, data visualization, and cross-functional storytelling to drive real-world business impact.</p>
+      <p data-en="I am a graduate student in Data Analytics Engineering at Northeastern University, passionate about turning complex data into clear, actionable business insights.<br><br>I specialize in machine learning, data visualization, and cross-functional storytelling to drive real-world business impact." data-zh="我目前就讀於東北大學資料分析工程碩士，專注於將複雜資料轉化為清晰且具行動性的商業洞察。專長涵蓋機器學習、資料視覺化與跨部門資料溝通，致力於透過分析驅動實際商業價值。<br><br>我擅長從資料探索、建模分析到商業儀表板呈現，將技術能力與商業思維結合，協助決策者快速掌握關鍵資訊並產生行動。">I am a graduate student in Data Analytics Engineering at Northeastern University, passionate about turning complex data into clear, actionable business insights.<br><br>I specialize in machine learning, data visualization, and cross-functional storytelling to drive real-world business impact.</p>
     </div>
   </div>
   <div class="about-grid-full">
@@ -359,9 +338,9 @@
         </div>
         <div class="tl-sub" data-en="Marketing Intern (Business Analytics Focus) · Cloud Team · Taipei, Taiwan" data-zh="行銷實習生（商業分析）｜雲端部門｜台北，台灣">Marketing Intern (Business Analytics Focus) · Cloud Team · Taipei, Taiwan</div>
         <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1rem;">
-          <span onmouseover="this.style.background='#38BDF8';this.style.color='#0F172A';this.style.borderColor='#38BDF8'" onmouseout="this.style.background='#1E3A5F';this.style.color='#7DD3FC';this.style.borderColor='#2D5A8E'" style="background:#1E3A5F;color:#7DD3FC;border:1px solid #2D5A8E;border-radius:20px;padding:.25rem .85rem;font-size:14px;font-weight:600;cursor:default;transition:all .2s;">3,000+ AWS Accounts</span>
-          <span onmouseover="this.style.background='#38BDF8';this.style.color='#0F172A';this.style.borderColor='#38BDF8'" onmouseout="this.style.background='#1E3A5F';this.style.color='#7DD3FC';this.style.borderColor='#2D5A8E'" style="background:#1E3A5F;color:#7DD3FC;border:1px solid #2D5A8E;border-radius:20px;padding:.25rem .85rem;font-size:14px;font-weight:600;cursor:default;transition:all .2s;">3 Cloud Providers</span>
-          <span onmouseover="this.style.background='#38BDF8';this.style.color='#0F172A';this.style.borderColor='#38BDF8'" onmouseout="this.style.background='#1E3A5F';this.style.color='#7DD3FC';this.style.borderColor='#2D5A8E'" style="background:#1E3A5F;color:#7DD3FC;border:1px solid #2D5A8E;border-radius:20px;padding:.25rem .85rem;font-size:14px;font-weight:600;cursor:default;transition:all .2s;">Weekly BI Reports</span>
+          <span onmouseover="this.style.background='#38BDF8';this.style.color='#0F172A';this.style.borderColor='#38BDF8'" onmouseout="this.style.background='#1E3A5F';this.style.color='#7DD3FC';this.style.borderColor='#2D5A8E'" style="background:#1E3A5F;color:#7DD3FC;border:1px solid #2D5A8E;border-radius:20px;padding:.25rem .85rem;font-size:14px;font-weight:600;cursor:default;transition:all .2s;" data-en="3,000+ AWS Accounts" data-zh="3,000+ AWS 客戶帳號">3,000+ AWS Accounts</span>
+          <span onmouseover="this.style.background='#38BDF8';this.style.color='#0F172A';this.style.borderColor='#38BDF8'" onmouseout="this.style.background='#1E3A5F';this.style.color='#7DD3FC';this.style.borderColor='#2D5A8E'" style="background:#1E3A5F;color:#7DD3FC;border:1px solid #2D5A8E;border-radius:20px;padding:.25rem .85rem;font-size:14px;font-weight:600;cursor:default;transition:all .2s;" data-en="3 Cloud Providers" data-zh="三大公雲">3 Cloud Providers</span>
+          <span onmouseover="this.style.background='#38BDF8';this.style.color='#0F172A';this.style.borderColor='#38BDF8'" onmouseout="this.style.background='#1E3A5F';this.style.color='#7DD3FC';this.style.borderColor='#2D5A8E'" style="background:#1E3A5F;color:#7DD3FC;border:1px solid #2D5A8E;border-radius:20px;padding:.25rem .85rem;font-size:14px;font-weight:600;cursor:default;transition:all .2s;" data-en="Weekly BI Reports" data-zh="商業分析週報">Weekly BI Reports</span>
         </div>
         <ul>
           <li data-en="Analyzed 3,000+ AWS customer accounts using Excel and Power BI to identify usage trends, traffic patterns, and cost optimization opportunities." data-zh="分析 3,000+ 個 AWS 客戶帳號，運用 Excel 與 Power BI 分析使用趨勢、流量模式及成本優化機會">Analyzed 3,000+ AWS customer accounts using Excel and Power BI to identify usage trends, traffic patterns, and cost optimization opportunities.</li>
@@ -379,20 +358,23 @@
   <div class="projects-grid">
     <div class="project-card" onclick="openModal('p1')">
       <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem;">
-        <h3 style="margin-bottom:0;">🗺️ City Score Analytics</h3>
+        <h3 style="margin-bottom:0;" data-en="🗺️ City Score Analytics" data-zh="🗺️ 城市宜居評分分析">🗺️ City Score Analytics</h3>
         <span style="background:#0F3D2E;color:#6EE7B7;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 10px;border-radius:20px;white-space:nowrap;">⭐ Featured</span>
       </div>
       <p data-en="Built a ZIP-code livability scoring framework for Prince William County using six socioeconomic indicators and an interactive geospatial dashboard." data-zh="以六項社會經濟指標建構 ZIP Code 宜居評分模型，並開發互動式地理空間儀表板。">Built a ZIP-code livability scoring framework for Prince William County using six socioeconomic indicators and an interactive geospatial dashboard.</p>
       <div class="project-tags">
-        <span class="tag">Python</span><span class="tag">Plotly</span><span class="tag">GeoPandas</span><span class="tag">Geospatial</span>
+        <span class="tag">Python</span><span class="tag">Plotly</span><span class="tag">GeoPandas</span>
+        <span class="tag" data-en="Geospatial" data-zh="地域分析">Geospatial</span>
       </div>
       <div class="click-hint" data-en="View Case Study →" data-zh="查看案例 →">View Case Study →</div>
     </div>
     <div class="project-card" onclick="openModal('p2')">
-      <h3>🧠 EEG Seizure Detection Model</h3>
+      <h3 data-en="🧠 EEG Seizure Detection Model" data-zh="🧠 EEG 癲癇發作偵測模型">🧠 EEG Seizure Detection Model</h3>
       <p data-en="Built a machine learning classification model for seizure detection using clinical EEG datasets, achieving 88.4% accuracy." data-zh="使用臨床 EEG 資料集建構癲癇發作偵測模型，模型準確率達 88.4%。">Built a machine learning classification model for seizure detection using clinical EEG datasets, achieving 88.4% accuracy.</p>
       <div class="project-tags">
-        <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Signal Processing</span><span class="tag">Healthcare</span>
+        <span class="tag">Python</span><span class="tag">Scikit-learn</span>
+        <span class="tag" data-en="Signal Processing" data-zh="訊號處理">Signal Processing</span>
+        <span class="tag" data-en="Healthcare" data-zh="醫療分析">Healthcare</span>
       </div>
       <div class="click-hint" data-en="View Case Study →" data-zh="查看案例 →">View Case Study →</div>
     </div>
@@ -403,36 +385,42 @@
   <div id="extra-projects">
     <div class="projects-grid">
       <div class="project-card" onclick="openModal('p3')">
-        <h3>🏠 U.S. Housing Market Analysis</h3>
+        <h3 data-en="🏠 U.S. Housing Market Analysis" data-zh="🏠 美國房市趨勢分析">🏠 U.S. Housing Market Analysis</h3>
         <p data-en="Analyzed long-term U.S. housing market trends from 2000–2025 using FRED data and macroeconomic event analysis." data-zh="分析 2000–2025 年美國房市長期趨勢及總體經濟事件影響。">Analyzed long-term U.S. housing market trends from 2000–2025 using FRED data and macroeconomic event analysis.</p>
         <div class="project-tags">
-          <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span><span class="tag">Time Series</span>
+          <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span>
+          <span class="tag" data-en="Time Series" data-zh="時間序列分析">Time Series</span>
         </div>
         <div class="click-hint" data-en="View Case Study →" data-zh="查看案例 →">View Case Study →</div>
       </div>
       <div class="project-card" onclick="openModal('p4')">
-        <h3>💼 WFH vs. RTO Trend Analysis</h3>
+        <h3 data-en="💼 WFH vs. RTO Trend Analysis" data-zh="💼 居家辦公與現場工作趨勢分析">💼 WFH vs. RTO Trend Analysis</h3>
         <p data-en="Analyzed U.S. workplace trends from 2020–2025 to evaluate the long-term shift toward hybrid work models." data-zh="分析 2020–2025 年美國職場趨勢，評估混合辦公模式的長期轉變。">Analyzed U.S. workplace trends from 2020–2025 to evaluate the long-term shift toward hybrid work models.</p>
         <div class="project-tags">
-          <span class="tag">Python</span><span class="tag">Matplotlib</span><span class="tag">Time Series</span><span class="tag">Labor Analytics</span>
+          <span class="tag">Python</span><span class="tag">Matplotlib</span>
+          <span class="tag" data-en="Time Series" data-zh="時間序列分析">Time Series</span>
+          <span class="tag" data-en="Labor Analytics" data-zh="勞動市場分析">Labor Analytics</span>
         </div>
         <div class="click-hint" data-en="View Case Study →" data-zh="查看案例 →">View Case Study →</div>
       </div>
     </div>
     <div class="projects-grid" style="margin-top:1.5rem;">
       <div class="project-card" onclick="openModal('p5')">
-        <h3>✈️ U.S. Aerospace Patent Analysis</h3>
+        <h3 data-en="✈️ U.S. Aerospace Patent Analysis" data-zh="✈️ 美國航太產業專利分析">✈️ U.S. Aerospace Patent Analysis</h3>
         <p data-en="Conducted regional analysis of U.S. aerospace industry patents to identify top technology hubs and competitive clusters." data-zh="分析美國航太產業專利分布，識別頂尖技術聚落與競爭群集。">Conducted regional analysis of U.S. aerospace industry patents to identify top technology hubs and competitive clusters.</p>
         <div class="project-tags">
-          <span class="tag">Python</span><span class="tag">GeoPandas</span><span class="tag">Plotly</span><span class="tag">Spatial Analysis</span>
+          <span class="tag">Python</span><span class="tag">GeoPandas</span><span class="tag">Plotly</span>
+          <span class="tag" data-en="Spatial Analysis" data-zh="地域分析">Spatial Analysis</span>
         </div>
         <div class="click-hint" data-en="View Case Study →" data-zh="查看案例 →">View Case Study →</div>
       </div>
       <div class="project-card" onclick="openModal('p6')">
-        <h3>🏈 NFL Sports Analytics Dashboard</h3>
+        <h3 data-en="🏈 NFL Sports Analytics Dashboard" data-zh="🏈 NFL 體育分析儀表板">🏈 NFL Sports Analytics Dashboard</h3>
         <p data-en="Built an interactive Power BI dashboard to analyze offensive efficiency and player impact using advanced NFL metrics." data-zh="建構互動式 Power BI 儀表板，分析進攻效率與球員影響力。">Built an interactive Power BI dashboard to analyze offensive efficiency and player impact using advanced NFL metrics.</p>
         <div class="project-tags">
-          <span class="tag">Power BI</span><span class="tag">Python</span><span class="tag">Sports Analytics</span><span class="tag">Dashboard</span>
+          <span class="tag">Power BI</span><span class="tag">Python</span>
+          <span class="tag" data-en="Sports Analytics" data-zh="體育分析">Sports Analytics</span>
+          <span class="tag" data-en="Dashboard" data-zh="儀表板設計">Dashboard</span>
         </div>
         <div class="click-hint" data-en="View Case Study →" data-zh="查看案例 →">View Case Study →</div>
       </div>
@@ -554,6 +542,7 @@ function closeMenu() {
 const projects = {
   p1: {
     label: 'Oct – Dec 2025 · Prince William County, VA',
+    labelZH: '2025 年 10 月－12 月｜維吉尼亞州 Prince William County',
     title: '🗺️ City Score Analytics: County Livability Index',
     meta: 'Geospatial Analysis · Dashboard Design · Socioeconomic Intelligence',
     images: ['p1-1.png', 'p1-2.png', 'p1-3.png'],
@@ -567,36 +556,25 @@ const projects = {
       'Correlation Analysis — Evaluated the relationship between income, crime rate, and the final livability score.'
     ],
     tools: ['Python', 'Plotly', 'GeoPandas', 'Pandas', 'Geospatial Analysis', 'Dashboard Design'],
+    toolsZH: ['Python', 'Plotly', 'GeoPandas', 'Pandas', '地域分析', '儀表板設計'],
     results: null,
     zh: {
       title: '🗺️ 城市評分分析：縣市宜居指數',
       meta: '地理空間分析・儀表板設計・社會經濟智慧',
       overview: '針對維吉尼亞州普林斯威廉縣，整合六項關鍵社會經濟指標（人口、收入、教育程度、房價、失業率、犯罪率），建構 ZIP Code 層級的宜居評分框架。透過熱力圖、排名表、散點圖、地圖等互動式分析儀表板，識別高潛力居住區域與相對弱勢區域。',
-      methodology: [
-        '資料清理 — 標準化原始資料集，移除貨幣符號、百分比符號、逗號及不一致的 ZIP Code 格式。',
-        '加權複合評分 — 設計六因子加權評分框架：犯罪率 30%、收入 20%、教育 20%、房價 10%、失業率 10%、人口密度 10%。',
-        'Min-Max 正規化 — 將變數正規化至 0–1 範圍，並將最終複合分數重新縮放為 0–100 指數。',
-        '地理空間分析 — 使用 GeoPandas 和 GeoJSON 進行 ZIP Code 層級的等值線圖製作。',
-        '互動式儀表板 — 建構包含等值線圖、排名表、散點圖、熱力圖和雷達圖的 Plotly 儀表板。',
-        '相關性分析 — 評估收入、犯罪率與最終宜居評分之間的關係。'
-      ]
+      methodology: ['資料清理 — 標準化原始資料集，移除貨幣符號、百分比符號、逗號及不一致的 ZIP Code 格式。','加權複合評分 — 設計六因子加權評分框架：犯罪率 30%、收入 20%、教育 20%、房價 10%、失業率 10%、人口密度 10%。','Min-Max 正規化 — 將變數正規化至 0–1 範圍，並將最終複合分數重新縮放為 0–100 指數。','地理空間分析 — 使用 GeoPandas 和 GeoJSON 進行 ZIP Code 層級的等值線圖製作。','互動式儀表板 — 建構包含等值線圖、排名表、散點圖、熱力圖和雷達圖的 Plotly 儀表板。','相關性分析 — 評估收入、犯罪率與最終宜居評分之間的關係。']
     }
   },
   p2: {
     label: 'Sep – Dec 2025 · Bonn EEG & CHB-MIT Dataset',
+    labelZH: '2025 年 9 月－12 月｜Bonn EEG 與 CHB-MIT 資料集',
     title: '🧠 EEG-Based Seizure Detection Classification Model',
     meta: 'Machine Learning · Signal Processing · Healthcare Analytics',
     images: ['p2-1.png', 'p2-2.png', 'p2-3.png'],
     overview: 'Developed a machine learning classification model for epileptic seizure detection using the Bonn EEG dataset and the CHB-MIT clinical EEG dataset. Compared the performance of Random Forest and MLP neural networks for seizure vs. non-seizure classification.',
-    methodology: [
-      'Signal Preprocessing — Applied mean centering (demeaning) and z-score standardization.',
-      'Sliding Window Segmentation — Segmented EEG signals using a 1024-sample window with 50% overlap.',
-      'Feature Engineering — Extracted 7 time-domain features: Mean, Std Dev, Min/Max, Peak-to-Peak, Signal Energy, Mean Absolute Value.',
-      'Model Training — Built and compared Random Forest vs. MLP Neural Network classifiers.',
-      'Model Evaluation — Evaluated using Accuracy, Precision, Recall, F1-score, and Confusion Matrix.',
-      'Cross-Dataset Validation — Validated model generalization on real-world CHB-MIT clinical EEG data.'
-    ],
-    tools: ['Python', 'Scikit-learn', 'Time Series Analysis', 'Signal Processing', 'Machine Learning', 'Healthcare Analytics'],
+    methodology: ['Signal Preprocessing — Applied mean centering (demeaning) and z-score standardization.','Sliding Window Segmentation — Segmented EEG signals using a 1024-sample window with 50% overlap.','Feature Engineering — Extracted 7 time-domain features: Mean, Std Dev, Min/Max, Peak-to-Peak, Signal Energy, Mean Absolute Value.','Model Training — Built and compared Random Forest vs. MLP Neural Network classifiers.','Model Evaluation — Evaluated using Accuracy, Precision, Recall, F1-score, and Confusion Matrix.','Cross-Dataset Validation — Validated model generalization on real-world CHB-MIT clinical EEG data.'],
+    tools: ['Python', 'Scikit-learn', 'Signal Processing', 'Machine Learning', 'Healthcare Analytics'],
+    toolsZH: ['Python', 'Scikit-learn', '訊號處理', '機器學習', '醫療分析'],
     results: [
       { num: '88.4%', label: 'Accuracy (Bonn)', labelZH: '準確率（Bonn）' },
       { num: '85.2%', label: 'Clinical Accuracy (CHB-MIT)', labelZH: '臨床準確率（CHB-MIT）' },
@@ -606,31 +584,19 @@ const projects = {
       title: '🧠 基於 EEG 的癲癇發作偵測分類模型',
       meta: '機器學習・訊號處理・醫療分析',
       overview: '使用 Bonn EEG 資料集和 CHB-MIT 臨床 EEG 資料集，建構癲癇發作偵測的機器學習分類模型。比較隨機森林（Random Forest）與多層感知機（MLP）神經網路在癲癇發作與非發作分類上的表現。',
-      methodology: [
-        '訊號預處理 — 套用均值中心化（去均值）和 Z-score 標準化。',
-        '滑動視窗分割 — 使用 1024 個樣本的視窗、50% 重疊進行 EEG 訊號分割。',
-        '特徵工程 — 提取 7 個時域特徵：均值、標準差、最大/最小值、峰對峰值、訊號能量、平均絕對值。',
-        '模型訓練 — 建構並比較隨機森林 vs. MLP 神經網路分類器。',
-        '模型評估 — 使用準確率、精確率、召回率、F1 分數和混淆矩陣進行評估。',
-        '跨資料集驗證 — 在真實 CHB-MIT 臨床 EEG 資料上驗證模型泛化能力。'
-      ]
+      methodology: ['訊號預處理 — 套用均值中心化（去均值）和 Z-score 標準化。','滑動視窗分割 — 使用 1024 個樣本的視窗、50% 重疊進行 EEG 訊號分割。','特徵工程 — 提取 7 個時域特徵：均值、標準差、最大/最小值、峰對峰值、訊號能量、平均絕對值。','模型訓練 — 建構並比較隨機森林 vs. MLP 神經網路分類器。','模型評估 — 使用準確率、精確率、召回率、F1 分數和混淆矩陣進行評估。','跨資料集驗證 — 在真實 CHB-MIT 臨床 EEG 資料上驗證模型泛化能力。']
     }
   },
   p3: {
     label: 'Oct 2025 · FRED Economic Data',
+    labelZH: '2025 年 10 月｜FRED 經濟數據',
     title: '🏠 U.S. Housing Market Time Series Analysis',
     meta: 'Time Series Analysis · Economic Analytics · Correlation Analysis',
     images: ['p3-1.png', 'p3-2.png', 'p3-3.png'],
     overview: 'Conducted a long-term time series analysis of the U.S. housing market from 2000 to 2025 using FRED (Federal Reserve Economic Data). Focused on quantifying the effects of the 2008 financial crisis, COVID-19, and the 2022 Fed rate hike cycle.',
-    methodology: [
-      'Time Series Analysis — Analyzed long-term trends in home prices, mortgage rates, and housing starts from 2000–2025.',
-      'Moving Average Smoothing — Applied a 12-month moving average to reduce short-term volatility.',
-      'Trend & Cyclical Analysis — Compared housing market responses across major economic cycles.',
-      'Correlation Analysis — Validated the negative relationship between mortgage rates and home prices (r = -0.73).',
-      'Dual-Axis Visualization — Built dual-axis charts to compare mortgage rates and home prices.',
-      'Event-Based Analysis — Evaluated the impact of 2008 Crisis, COVID-19, and 2022 Fed Rate Hikes.'
-    ],
+    methodology: ['Time Series Analysis — Analyzed long-term trends in home prices, mortgage rates, and housing starts from 2000–2025.','Moving Average Smoothing — Applied a 12-month moving average to reduce short-term volatility.','Trend & Cyclical Analysis — Compared housing market responses across major economic cycles.','Correlation Analysis — Validated the negative relationship between mortgage rates and home prices (r = -0.73).','Dual-Axis Visualization — Built dual-axis charts to compare mortgage rates and home prices.','Event-Based Analysis — Evaluated the impact of 2008 Crisis, COVID-19, and 2022 Fed Rate Hikes.'],
     tools: ['Python', 'Pandas', 'Matplotlib', 'Time Series Analysis', 'Economic Data Analytics', 'Correlation Analysis'],
+    toolsZH: ['Python', 'Pandas', 'Matplotlib', '時間序列分析', '經濟資料分析', '相關性分析'],
     results: [
       { num: 'r = -0.73', label: 'Mortgage Rate vs. Price Correlation', labelZH: '房貸利率與房價相關性' },
       { num: '2000–2025', label: 'Analysis Period', labelZH: '分析期間' },
@@ -640,104 +606,61 @@ const projects = {
       title: '🏠 美國房市時間序列分析',
       meta: '時間序列分析・經濟分析・相關性分析',
       overview: '使用美聯儲經濟數據（FRED）對 2000 至 2025 年的美國房地產市場進行長期時間序列分析。重點量化 2008 年金融危機、新冠疫情和 2022 年聯準會升息週期的影響。',
-      methodology: [
-        '時間序列分析 — 分析 2000–2025 年房價、房貸利率和新屋開工數的長期趨勢。',
-        '移動平均平滑 — 套用 12 個月移動平均以減少短期波動。',
-        '趨勢與週期分析 — 比較主要經濟週期間的房市反應。',
-        '相關性分析 — 驗證房貸利率與房價之間的負相關關係（r = -0.73）。',
-        '雙軸視覺化 — 建構雙軸圖表比較房貸利率與房價。',
-        '事件分析 — 評估 2008 年危機、新冠疫情和 2022 年升息的影響。'
-      ]
+      methodology: ['時間序列分析 — 分析 2000–2025 年房價、房貸利率和新屋開工數的長期趨勢。','移動平均平滑 — 套用 12 個月移動平均以減少短期波動。','趨勢與週期分析 — 比較主要經濟週期間的房市反應。','相關性分析 — 驗證房貸利率與房價之間的負相關關係（r = -0.73）。','雙軸視覺化 — 建構雙軸圖表比較房貸利率與房價。','事件分析 — 評估 2008 年危機、新冠疫情和 2022 年升息的影響。']
     }
   },
   p4: {
     label: 'Sep – Oct 2025 · U.S. Labor Market Data',
+    labelZH: '2025 年 9 月－10 月｜美國勞動市場數據',
     title: '💼 WFH vs. Back-to-Office Trend Analysis',
     meta: 'Labor Market Analytics · Time Series · Business Trend Analysis',
     images: ['p4-1.png', 'p4-2.png', 'p4-3.png'],
     overview: 'Conducted a multi-dimensional analysis of U.S. workplace trends from 2020 to 2025, focusing on the evolution of work-from-home (WFH), hybrid work, and return-to-office (RTO) policies.',
-    methodology: [
-      'Time Series Analysis — Analyzed WFH rates, hybrid work adoption, and fully onsite work from 2020–2025.',
-      'Trend Analysis — Compared remote work adoption trends across industries and gender groups.',
-      'Correlation Analysis — Evaluated the negative relationship between WFH adoption and fully onsite work ratios.',
-      'Dual-Axis Visualization — Built dual-axis charts comparing WFH trends with office occupancy changes.',
-      'Comparative Industry Analysis — Compared Finance, Information Technology, and Manufacturing sectors.',
-      'Data Visualization — Developed line charts, bar charts, scatter plots using Python and Matplotlib.'
-    ],
+    methodology: ['Time Series Analysis — Analyzed WFH rates, hybrid work adoption, and fully onsite work from 2020–2025.','Trend Analysis — Compared remote work adoption trends across industries and gender groups.','Correlation Analysis — Evaluated the negative relationship between WFH adoption and fully onsite work ratios.','Dual-Axis Visualization — Built dual-axis charts comparing WFH trends with office occupancy changes.','Comparative Industry Analysis — Compared Finance, Information Technology, and Manufacturing sectors.','Data Visualization — Developed line charts, bar charts, scatter plots using Python and Matplotlib.'],
     tools: ['Python', 'Matplotlib', 'Time Series Analysis', 'Labor Market Analytics', 'Business Trend Analysis'],
+    toolsZH: ['Python', 'Matplotlib', '時間序列分析', '勞動市場分析', '商業趨勢分析'],
     results: null,
     zh: {
       title: '💼 居家辦公 vs. 回辦公室趨勢分析',
       meta: '勞動市場分析・時間序列・商業趨勢分析',
-      overview: '對 2020 至 2025 年的美國職場趨勢進行多維度分析，聚焦於居家辦公（WFH）、混合辦公和回辦公室（RTO）政策的演變，驗證遠端與混合辦公已從疫情臨時措施轉型為長期結構性改變。',
-      methodology: [
-        '時間序列分析 — 分析 2020–2025 年 WFH 比率、混合辦公採用率和完全現場辦公的趨勢。',
-        '趨勢分析 — 比較不同產業和性別群體的遠端辦公採用趨勢。',
-        '相關性分析 — 評估 WFH 採用率與完全現場辦公比率之間的負相關關係。',
-        '雙軸視覺化 — 建構雙軸圖表比較 WFH 趨勢與辦公室佔用率變化。',
-        '產業比較分析 — 比較金融、資訊技術和製造業。',
-        '資料視覺化 — 使用 Python 和 Matplotlib 開發折線圖、長條圖、散點圖。'
-      ]
+      overview: '對 2020 至 2025 年的美國職場趨勢進行多維度分析，聚焦於居家辦公（WFH）、混合辦公和回辦公室（RTO）政策的演變。',
+      methodology: ['時間序列分析 — 分析 2020–2025 年 WFH 比率、混合辦公採用率和完全現場辦公的趨勢。','趨勢分析 — 比較不同產業和性別群體的遠端辦公採用趨勢。','相關性分析 — 評估 WFH 採用率與完全現場辦公比率之間的負相關關係。','雙軸視覺化 — 建構雙軸圖表比較 WFH 趨勢與辦公室佔用率變化。','產業比較分析 — 比較金融、資訊技術和製造業。','資料視覺化 — 使用 Python 和 Matplotlib 開發折線圖、長條圖、散點圖。']
     }
   },
   p5: {
     label: 'Nov 2025 · Metropolitan Statistical Areas, U.S.',
+    labelZH: '2025 年 11 月｜美國都會統計區域（MSA）',
     title: '✈️ U.S. Aerospace Industry Patent & Regional Analysis',
     meta: 'Geospatial Analysis · Patent Analytics · Regional Innovation Intelligence',
     images: ['p5-1.png', 'p5-2.png'],
     overview: 'Conducted a regional innovation analysis of the U.S. aerospace and aviation industry at the MSA level by integrating patent datasets with geographic boundary data.',
-    methodology: [
-      'Data Cleaning & Merging — Integrated aerospace patent datasets with MSA geographic boundary data.',
-      'Geospatial Analysis — Performed spatial mapping and CRS transformations using GeoPandas.',
-      'Ranking Analysis — Calculated the top 5 MSAs by patent count to identify leading innovation clusters.',
-      'Hotspot Identification — Detected metropolitan areas with the highest patent concentration.',
-      'Geographic Visualization — Built choropleth maps and scatter geo plots to visualize patent distribution.',
-      'Comparative Regional Analysis — Compared innovation output and patent activity across metropolitan areas.'
-    ],
-    tools: ['Python', 'GeoPandas', 'Plotly', 'Geographic Visualization', 'Spatial Analysis', 'Patent Analytics'],
+    methodology: ['Data Cleaning & Merging — Integrated aerospace patent datasets with MSA geographic boundary data.','Geospatial Analysis — Performed spatial mapping and CRS transformations using GeoPandas.','Ranking Analysis — Calculated the top 5 MSAs by patent count to identify leading innovation clusters.','Hotspot Identification — Detected metropolitan areas with the highest patent concentration.','Geographic Visualization — Built choropleth maps and scatter geo plots to visualize patent distribution.','Comparative Regional Analysis — Compared innovation output and patent activity across metropolitan areas.'],
+    tools: ['Python', 'GeoPandas', 'Plotly', 'Spatial Analysis', 'Patent Analytics'],
+    toolsZH: ['Python', 'GeoPandas', 'Plotly', '地域分析', '專利分析'],
     results: null,
     zh: {
       title: '✈️ 美國航太產業專利與區域分析',
       meta: '地理空間分析・專利分析・區域創新情報',
-      overview: '在都會統計區（MSA）層級，整合專利資料集與地理邊界資料，對美國航太和航空產業進行區域創新分析。開發互動式地理空間儀表板，視覺化專利集中度、識別頂尖創新樞紐並比較各主要都會區的區域競爭力。',
-      methodology: [
-        '資料清理與合併 — 整合航太專利資料集與 MSA 地理邊界資料。',
-        '地理空間分析 — 使用 GeoPandas 進行空間映射和座標參考系統轉換。',
-        '排名分析 — 計算專利數量前 5 名的 MSA，識別領先創新群集。',
-        '熱點識別 — 偵測具有最高專利集中度的都會區。',
-        '地理視覺化 — 建構等值線圖和散點地理圖以視覺化專利分布。',
-        '區域比較分析 — 比較各都會區的創新產出和專利活動。'
-      ]
+      overview: '在都會統計區（MSA）層級，整合專利資料集與地理邊界資料，對美國航太和航空產業進行區域創新分析。',
+      methodology: ['資料清理與合併 — 整合航太專利資料集與 MSA 地理邊界資料。','地理空間分析 — 使用 GeoPandas 進行空間映射和座標參考系統轉換。','排名分析 — 計算專利數量前 5 名的 MSA，識別領先創新群集。','熱點識別 — 偵測具有最高專利集中度的都會區。','地理視覺化 — 建構等值線圖和散點地理圖以視覺化專利分布。','區域比較分析 — 比較各都會區的創新產出和專利活動。']
     }
   },
   p6: {
     label: 'Oct – Dec 2024 · Buffalo Bills Offensive Unit',
+    labelZH: '2024 年 10 月－12 月｜Buffalo Bills 進攻組數據分析',
     title: '🏈 NFL Offensive Performance & Sports Analytics Dashboard',
     meta: 'Sports Analytics · Power BI · Comparative Analysis',
     images: ['p6-1.png'],
     overview: "Conducted an advanced sports analytics project focused on the Buffalo Bills' offensive performance, analyzing how different offensive personnel groupings and tactical configurations impacted team efficiency.",
-    methodology: [
-      'Data Cleaning & Preprocessing — Cleaned team and player statistics from Sports Reference.',
-      'Exploratory Data Analysis — Examined distribution and trends of key offensive metrics.',
-      'Advanced Sports Metrics — Analyzed Yards per Play, Passing Yards per Attempt, Rushing Yards per Carry, Third Down Conversion Rate, Red Zone Scoring Efficiency, Turnover Rate.',
-      'Correlation Analysis — Evaluated the relationship between offensive efficiency, team win rate, and points scored.',
-      'Comparative Analysis — Compared offensive performance across teams and different unit configurations.',
-      'Dashboard / BI Visualization — Built an interactive Power BI dashboard with performance comparisons.'
-    ],
+    methodology: ['Data Cleaning & Preprocessing — Cleaned team and player statistics from Sports Reference.','Exploratory Data Analysis — Examined distribution and trends of key offensive metrics.','Advanced Sports Metrics — Analyzed Yards per Play, Passing Yards per Attempt, Rushing Yards per Carry, Third Down Conversion Rate, Red Zone Scoring Efficiency, Turnover Rate.','Correlation Analysis — Evaluated the relationship between offensive efficiency, team win rate, and points scored.','Comparative Analysis — Compared offensive performance across teams and different unit configurations.','Dashboard / BI Visualization — Built an interactive Power BI dashboard with performance comparisons.'],
     tools: ['Power BI', 'Python', 'Sports Analytics', 'Comparative Analysis', 'Data Visualization'],
+    toolsZH: ['Power BI', 'Python', '體育分析', '比較分析', '資料視覺化'],
     results: null,
     zh: {
       title: '🏈 NFL 進攻表現與運動分析儀表板',
       meta: '運動分析・Power BI・比較分析',
-      overview: '針對水牛城比爾隊進攻表現進行進階運動分析專案，分析不同進攻人員組合與戰術配置對球隊效率的影響，量化傳球表現、跑球效率、關鍵進攻轉換率和得分效率。',
-      methodology: [
-        '資料清理與預處理 — 清理來自 Sports Reference 的球隊和球員統計數據。',
-        '探索式資料分析 — 檢視關鍵進攻指標的分布和趨勢。',
-        '進階運動指標 — 分析每次進攻碼數、每次傳球嘗試碼數、每次跑球碼數、第三次進攻轉換率、紅區得分效率、失誤率。',
-        '相關性分析 — 評估進攻效率、球隊勝率和得分之間的關係。',
-        '比較分析 — 比較不同球隊和不同人員配置間的進攻表現。',
-        '儀表板視覺化 — 建構包含表現比較和球員貢獻分析的互動式 Power BI 儀表板。'
-      ]
+      overview: '針對水牛城比爾隊進攻表現進行進階運動分析專案，分析不同進攻人員組合與戰術配置對球隊效率的影響。',
+      methodology: ['資料清理與預處理 — 清理來自 Sports Reference 的球隊和球員統計數據。','探索式資料分析 — 檢視關鍵進攻指標的分布和趨勢。','進階運動指標 — 分析每次進攻碼數、每次傳球嘗試碼數、每次跑球碼數、第三次進攻轉換率、紅區得分效率、失誤率。','相關性分析 — 評估進攻效率、球隊勝率和得分之間的關係。','比較分析 — 比較不同球隊和不同人員配置間的進攻表現。','儀表板視覺化 — 建構包含表現比較和球員貢獻分析的互動式 Power BI 儀表板。']
     }
   }
 };
@@ -747,8 +670,8 @@ let currentGalleryIdx = 0;
 
 function openModal(id) {
   const p = projects[id];
-  const zh = p.zh;
   const isZH = currentLang === 'zh';
+  const zh = p.zh;
 
   currentGalleryImages = p.images || [];
   currentGalleryIdx = 0;
@@ -761,18 +684,19 @@ function openModal(id) {
 
   const overview = isZH && zh ? zh.overview : p.overview;
   const methodology = isZH && zh ? zh.methodology : p.methodology;
+  const tools = isZH && p.toolsZH ? p.toolsZH : p.tools;
 
   const resultsHTML = p.results
     ? `<div class="modal-section"><h4>${resultsLabel}</h4><div class="modal-results">${p.results.map(r =>
         `<div class="result-chip"><div class="num">${r.num}</div><div class="label">${isZH && r.labelZH ? r.labelZH : r.label}</div></div>`
       ).join('')}</div></div>` : '';
 
-  const toolsHTML = `<div class="modal-section"><h4>${toolsLabel}</h4><div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem;">${p.tools.map(t =>
+  const toolsHTML = `<div class="modal-section"><h4>${toolsLabel}</h4><div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem;">${tools.map(t =>
     `<span onmouseover="this.style.background='#6EE7B7';this.style.color='#0F172A';this.style.borderColor='#6EE7B7'" onmouseout="this.style.background='#0F3D2E';this.style.color='#6EE7B7';this.style.borderColor='#065F46'" style="background:#0F3D2E;color:#6EE7B7;border:1px solid #065F46;border-radius:20px;padding:.3rem .9rem;font-size:15px;font-weight:500;cursor:default;transition:all .2s;">${t}</span>`
   ).join('')}</div></div>`;
 
   document.getElementById('modalContent').innerHTML = `
-    <div class="modal-label">${p.label}</div>
+    <div class="modal-label">${isZH && p.labelZH ? p.labelZH : p.label}</div>
     <h2>${isZH && zh ? zh.title : p.title}</h2>
     <p class="modal-meta">${isZH && zh ? zh.meta : p.meta}</p>
     ${galleryHTML}
