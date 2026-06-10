@@ -1,0 +1,7 @@
+# local helper script (not part of the published site)
+publish.bat
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
