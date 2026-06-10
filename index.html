@@ -256,7 +256,7 @@
   }
   .project-card:hover, .about-card:hover, .course-card:hover, .skill-cat:hover,
   .tl-card:hover, .extra-card:hover, .contact-item:hover {
-    transform: translateY(-8px) scale(1.015);
+    transform: translateY(-8px) scale(1.015) !important;
     box-shadow: 0 18px 40px rgba(0,0,0,.45), 0 8px 28px rgba(20,184,166,.22);
     border-color: var(--accent);
   }
@@ -273,7 +273,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     .project-card:hover, .about-card:hover, .course-card:hover, .skill-cat:hover,
-    .tl-card:hover, .extra-card:hover, .contact-item:hover, .btn-gh:hover { transform: none; }
+    .tl-card:hover, .extra-card:hover, .contact-item:hover, .btn-gh:hover { transform: none !important; }
   }
 </style>
 </head>
