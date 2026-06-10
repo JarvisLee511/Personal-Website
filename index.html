@@ -539,6 +539,11 @@
       <h4>LinkedIn</h4>
       <p>che-wei-lee-6b377a276</p>
     </a>
+    <a class="contact-item" href="https://github.com/JarvisLee511" target="_blank" rel="noopener">
+      <div class="icon"><svg viewBox="0 0 16 16" width="34" height="34" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></div>
+      <h4>GitHub</h4>
+      <p>JarvisLee511</p>
+    </a>
 
   </div>
 </section>
@@ -593,6 +598,7 @@ const projects = {
     meta: 'Geospatial Analysis · Dashboard Design · Socioeconomic Intelligence',
     metaZH: '地理空間分析・儀表板設計・社會經濟智慧',
     images: ['p1-1.png','p1-2.png','p1-3.png'],
+    github: 'https://github.com/JarvisLee511/cityscore-livability-index',
     motivation: 'Inspired by my long-time interest in Criminal Minds, I became curious about Quantico, Virginia, home to the FBI Academy. This led me to explore whether the surrounding areas in Prince William County maintain stronger livability and socioeconomic indicators, potentially influenced by the presence of major federal institutions.',
     motivationZH: '受到長期對《犯罪現場》（Criminal Minds）的熱愛啟發，我開始對 FBI 學院所在地——維吉尼亞州匡提科產生好奇，進而探索普林斯威廉縣周邊地區的宜居度與社會經濟指標是否受到重要聯邦機構的影響。',
     objective: 'To build a ZIP-code-level livability scoring framework that evaluates regional socioeconomic performance and supports location-based decision making.',
@@ -623,6 +629,7 @@ const projects = {
     meta: 'Geospatial Analysis · Data Pipeline · Interactive Dashboard · BigQuery',
     metaZH: '地理空間分析・資料處理流程・互動儀表板・BigQuery',
     images: ['aero1.png','aero2.png','aero3.png','aero4.png'],
+    github: 'https://github.com/JarvisLee511/us-aerospace-innovation-atlas',
     objective: 'To map where U.S. aerospace innovation concentrates and how it shifts over time — turning a single-year class map into a reproducible, multi-year data product with an interactive dashboard.',
     objectiveZH: '繪製美國航太創新的集中分布與其隨時間的變化——將單一年度的課堂地圖，升級為可重現的多年度資料產品與互動儀表板。',
     datasources: ['USPTO PTMT — aeronautics & astronautics patents by metro (2000–2015)','U.S. Census — CBSA metro boundaries and population estimates','Google Patents Public Data on BigQuery — CPC B64 patents and assignees (through 2024)'],
@@ -672,6 +679,7 @@ const projects = {
     meta: 'Sports Analytics · Power BI · Python · Efficiency Metrics',
     metaZH: '運動分析・Power BI・Python・效率指標',
     images: ['nfl-dashboard.png','nfl-powerbi.png'],
+    github: 'https://github.com/JarvisLee511/nfl-offensive-analytics',
     overview: ['Analyzed 22,000+ player-week records for 600+ players across all 32 NFL teams (2021–2024 regular seasons), sourced from nflverse play-by-play data.','Cleaned and aggregated weekly box scores into season-level efficiency metrics — EPA, target share, catch %, and completion % — across QB / RB / WR / TE.','Built an interactive dashboard (Power BI + Python/Plotly) that pairs volume leaders with efficiency leaders, so viewers see both who produced the most and who was most efficient.'],
     overviewZH: ['分析 nflverse 逐球資料中的 2.2 萬+ 筆球員週資料，涵蓋 32 支球隊、600+ 名球員（2021–2024 例行賽）。','將每週資料清理並彙整為球季層級效率指標——EPA、目標佔比、接球成功率、傳球完成率——涵蓋 QB／RB／WR／TE。','以 Power BI 與 Python／Plotly 建構互動儀表板，將「產量排行」與「效率排行」並陳，讓觀者同時看到誰產量最高、誰效率最高。'],
     methodology: ['Data Collection — Pulled four seasons of player stats directly from the nflverse data releases (~22.6K player-week rows).','Cleaning & Aggregation — Aggregated weekly stats to season-player totals, keeping additive advanced metrics (EPA) correct and recomputing rate stats (catch %, YPC, completion %) from totals.','Efficiency Engineering — Derived EPA, target share, WOPR, yards-per-attempt, and catch % to separate volume from value.','Comparative Analysis — Ranked passing / rushing / receiving leaders and contrasted them against EPA leaders to surface under-the-radar efficiency.','Visualization — Built leaderboards, a targets-vs-receiving-yards efficiency scatter, a QB completion %-vs-EPA scatter, and a four-season league trend.','BI Dashboarding — Delivered both a styled interactive Plotly HTML dashboard and a Power BI version.'],
@@ -712,6 +720,7 @@ const projects = {
     meta: 'Data Management · SQL · Relational Model · Python',
     metaZH: '資料管理・SQL・關聯式模型・Python',
     images: ['p3-1.png','p3-2.png','p3-3.png'],
+    github: 'https://github.com/JarvisLee511/aws-purchase-management-db',
     overview: ['Designed a relational database with 12 normalized tables, 100+ records, and 10+ SQL queries to analyze AWS customer purchases, billing records, and service usage patterns.','Built a Python analytics application using mysql.connector and pandas to generate customer spending and service demand visualizations.'],
     overviewZH: ['設計含 12 張正規化資料表、100+ 筆記錄與 10+ 個 SQL 查詢的關聯式資料庫，分析 AWS 客戶購買記錄、帳單與服務使用模式。','使用 mysql.connector 和 pandas 建構 Python 分析應用程式，生成客戶消費與服務需求視覺化報告。'],
     methodology: ['Database Modeling — Designed EER and UML schemas for an AWS customer and service purchase management system.','Relational Database Design — Built a MySQL relational database with 12 normalized tables, primary keys, foreign keys, and referential integrity constraints.','SQL Analytics — Developed 10+ SQL queries including joins, aggregate queries, correlated subqueries, nested queries, EXISTS, and UNION operations for transaction and customer analysis.','NoSQL Implementation — Implemented MongoDB collections for customer, purchase, and service records to demonstrate document-based retrieval and aggregation workflows.','Python Database Integration — Connected MySQL to Python using mysql.connector and pandas for real-time database querying and analytics processing.','Business Analytics Visualization — Developed scatter plots, histograms, pie charts, and boxplots to analyze customer spending behavior, purchase frequency, service demand, and spending outliers.'],
@@ -728,6 +737,7 @@ const projects = {
     meta: 'Cloud Market Intelligence · BI Dashboards · Web Scraping',
     metaZH: '雲端市場情報・BI 儀表板・網路爬蟲',
     images: ['cloud-1.png','cloud-2.png','cloud-3.png'],
+    github: 'https://github.com/JarvisLee511/multi-cloud-ai-infrastructure-analysis',
     objective: 'To build a single, comparable view of the AWS, Azure, and GCP cloud markets across service ecosystems, AI offerings, GPU/accelerator infrastructure, global region footprint, and market share.',
     objectiveZH: '建立一個可橫向比較 AWS、Azure、GCP 的雲端市場視圖，涵蓋服務生態、AI 產品、GPU／加速器基礎設施、全球區域佈局與市佔率。',
     datasources: ['Provider global-infrastructure pages (regions/locations)','GPU & accelerator availability and pricing pages','Native service & AI service catalogs','Cloud marketplace listings','Quarterly market-share reporting'],
@@ -781,6 +791,7 @@ function openModal(id) {
     <div class="modal-label">${isZH&&p.labelZH?p.labelZH:p.label}</div>
     <h2>${isZH&&p.titleZH?p.titleZH:p.title}</h2>
     <p class="modal-meta">${isZH&&p.metaZH?p.metaZH:p.meta}</p>
+    ${p.github ? `<div style="margin:.25rem 0 1.1rem;"><a href="${p.github}" target="_blank" rel="noopener" class="btn btn-accent" style="display:inline-flex;align-items:center;gap:.45rem;"><svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>${isZH?'查看 GitHub 程式碼':'View Code on GitHub'}</a></div>` : ''}
     ${galleryHTML}
     ${motivation  ? s(lbl.motivation,  `<p>${motivation}</p>`)       : ''}
     ${objective   ? s(lbl.objective,   `<p>${objective}</p>`)        : ''}
