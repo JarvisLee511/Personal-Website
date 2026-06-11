@@ -10,7 +10,34 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-B6YNQ5T28L');
+  // Don't pollute analytics when previewing locally
+  var gaIsLocal = ['localhost', '127.0.0.1', ''].indexOf(location.hostname) !== -1 || location.protocol === 'file:';
+  gtag('config', 'G-B6YNQ5T28L', gaIsLocal ? { send_page_view: false, debug_mode: true } : {});
+
+  // Track which sections visitors actually read (fires once per section per visit)
+  document.addEventListener('DOMContentLoaded', function () {
+    if (gaIsLocal || !('IntersectionObserver' in window)) return;
+    var seen = {};
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var id = entry.target.id;
+        if (entry.isIntersecting && !seen[id]) {
+          seen[id] = true;
+          gtag('event', 'section_view', { section_id: id });
+        }
+      });
+    }, { threshold: 0.4 });
+    ['hero','about','skills','experience','projects','extracurricular','contact'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    // Track resume opens
+    document.querySelectorAll('a[href$="resume.pdf"]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        gtag('event', 'resume_click', { link_text: a.textContent.trim() });
+      });
+    });
+  });
 </script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
