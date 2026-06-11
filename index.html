@@ -541,17 +541,6 @@
         </div>
         <div class="click-hint" data-en="View Case Study →" data-zh="查看案例 →">View Case Study →</div>
       </div>
-      <!-- EEG -->
-      <div class="project-card" onclick="openModal('p5')">
-        <h3 data-en="🧠 EEG Seizure Detection Model" data-zh="🧠 EEG 癲癇發作偵測模型">🧠 EEG Seizure Detection Model</h3>
-        <p data-en="Built an EEG seizure-detection pipeline on 3,500+ feature windows, reaching 88.4% accuracy (Random Forest vs. MLP) and 85.2% on clinical CHB-MIT data." data-zh="以 3,500+ 個 EEG 特徵視窗建構癲癇偵測模型，隨機森林達 88.4% 準確率，臨床 CHB-MIT 資料 85.2%。">Built an EEG seizure-detection pipeline on 3,500+ feature windows, reaching 88.4% accuracy (Random Forest vs. MLP) and 85.2% on clinical CHB-MIT data.</p>
-        <div class="project-tags">
-          <span class="tag">Python</span><span class="tag">Scikit-learn</span>
-          <span class="tag" data-en="Signal Processing" data-zh="訊號處理">Signal Processing</span>
-          <span class="tag" data-en="Healthcare" data-zh="醫療分析">Healthcare</span>
-        </div>
-        <div class="click-hint" data-en="View Case Study →" data-zh="查看案例 →">View Case Study →</div>
-      </div>
     </div>
   </div>
 </section>
@@ -778,26 +767,6 @@ const projects = {
       { num: '22,000+', label: 'Player-week records', labelZH: '球員週資料筆數' },
       { num: '4 Seasons', label: '2021–2024 · 32 teams', labelZH: '2021–2024・32 隊' },
       { num: '600+', label: 'Players analyzed', labelZH: '分析球員數' }
-    ]
-  },
-  p5: {
-    label: 'Sep – Dec 2025 · Bonn EEG & CHB-MIT Dataset',
-    labelZH: '2025 年 9 月－12 月｜Bonn EEG 與 CHB-MIT 資料集',
-    title: '🧠 EEG-Based Seizure Detection Classification Model',
-    titleZH: '🧠 基於 EEG 的癲癇發作偵測分類模型',
-    meta: 'Machine Learning · Signal Processing · Healthcare Analytics',
-    metaZH: '機器學習・訊號處理・醫療分析',
-    images: ['p6-1.png','p6-2.png','p6-3.png'],
-    overview: ['Developed an EEG seizure classification pipeline using 3,500+ EEG feature windows generated from Bonn EEG and CHB-MIT clinical EEG datasets for seizure vs. non-seizure detection.','Performed EEG preprocessing, sliding-window segmentation with 50% overlap, and extracted 7 time-domain signal features including energy, peak-to-peak amplitude, and mean absolute value.','Built Random Forest and MLP neural network models, achieving 88.4% accuracy on the Bonn dataset and 85.2% accuracy on CHB-MIT clinical EEG data.'],
-    overviewZH: ['使用 Bonn EEG 與 CHB-MIT 臨床 EEG 資料集生成的 3,500+ 個 EEG 特徵視窗，建構癲癇發作分類管道。','執行 EEG 預處理、50% 重疊的滑動視窗分割，並提取 7 個時域訊號特徵，包含能量、峰對峰振幅與平均絕對值。','建構隨機森林和 MLP 神經網路模型，在 Bonn 資料集達到 88.4% 準確率，在 CHB-MIT 臨床 EEG 資料達到 85.2%。'],
-    methodology: ['Signal Preprocessing — Applied mean centering (demeaning) and z-score standardization.','Sliding Window Segmentation — Segmented EEG signals using a 1024-sample window with 50% overlap.','Feature Engineering — Extracted 7 time-domain features: Mean, Std Dev, Min/Max, Peak-to-Peak, Signal Energy, Mean Absolute Value.','Model Training — Built and compared Random Forest vs. MLP Neural Network classifiers.','Model Evaluation — Evaluated using Accuracy, Precision, Recall, F1-score, and Confusion Matrix.','Cross-Dataset Validation — Validated model generalization on real-world CHB-MIT clinical EEG data.'],
-    methodologyZH: ['訊號預處理 — 套用均值中心化（去均值）和 Z-score 標準化。','滑動視窗分割 — 使用 1024 個樣本的視窗、50% 重疊進行 EEG 訊號分割。','特徵工程 — 提取 7 個時域特徵：均值、標準差、最大/最小值、峰對峰值、訊號能量、平均絕對值。','模型訓練 — 建構並比較隨機森林 vs. MLP 神經網路分類器。','模型評估 — 使用準確率、精確率、召回率、F1 分數和混淆矩陣進行評估。','跨資料集驗證 — 在真實 CHB-MIT 臨床 EEG 資料上驗證模型泛化能力。'],
-    tools: ['Python','Scikit-learn','Signal Processing','Machine Learning','Healthcare Analytics'],
-    toolsZH: ['Python','Scikit-learn','訊號處理','機器學習','醫療分析'],
-    results: [
-      { num: '88.4%', label: 'Accuracy (Bonn)', labelZH: '準確率（Bonn）' },
-      { num: '85.2%', label: 'Clinical Accuracy (CHB-MIT)', labelZH: '臨床準確率（CHB-MIT）' },
-      { num: '2 Models', label: 'RF vs. MLP Compared', labelZH: 'RF vs. MLP 比較' }
     ]
   },
   p7: {
