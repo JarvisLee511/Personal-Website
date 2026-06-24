@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Che-Wei (Jarvis) Lee | Portfolio</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23060910'/><text x='32' y='45' text-anchor='middle' font-family='Segoe UI,system-ui,sans-serif' font-size='42' font-weight='700' fill='%23F5A524'>J</text></svg>" />
 <meta name="description" content="Che-Wei (Jarvis) Lee — MS in Data Analytics Engineering at Northeastern University. Live ML and analytics projects: an MLB playoff predictor that retrains daily, and a weekly GPU pricing tracker across AWS, Azure, and GCP." />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Che-Wei (Jarvis) Lee | Data Analytics Portfolio" />
@@ -308,6 +309,494 @@
     .tl-card:hover, .extra-card:hover, .contact-item:hover, .btn-gh:hover { transform: none !important; }
   }
 </style>
+
+<!-- ===== HIGH-END REDESIGN: type system ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>/* set theme before paint -> no flash */try{var _t=localStorage.getItem('theme');if(_t==='light'||(!_t&&window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches))document.documentElement.classList.add('light');}catch(e){}</script>
+
+<style>
+/* =========================================================================
+   HIGH-END REDESIGN LAYER  (overrides the base styles above via the cascade)
+   Strategy: redefine the design tokens so the whole site re-skins at once,
+   then refine the signature components (nav, hero, section headers, cards).
+   ========================================================================= */
+
+:root {
+  --bg:        #060910;
+  --bg-2:      #0A0E18;
+  --text:      #EAEEF7;
+  --muted:     #9BA7BD;
+  --border:    rgba(255,255,255,0.09);
+  --card-bg:   rgba(255,255,255,0.028);
+  --primary:   #7CC4FF;   /* sub-headings */
+  --secondary: #93C5FD;
+  --accent:    #5EEAD4;   /* signature highlight */
+  --accent-2:  #818CF8;   /* depth / glow only  */
+  --grad: linear-gradient(120deg, #5EEAD4 0%, #38BDF8 48%, #818CF8 100%);
+  --display: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
+  --mono: 'Space Mono', ui-monospace, monospace;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 18px;
+  background: var(--bg);
+  color: var(--text);
+  counter-reset: sec;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+h1,h2,h3,h4 { font-family: var(--display); }
+::selection { background: rgba(94,234,212,.28); color: #fff; }
+
+/* Ambient background: soft aurora glows + fine film grain (both fixed, behind all) */
+body::before {
+  content:''; position: fixed; inset: 0; z-index: -2; pointer-events: none;
+  background:
+    radial-gradient(55vw 55vw at 82% -12%, rgba(94,234,212,.12), transparent 60%),
+    radial-gradient(48vw 48vw at -8% 18%, rgba(129,140,248,.12), transparent 60%),
+    radial-gradient(42vw 42vw at 55% 118%, rgba(56,189,248,.10), transparent 60%),
+    var(--bg);
+}
+body::after {
+  content:''; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ----- Nav: refined, mono links, designer wordmark ----- */
+nav { height: 68px; padding: 0 clamp(1.2rem, 4vw, 3rem); background: rgba(6,9,16,0.62); border-bottom: 1px solid var(--border); }
+nav .logo { font-family: var(--display); font-weight: 700; letter-spacing: .02em; }
+nav .logo::after { content: '.'; color: var(--accent); }
+nav ul li a { font-family: var(--mono); font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+nav ul li a:hover, nav ul li a.active { color: var(--text); }
+nav ul li a.active::after { background: var(--grad); height: 2px; bottom: -7px; }
+.scroll-progress { background: var(--grad); height: 2px; box-shadow: 0 0 12px rgba(94,234,212,.5); }
+
+/* ----- Editorial section headers: 01 / 02 number + big display title ----- */
+section { padding: clamp(90px, 12vw, 150px) 2rem 90px; }
+h2.section-title {
+  border-left: none !important; padding-left: 0 !important;
+  font-family: var(--display); font-weight: 700; color: var(--text);
+  font-size: clamp(34px, 5.2vw, 60px); letter-spacing: -.025em; line-height: 1.04;
+  margin-bottom: 2.5rem;
+}
+h2.section-title::before {
+  counter-increment: sec; content: counter(sec, decimal-leading-zero);
+  display: block; font-family: var(--mono); font-size: 13px; font-weight: 700;
+  letter-spacing: .35em; margin-bottom: 1rem;
+  background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* ----- Hero ----- */
+#hero::after { height: 240px; background: linear-gradient(to bottom, transparent, var(--bg)); }
+.hero-bg { filter: brightness(.32) saturate(.9); }
+#hero::before {
+  content:''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(60% 50% at 50% 38%, transparent, rgba(6,9,16,.55) 75%, var(--bg) 100%);
+}
+.hero-content { animation: none !important; gap: 1.1rem; }
+.hero-eyebrow {
+  font-family: var(--mono); font-size: 13px; letter-spacing: .34em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: .2rem;
+}
+.hero-photo {
+  animation: none !important; border: none; padding: 0;
+  box-shadow: 0 0 0 1.5px rgba(94,234,212,.65), 0 24px 60px -12px rgba(0,0,0,.8);
+}
+#hero h1 { font-family: var(--display); font-size: clamp(46px, 9vw, 108px); letter-spacing: -.035em; line-height: .97; font-weight: 700; }
+#hero h1 span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: none; }
+#hero p.subtitle { font-family: 'Inter', sans-serif; color: var(--muted); font-weight: 400; font-size: clamp(16px, 1.9vw, 21px); }
+
+/* ----- Buttons ----- */
+.btn { font-family: 'Inter', sans-serif; border-radius: 11px; font-weight: 600; letter-spacing: .005em; padding: .85rem 1.85rem; }
+.btn-accent { background: var(--grad); color: #04121A; box-shadow: 0 10px 34px -8px rgba(94,234,212,.5); }
+.btn-accent:hover { background: var(--grad); filter: brightness(1.07); box-shadow: 0 16px 44px -8px rgba(94,234,212,.6); }
+.btn-primary { background: rgba(255,255,255,.05); color: var(--text); border: 1px solid var(--border); backdrop-filter: blur(8px); }
+.btn-primary:hover { background: rgba(255,255,255,.1); }
+.btn-outline { background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,.22); }
+.btn-outline:hover { background: #fff; color: #060910; }
+
+/* ----- Cards: glass, hairline, refined lift + accent glow ----- */
+.about-card, .course-card, .skill-cat, .tl-card, .project-card, .extra-card, .contact-item {
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: 18px;
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 24px 48px -30px rgba(0,0,0,.85);
+}
+.about-card:hover, .course-card:hover, .skill-cat:hover, .tl-card:hover,
+.project-card:hover, .extra-card:hover, .contact-item:hover {
+  transform: translateY(-6px) !important;
+  background: rgba(255,255,255,.045);
+  border-color: rgba(94,234,212,.45);
+  box-shadow: 0 36px 70px -34px rgba(0,0,0,.9), 0 0 0 1px rgba(94,234,212,.18), 0 0 50px -20px rgba(94,234,212,.35) !important;
+}
+.about-card h3, .course-card h3 { font-family: var(--display); color: var(--secondary); }
+.tl-header h3, .project-card h3, .extra-card h4, .contact-item h4 { font-family: var(--display); }
+.tl-sub { color: var(--accent); }
+
+/* ----- Tags: techy mono chips ----- */
+.tag {
+  font-family: var(--mono); font-size: 12.5px; letter-spacing: .01em; font-weight: 400;
+  background: rgba(255,255,255,.045); color: var(--secondary);
+  border: 1px solid var(--border); border-radius: 8px; padding: .34rem .7rem;
+}
+.tag:hover { background: var(--accent); color: #04121A; border-color: var(--accent); }
+.skill-cat h4, .course-section-label, .modal-label, .modal-section h4 { font-family: var(--mono); letter-spacing: .15em; }
+
+/* ----- Modal / lightbox glass ----- */
+.modal { background: rgba(12,16,27,.94); backdrop-filter: blur(22px); border: 1px solid var(--border); border-radius: 22px; }
+.modal h2 { font-family: var(--display); }
+.modal-section h4 { border-bottom-color: var(--border); }
+
+footer { border-top: 1px solid var(--border); }
+
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+  #hero h1 { font-size: clamp(38px, 13vw, 60px); }
+  h2.section-title { font-size: 30px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-content, .hero-photo { animation: none !important; }
+}
+</style>
+
+<style>
+/* =========================================================================
+   COMFORT + TOP-TIER PASS — easier on the eyes, calmer motion, better rhythm
+   ========================================================================= */
+:root { --muted: #A7B2C6; }                 /* slightly brighter body text = more readable */
+html { scroll-padding-top: 88px; }
+
+/* Calmer ambient glow (less intense, more comfortable) */
+body::before {
+  background:
+    radial-gradient(55vw 55vw at 82% -12%, rgba(94,234,212,.085), transparent 60%),
+    radial-gradient(48vw 48vw at -8% 18%, rgba(129,140,248,.085), transparent 60%),
+    radial-gradient(42vw 42vw at 55% 118%, rgba(56,189,248,.07), transparent 60%),
+    var(--bg);
+}
+
+/* Gentler type scale — large but not shouting */
+#hero h1 { font-size: clamp(44px, 7.6vw, 92px); }
+h2.section-title { font-size: clamp(32px, 4.4vw, 50px); margin-bottom: 2.75rem; }
+
+/* Readability: comfortable measure + roomier line-height */
+.about-card p, .modal-section p { max-width: 66ch; line-height: 1.85; }
+.about-card p { font-size: 18px; }
+.tl-item ul li, .extra-card ul li, .modal-section ul li, .project-card p { line-height: 1.8; }
+
+/* A touch more air between cards */
+.about-grid { gap: 1.75rem; }
+.skills-grid { gap: 1.5rem; }
+.projects-grid { gap: 1.75rem; }
+
+/* Calmer, smoother hover (less jumpy reads more premium) */
+.about-card:hover, .course-card:hover, .skill-cat:hover, .tl-card:hover,
+.project-card:hover, .extra-card:hover, .contact-item:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 30px 60px -34px rgba(0,0,0,.85), 0 0 0 1px rgba(94,234,212,.14), 0 0 44px -22px rgba(94,234,212,.26) !important;
+}
+
+/* ----- Lucide line icons (replace emoji) ----- */
+svg.lucide { stroke-width: 2; flex-shrink: 0; }
+.about-card h3, .course-card h3, .skill-cat h4, .project-card h3, .extra-card h4 {
+  display: flex; align-items: center; gap: .6rem;
+}
+.about-card h3 svg, .course-card h3 svg, .project-card h3 svg, .extra-card h4 svg {
+  width: 1.05em; height: 1.05em; color: var(--accent);
+}
+.skill-cat h4 svg { width: 16px; height: 16px; color: var(--accent); }
+.contact-item .icon { display: flex; justify-content: center; align-items: center; }
+.contact-item .icon svg { width: 30px; height: 30px; color: var(--accent); stroke-width: 1.7; }
+.btn svg.lucide { width: 1.05em; height: 1.05em; vertical-align: -3px; margin-right: .45rem; }
+svg.badge-ico { width: 12px; height: 12px; vertical-align: -1px; margin-right: .25rem; }
+
+/* "Live" status dot with a soft pulse */
+.live-dot {
+  display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+  background: #F87171; margin-right: .45rem; vertical-align: 1px;
+  animation: livePulse 1.8s ease-out infinite;
+}
+@keyframes livePulse {
+  0%   { box-shadow: 0 0 0 0 rgba(248,113,113,.6); }
+  70%  { box-shadow: 0 0 0 7px rgba(248,113,113,0); }
+  100% { box-shadow: 0 0 0 0 rgba(248,113,113,0); }
+}
+
+</style>
+
+<style>
+/* =========================================================================
+   WARM SIGNATURE PALETTE — cool near-black base + ONE warm signature (amber),
+   coral as a secondary pop. Text/borders stay cool; all chromatic accents warm.
+   ========================================================================= */
+:root {
+  --bg:        #07090F;
+  --text:      #ECEEF3;
+  --muted:     #A3ADBF;
+  --accent:    #F5A524;   /* amber gold — the signature */
+  --accent-2:  #FB7185;   /* coral — secondary pop */
+  --primary:   #DBE3F0;   /* near-white cool sub-headings (no competing blue) */
+  --secondary: #C8D2E2;
+  --grad: linear-gradient(120deg, #FBBF24 0%, #F5A524 46%, #FB7185 100%);
+}
+
+/* Warm ambient glow */
+body::before {
+  background:
+    radial-gradient(55vw 55vw at 82% -12%, rgba(245,165,36,.10), transparent 60%),
+    radial-gradient(48vw 48vw at -8% 18%, rgba(251,113,133,.085), transparent 60%),
+    radial-gradient(42vw 42vw at 55% 118%, rgba(245,165,36,.06), transparent 60%),
+    var(--bg);
+}
+::selection { background: rgba(245,165,36,.30); color: #fff; }
+
+/* Cool labels that were hardcoded sky-blue -> neutral, so amber is the only color pop */
+.skill-cat h4, .course-section-label, .modal-section h4 { color: var(--secondary); }
+
+/* Warm portrait ring + accents that were hardcoded teal */
+.hero-photo { box-shadow: 0 0 0 1.5px rgba(245,165,36,.7), 0 24px 60px -12px rgba(0,0,0,.8); }
+.scroll-progress { box-shadow: 0 0 12px rgba(245,165,36,.5); }
+.btn-accent { box-shadow: 0 10px 34px -8px rgba(245,165,36,.45); }
+.btn-accent:hover { box-shadow: 0 16px 44px -8px rgba(251,113,133,.55); }
+
+/* Warm card hover glow */
+.about-card:hover, .course-card:hover, .skill-cat:hover, .tl-card:hover,
+.project-card:hover, .extra-card:hover, .contact-item:hover {
+  border-color: rgba(245,165,36,.45);
+  box-shadow: 0 30px 60px -34px rgba(0,0,0,.85), 0 0 0 1px rgba(245,165,36,.16), 0 0 44px -22px rgba(245,165,36,.30) !important;
+}
+
+/* --- Unify the last cool/green elements into the warm system --- */
+.modal h2 { color: var(--primary); display: flex; align-items: center; gap: .5rem; }
+.modal h2 svg { width: 1.05em; height: 1.05em; color: var(--accent); flex-shrink: 0; }
+.extra-card .role { color: var(--accent); }
+
+/* project tech tags + modal tool tags: neutral glass, amber hover (match .tag) */
+.project-tags .tag { background: rgba(255,255,255,.045); color: var(--secondary); border-color: var(--border); }
+.project-tags .tag:hover { background: var(--accent); color: #04121A; border-color: var(--accent); }
+
+/* modal stat chips */
+.result-chip { background: rgba(255,255,255,.04); border-color: var(--border); }
+.result-chip .num { color: var(--accent); }
+.result-chip:hover { background: rgba(245,165,36,.14); border-color: rgba(245,165,36,.4); }
+.result-chip:hover .num, .result-chip:hover .label { color: var(--text); }
+
+/* gallery / placeholder glyph icons */
+.gallery-zoom-hint svg { width: 13px; height: 13px; vertical-align: -2px; }
+.no-img svg { width: 1.1em; height: 1.1em; vertical-align: -2px; }
+
+/* Hero: emphasized role title + recruiter-facing work-authorization line */
+#hero p.subtitle strong { color: var(--text); font-weight: 600; }
+.hero-auth {
+  font-family: var(--mono); font-size: 12.5px; letter-spacing: .03em;
+  color: var(--muted); margin-top: 1rem; max-width: 660px; line-height: 1.65;
+}
+.hero-auth strong { color: var(--accent); font-weight: 700; }
+@media (max-width: 768px){ .hero-auth { font-size: 11px; } }
+</style>
+
+<style>
+/* ============================================================
+   iOS 26 "LIQUID GLASS" PASS (dark-mode interpretation)
+   Vivid backdrop + saturated blur + specular edges + capsules.
+   ============================================================ */
+
+/* More vivid backdrop so the glass has light & colour to refract */
+body::before {
+  background:
+    radial-gradient(50vw 50vw at 80% -10%, rgba(94,234,212,.16), transparent 60%),
+    radial-gradient(46vw 46vw at -6% 16%, rgba(129,140,248,.16), transparent 60%),
+    radial-gradient(40vw 40vw at 62% 116%, rgba(245,165,36,.13), transparent 60%),
+    radial-gradient(30vw 30vw at 22% 64%, rgba(251,113,133,.11), transparent 60%),
+    var(--bg);
+}
+
+/* The glass material */
+.about-card, .course-card, .skill-cat, .tl-card, .project-card, .extra-card, .contact-item {
+  background: linear-gradient(155deg, rgba(255,255,255,.11), rgba(255,255,255,.035));
+  -webkit-backdrop-filter: blur(24px) saturate(185%);
+  backdrop-filter: blur(24px) saturate(185%);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 22px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.5),
+    inset 0 0 0 1px rgba(255,255,255,.04),
+    0 22px 50px -28px rgba(0,0,0,.72);
+}
+.about-card:hover, .course-card:hover, .skill-cat:hover, .tl-card:hover,
+.project-card:hover, .extra-card:hover, .contact-item:hover {
+  transform: translateY(-6px) !important;
+  border-color: rgba(255,255,255,.22);
+  background: linear-gradient(155deg, rgba(255,255,255,.17), rgba(255,255,255,.06));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.6),
+    0 30px 60px -30px rgba(0,0,0,.8),
+    0 0 50px -20px rgba(245,165,36,.30) !important;
+}
+
+/* Nav — liquid glass bar */
+nav {
+  background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.03));
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  backdrop-filter: blur(28px) saturate(180%);
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.32), 0 10px 30px -12px rgba(0,0,0,.5);
+}
+
+/* Buttons + tags -> glass capsules */
+.btn { border-radius: 999px; }
+.btn-primary, .btn-outline {
+  background: linear-gradient(160deg, rgba(255,255,255,.15), rgba(255,255,255,.05));
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255,255,255,.2);
+  color: var(--text);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 8px 22px -12px rgba(0,0,0,.6);
+}
+.btn-primary:hover, .btn-outline:hover { background: linear-gradient(160deg, rgba(255,255,255,.22), rgba(255,255,255,.09)); color: var(--text); }
+.btn-accent { box-shadow: inset 0 1px 0 rgba(255,255,255,.55), 0 12px 30px -8px rgba(245,165,36,.5); }
+.tag {
+  border-radius: 999px;
+  background: linear-gradient(160deg, rgba(255,255,255,.11), rgba(255,255,255,.04));
+  border: 1px solid rgba(255,255,255,.14);
+  -webkit-backdrop-filter: blur(10px) saturate(160%);
+  backdrop-filter: blur(10px) saturate(160%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.28);
+}
+.project-tags .tag { background: linear-gradient(160deg, rgba(255,255,255,.11), rgba(255,255,255,.04)); }
+
+/* Modal — near-opaque glass (NO backdrop-filter -> smooth inner scrolling) */
+.modal {
+  background: linear-gradient(160deg, rgba(24,29,44,.985), rgba(14,18,30,.975));
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 40px 90px -30px rgba(0,0,0,.85);
+}
+.modal-overlay { background: rgba(4,6,12,.62); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.modal-overlay.active .modal { animation: modalIn .3s cubic-bezier(.2,.7,.2,1); }
+@keyframes modalIn { from { opacity: 0; transform: translateY(14px) scale(.97); } to { opacity: 1; transform: none; } }
+
+/* Stat chips + portrait ring as glass */
+.result-chip {
+  border-radius: 16px; background: linear-gradient(160deg, rgba(255,255,255,.10), rgba(255,255,255,.035));
+  border: 1px solid rgba(255,255,255,.12); box-shadow: inset 0 1px 0 rgba(255,255,255,.3);
+}
+.hero-photo { box-shadow: 0 0 0 1px rgba(255,255,255,.45), 0 0 0 7px rgba(255,255,255,.06), 0 24px 60px -12px rgba(0,0,0,.8); }
+
+/* theme toggle button */
+.theme-btn { background: rgba(255,255,255,.06); border:1px solid var(--border); border-radius:50%; width:34px; height:34px; display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--muted); transition: color .2s, border-color .2s, background .2s; }
+.theme-btn:hover { color: var(--text); border-color: rgba(255,255,255,.28); }
+.theme-btn svg { width:17px; height:17px; }
+</style>
+
+<style>
+/* ============================================================
+   LIGHT MODE — iOS-style day appearance (toggled by html.light)
+   ============================================================ */
+html.light {
+  --bg:#EAEDF3; --text:#10141C; --muted:#55607A; --secondary:#2A3550; --primary:#1B2640;
+  --border: rgba(0,0,0,.10);
+  --accent:#C77D0B; --accent-2:#E04F6B;
+  --grad: linear-gradient(120deg,#E0930A 0%,#E0762A 46%,#E04F6B 100%);
+}
+html.light body::before {
+  background:
+    radial-gradient(50vw 50vw at 80% -10%, rgba(56,189,248,.20), transparent 60%),
+    radial-gradient(46vw 46vw at -6% 16%, rgba(129,140,248,.16), transparent 60%),
+    radial-gradient(40vw 40vw at 62% 116%, rgba(245,165,36,.18), transparent 60%),
+    radial-gradient(30vw 30vw at 22% 64%, rgba(251,113,133,.15), transparent 60%),
+    var(--bg);
+}
+html.light body::after { opacity:.025; }
+html.light .theme-btn { background: rgba(0,0,0,.04); }
+html.light .theme-btn:hover { border-color: rgba(0,0,0,.2); }
+
+/* glass cards */
+html.light .about-card, html.light .course-card, html.light .skill-cat,
+html.light .tl-card, html.light .project-card, html.light .extra-card, html.light .contact-item {
+  background: linear-gradient(155deg, rgba(255,255,255,.78), rgba(255,255,255,.52));
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 18px 42px -26px rgba(20,30,60,.45);
+}
+html.light .about-card:hover, html.light .course-card:hover, html.light .skill-cat:hover,
+html.light .tl-card:hover, html.light .project-card:hover, html.light .extra-card:hover, html.light .contact-item:hover {
+  background: linear-gradient(155deg, rgba(255,255,255,.92), rgba(255,255,255,.68));
+  border-color: rgba(199,125,11,.5);
+  box-shadow: inset 0 1px 0 #fff, 0 28px 54px -28px rgba(20,30,60,.5), 0 0 40px -20px rgba(199,125,11,.35) !important;
+}
+
+/* nav */
+html.light nav {
+  background: linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.52));
+  border-bottom:1px solid rgba(0,0,0,.08);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 8px 24px -14px rgba(20,30,60,.3);
+}
+html.light nav .logo { color:#10141C; }
+
+/* buttons + tags */
+html.light .btn-primary, html.light .btn-outline {
+  background: linear-gradient(160deg, rgba(255,255,255,.85), rgba(255,255,255,.6));
+  border:1px solid rgba(0,0,0,.1); color:var(--text);
+  box-shadow: inset 0 1px 0 #fff, 0 8px 20px -12px rgba(20,30,60,.3);
+}
+html.light .btn-outline:hover { background:#10141C; color:#fff; }
+html.light .tag, html.light .project-tags .tag {
+  background: linear-gradient(160deg, rgba(255,255,255,.85), rgba(255,255,255,.6));
+  border:1px solid rgba(0,0,0,.1); color:var(--secondary);
+}
+html.light .tag:hover, html.light .project-tags .tag:hover { background: var(--accent); color:#fff; border-color:var(--accent); }
+
+/* modal */
+html.light .modal { background: linear-gradient(160deg, rgba(255,255,255,.99), rgba(244,246,250,.98)); border:1px solid rgba(0,0,0,.08); box-shadow: inset 0 1px 0 #fff, 0 40px 90px -30px rgba(20,30,60,.4); }
+html.light .modal-overlay { background: rgba(225,230,238,.55); }
+html.light .modal h2 { color:#10141C; }
+html.light .modal-meta { color:#55607A; }
+html.light .modal-section p, html.light .modal-section ul li { color:#2A3550; }
+html.light .modal-section h4 { border-bottom-color: rgba(0,0,0,.1); }
+html.light .modal-close { color:#55607A; background: rgba(0,0,0,.06); }
+html.light .modal-close:hover { background: rgba(0,0,0,.12); color:#10141C; }
+html.light .gallery-main { background:#fff; border-color: rgba(0,0,0,.1); }
+html.light .gallery-thumb { border-color: rgba(0,0,0,.12); background:#fff; }
+html.light .gallery-zoom-hint { background: rgba(255,255,255,.75); color:#333; }
+html.light .result-chip { background: linear-gradient(160deg, rgba(255,255,255,.85), rgba(255,255,255,.6)); border:1px solid rgba(0,0,0,.08); }
+html.light .result-chip .label { color:#55607A; }
+
+/* ----- Light-mode hero: NO photo (the dark/light gradient looked off) -----
+   Drop the dark city photo + its dark vignettes; let the page's light aurora
+   show through, and flip hero text to dark. Name keeps the warm amber gradient. */
+html.light .hero-bg { display: none !important; }
+html.light #hero::before { display: none !important; }   /* dark center vignette */
+html.light #hero::after  { display: none !important; }   /* dark -> bg bottom fade */
+html.light #hero h1 { color:#10141C; }
+html.light #hero h1 span { background: linear-gradient(120deg,#E0930A 0%,#E0762A 46%,#E04F6B 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
+html.light #hero p.subtitle { color:#3A4560; }
+html.light #hero p.subtitle strong { color:#10141C; }
+html.light .hero-eyebrow { color:#C77D0B; }
+html.light .hero-auth { color:#55607A; }
+html.light .hero-auth strong { color:#C77D0B; }
+html.light .hero-photo { box-shadow: 0 0 0 1.5px rgba(199,125,11,.7), 0 18px 44px -14px rgba(20,30,60,.4); }
+
+/* scrollbar */
+html.light ::-webkit-scrollbar-track { background:#E2E6EE; }
+html.light ::-webkit-scrollbar-thumb { background:#B9C2D2; }
+html.light ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* ----- Light-mode mobile dropdown menu (was inheriting the dark navy panel) ----- */
+@media (max-width: 768px) {
+  html.light nav ul {
+    background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(244,246,250,.97));
+    border-top: 1px solid rgba(0,0,0,.06);
+    box-shadow: 0 12px 26px -10px rgba(20,30,60,.28);
+  }
+  html.light nav ul li a { color:#2A3550; }
+  html.light nav ul li a:hover, html.light nav ul li a.active { color:#10141C; }
+  html.light .hamburger span { background:#55607A; }
+}
+</style>
 </head>
 <body>
 <div class="scroll-progress" id="scrollProgress"></div>
@@ -327,6 +816,7 @@
       <span class="lang-divider">|</span>
       <button class="lang-btn" id="btnZH2" onclick="setLang('zh')">中文</button>
     </div>
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle light or dark mode"><i data-lucide="moon"></i></button>
     <button class="hamburger" id="hamburger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </button>
@@ -341,17 +831,22 @@
   </ul>
 </nav>
 
+<div id="smooth-wrapper">
+<div id="smooth-content">
+
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
     <img class="hero-photo" src="photo.png" alt="Jarvis Lee" />
+    <div class="hero-eyebrow" data-en="Available for Summer / Fall 2026 Co-op" data-zh="開放 2026 暑期／秋季實習">Available for Summer / Fall 2026 Co-op</div>
     <h1 data-en="Che-Wei <span>(Jarvis)</span> Lee" data-zh="李哲維 <span>(Jarvis)</span>">Che-Wei <span>(Jarvis)</span> Lee</h1>
-    <p class="subtitle" data-en="M.S. in Data Analytics Engineering @ Northeastern University<br>Transforming data into actionable business insights through analytics, machine learning, and storytelling." data-zh="美國東北大學資料分析工程碩士<br>透過資料分析、機器學習與資料敘事<br>將複雜資料轉化為具行動力的商業洞察">M.S. in Data Analytics Engineering @ Northeastern University<br>Transforming data into actionable business insights through analytics, machine learning, and storytelling.</p>
+    <p class="subtitle" data-en="<strong>Data Scientist &amp; Data Analyst</strong> · M.S. Data Analytics Engineering @ Northeastern<br>I build end-to-end ML &amp; analytics that ship to production — like a self-retraining MLB playoff predictor and a live multi-cloud GPU-pricing tracker." data-zh="<strong>資料科學家 &amp; 資料分析師</strong> · 美國東北大學資料分析工程碩士<br>打造能上線的端到端 ML 與資料分析——像是每天自動重訓的 MLB 季後賽預測器，以及跨三大雲（AWS／Azure／GCP）的即時 GPU 價格追蹤器。"><strong>Data Scientist &amp; Data Analyst</strong> · M.S. Data Analytics Engineering @ Northeastern<br>I build end-to-end ML &amp; analytics that ship to production — like a self-retraining MLB playoff predictor and a live multi-cloud GPU-pricing tracker.</p>
     <div class="hero-btns">
-      <a class="btn btn-accent" href="resume.pdf" target="_blank" data-en="📄 View Resume" data-zh="📄 查看履歷">📄 View Resume</a>
+      <a class="btn btn-accent" href="resume.pdf" target="_blank"><i data-lucide="file-text"></i><span data-en="View Resume" data-zh="查看履歷">View Resume</span></a>
       <a class="btn btn-primary" href="#projects" data-en="View Projects" data-zh="查看專案">View Projects</a>
       <a class="btn btn-outline" href="#contact" data-en="Get in Touch" data-zh="聯絡我">Get in Touch</a>
     </div>
+    <div class="hero-auth" data-en="Authorized to work via F-1 CPT/OPT · <strong>No sponsorship required for internships</strong> · Boston, MA" data-zh="F-1 國際生・可透過 CPT/OPT 合法實習・<strong>實習無需 sponsorship</strong>・Boston, MA">Authorized to work via F-1 CPT/OPT · <strong>No sponsorship required for internships</strong> · Boston, MA</div>
   </div>
 </section>
 
@@ -359,19 +854,19 @@
   <h2 class="section-title" data-en="About Me" data-zh="關於我">About Me</h2>
   <div class="about-grid">
     <div class="about-card">
-      <h3 data-en="🎓 Education" data-zh="🎓 教育背景">🎓 Education</h3>
+      <h3><i data-lucide="graduation-cap"></i><span data-en="Education" data-zh="教育背景">Education</span></h3>
       <p data-en="<strong>Northeastern University</strong><br/>M.S. Data Analytics Engineering<br/>Expected May 2027 · Boston, MA<br>GPA: 3.6/4.0" data-zh="<strong>美國東北大學</strong><br/>資料分析工程碩士<br/>預計 2027 年 5 月畢業・美國麻州波士頓<br>GPA：3.6 / 4.0"><strong>Northeastern University</strong><br/>M.S. Data Analytics Engineering<br/>Expected May 2027 · Boston, MA<br>GPA: 3.6/4.0</p>
       <br/>
       <p data-en="<strong>National Changhua University of Education</strong><br/>Bachelor of Business Administration<br/>January 2025 · Changhua, Taiwan" data-zh="<strong>國立彰化師範大學</strong><br/>商業學士（企業管理）<br/>2025 年 1 月・台灣彰化"><strong>National Changhua University of Education</strong><br/>Bachelor of Business Administration<br/>January 2025 · Changhua, Taiwan</p>
     </div>
     <div class="about-card">
-      <h3 data-en="💡 Who I Am" data-zh="💡 關於我">💡 Who I Am</h3>
+      <h3><i data-lucide="lightbulb"></i><span data-en="Who I Am" data-zh="關於我">Who I Am</span></h3>
       <p data-en="I am a graduate student in Data Analytics Engineering at Northeastern University, passionate about turning complex data into clear, actionable business insights.<br><br>I specialize in machine learning, data visualization, and cross-functional storytelling to drive real-world business impact." data-zh="我目前就讀於東北大學資料分析工程碩士，專注於將複雜資料轉化為清晰且具行動性的商業洞察。專長涵蓋機器學習、資料視覺化與跨部門資料溝通，致力於透過分析驅動實際商業價值。<br><br>我擅長從資料探索、建模分析到商業儀表板呈現，將技術能力與商業思維結合，協助決策者快速掌握關鍵資訊並產生行動。">I am a graduate student in Data Analytics Engineering at Northeastern University, passionate about turning complex data into clear, actionable business insights.<br><br>I specialize in machine learning, data visualization, and cross-functional storytelling to drive real-world business impact.</p>
     </div>
   </div>
   <div class="about-grid-full">
     <div class="course-card">
-      <h3 data-en="📚 Relevant Courses" data-zh="📚 相關課程">📚 Relevant Courses</h3>
+      <h3><i data-lucide="book-open"></i><span data-en="Relevant Courses" data-zh="相關課程">Relevant Courses</span></h3>
       <div class="course-section-label" data-en="Northeastern University" data-zh="美國東北大學">Northeastern University</div>
       <div style="margin-bottom:1rem;">
         <span class="tag" data-en="Machine Learning and Data Analytics" data-zh="機器學習與資料分析">Machine Learning and Data Analytics</span>
@@ -396,7 +891,7 @@
   <h2 class="section-title" data-en="Skills" data-zh="技能">Skills</h2>
   <div class="skills-grid">
     <div class="skill-cat">
-      <h4 data-en="📊 Data Analysis" data-zh="📊 資料分析">📊 Data Analysis</h4>
+      <h4><i data-lucide="bar-chart-3"></i><span data-en="Data Analysis" data-zh="資料分析">Data Analysis</span></h4>
       <span class="tag" data-en="Exploratory Data Analysis" data-zh="探索式資料分析">Exploratory Data Analysis</span>
       <span class="tag" data-en="Statistical Analysis" data-zh="統計分析">Statistical Analysis</span>
       <span class="tag" data-en="Data Cleaning & Wrangling" data-zh="資料清理與整理">Data Cleaning & Wrangling</span>
@@ -406,28 +901,28 @@
       <span class="tag" data-en="Sports Analytics (EPA/efficiency)" data-zh="體育分析（EPA／效率指標）">Sports Analytics (EPA/efficiency)</span>
     </div>
     <div class="skill-cat">
-      <h4 data-en="💼 Business Analysis" data-zh="💼 商業分析">💼 Business Analysis</h4>
+      <h4><i data-lucide="briefcase"></i><span data-en="Business Analysis" data-zh="商業分析">Business Analysis</span></h4>
       <span class="tag" data-en="KPI Tracking" data-zh="KPI 追蹤">KPI Tracking</span>
       <span class="tag" data-en="Market & Competitive Intelligence" data-zh="市場與競品情報">Market & Competitive Intelligence</span>
       <span class="tag" data-en="Requirements & Reporting" data-zh="需求分析與報告">Requirements & Reporting</span>
       <span class="tag" data-en="Data Storytelling" data-zh="資料敘事">Data Storytelling</span>
     </div>
     <div class="skill-cat">
-      <h4 data-en="📈 BI & Dashboards" data-zh="📈 BI 與儀表板">📈 BI & Dashboards</h4>
+      <h4><i data-lucide="layout-dashboard"></i><span data-en="BI &amp; Dashboards" data-zh="BI 與儀表板">BI &amp; Dashboards</span></h4>
       <span class="tag">Tableau</span>
       <span class="tag">Power BI</span>
       <span class="tag">Plotly</span>
       <span class="tag">Excel</span>
     </div>
     <div class="skill-cat">
-      <h4 data-en="💻 Programming & AI Tools" data-zh="💻 程式設計與 AI 工具">💻 Programming & AI Tools</h4>
+      <h4><i data-lucide="code"></i><span data-en="Programming &amp; AI Tools" data-zh="程式設計與 AI 工具">Programming &amp; AI Tools</span></h4>
       <span class="tag">Python (pandas, NumPy, scikit-learn)</span>
       <span class="tag">SQL</span>
       <span class="tag">R</span>
       <span class="tag" data-en="AI-Assisted Analysis" data-zh="AI 輔助分析">AI-Assisted Analysis</span>
     </div>
     <div class="skill-cat">
-      <h4 data-en="🗄️ Databases & Cloud" data-zh="🗄️ 資料庫與雲端">🗄️ Databases & Cloud</h4>
+      <h4><i data-lucide="database"></i><span data-en="Databases &amp; Cloud" data-zh="資料庫與雲端">Databases &amp; Cloud</span></h4>
       <span class="tag">MySQL</span>
       <span class="tag">MongoDB</span>
       <span class="tag" data-en="Schema Design" data-zh="資料庫綱要設計">Schema Design</span>
@@ -437,7 +932,7 @@
       <span class="tag">Google BigQuery</span>
     </div>
     <div class="skill-cat">
-      <h4 data-en="📣 Marketing Analytics" data-zh="📣 行銷分析">📣 Marketing Analytics</h4>
+      <h4><i data-lucide="megaphone"></i><span data-en="Marketing Analytics" data-zh="行銷分析">Marketing Analytics</span></h4>
       <span class="tag">Google Analytics</span>
       <span class="tag">Google Ads</span>
       <span class="tag" data-en="Campaign Performance" data-zh="廣告成效分析">Campaign Performance</span>
@@ -457,9 +952,9 @@
         </div>
         <div class="tl-sub" data-en="Business Analyst Intern · Cloud Team · Taipei, Taiwan" data-zh="商業分析實習生｜雲端團隊｜台北，台灣">Business Analyst Intern · Cloud Team · Taipei, Taiwan</div>
         <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1rem;">
-          <span onmouseover="this.style.background='#38BDF8';this.style.color='#0F172A';this.style.borderColor='#38BDF8'" onmouseout="this.style.background='#1E3A5F';this.style.color='#7DD3FC';this.style.borderColor='#2D5A8E'" style="background:#1E3A5F;color:#7DD3FC;border:1px solid #2D5A8E;border-radius:20px;padding:.25rem .85rem;font-size:14px;font-weight:600;cursor:default;transition:all .2s;" data-en="3,000+ AWS Accounts" data-zh="3,000+ AWS 客戶帳號">3,000+ AWS Accounts</span>
-          <span onmouseover="this.style.background='#38BDF8';this.style.color='#0F172A';this.style.borderColor='#38BDF8'" onmouseout="this.style.background='#1E3A5F';this.style.color='#7DD3FC';this.style.borderColor='#2D5A8E'" style="background:#1E3A5F;color:#7DD3FC;border:1px solid #2D5A8E;border-radius:20px;padding:.25rem .85rem;font-size:14px;font-weight:600;cursor:default;transition:all .2s;" data-en="3 Cloud Providers" data-zh="三大公雲">3 Cloud Providers</span>
-          <span onmouseover="this.style.background='#38BDF8';this.style.color='#0F172A';this.style.borderColor='#38BDF8'" onmouseout="this.style.background='#1E3A5F';this.style.color='#7DD3FC';this.style.borderColor='#2D5A8E'" style="background:#1E3A5F;color:#7DD3FC;border:1px solid #2D5A8E;border-radius:20px;padding:.25rem .85rem;font-size:14px;font-weight:600;cursor:default;transition:all .2s;" data-en="12+ Biweekly CI Reports" data-zh="12+ 份雙週競情簡報">12+ Biweekly CI Reports</span>
+          <span class="tag"data-en="3,000+ AWS Accounts" data-zh="3,000+ AWS 客戶帳號">3,000+ AWS Accounts</span>
+          <span class="tag"data-en="3 Cloud Providers" data-zh="三大公雲">3 Cloud Providers</span>
+          <span class="tag"data-en="12+ Biweekly CI Reports" data-zh="12+ 份雙週競情簡報">12+ Biweekly CI Reports</span>
         </div>
         <ul>
           <li data-en="Analyzed monthly usage and traffic across 3,000+ AWS customer accounts in Excel and Power BI, delivering monthly reports to the marketing and product managers to guide account priorities." data-zh="以 Excel 與 Power BI 分析 3,000+ 個 AWS 客戶帳號的每月用量與流量，每月向行銷與產品經理提交報告，作為客戶經營的優先順序依據。">Analyzed monthly usage and traffic across 3,000+ AWS customer accounts in Excel and Power BI, delivering monthly reports to the marketing and product managers to guide account priorities.</li>
@@ -478,8 +973,8 @@
     <!-- Card 1: MLB Playoff Predictor (Featured, Live) -->
     <div class="project-card" onclick="openModal('p8')">
       <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem;">
-        <h3 style="margin-bottom:0;" data-en="⚾ MLB 2026 Playoff Predictor" data-zh="⚾ MLB 2026 季後賽預測系統">⚾ MLB 2026 Playoff Predictor</h3>
-        <span style="background:#450A0A;color:#FCA5A5;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 10px;border-radius:20px;white-space:nowrap;">🔴 Live</span>
+        <h3 style="margin-bottom:0;"><i data-lucide="target"></i><span data-en="MLB 2026 Playoff Predictor" data-zh="MLB 2026 季後賽預測系統">MLB 2026 Playoff Predictor</span></h3>
+        <span style="background:#450A0A;color:#FCA5A5;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 10px;border-radius:20px;white-space:nowrap;"><span class="live-dot"></span>Live</span>
       </div>
       <p data-en="An ML system that predicts MLB games and 2026 playoff odds — five win-probability models, 10,000 Monte Carlo season simulations, retrained and republished automatically every morning, with every prediction logged before first pitch." data-zh="預測 MLB 比賽勝負與 2026 季後賽機率的機器學習系統——五個勝率模型、10,000 次蒙地卡羅賽季模擬，每天早上自動重訓與發布，且每筆預測都在開賽前公開留檔。">An ML system that predicts MLB games and 2026 playoff odds — five win-probability models, 10,000 Monte Carlo season simulations, retrained and republished automatically every morning, with every prediction logged before first pitch.</p>
       <div class="project-tags">
@@ -490,8 +985,8 @@
     <!-- Card 2: Cloud Project (Featured) -->
     <div class="project-card" onclick="openModal('p7')">
       <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem;">
-        <h3 style="margin-bottom:0;" data-en="☁️ Multi-Cloud AI Infrastructure Analysis" data-zh="☁️ 多雲 AI 基礎設施市場分析">☁️ Multi-Cloud AI Infrastructure Analysis</h3>
-        <span style="background:#0F3D2E;color:#6EE7B7;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 10px;border-radius:20px;white-space:nowrap;">⭐ Featured</span>
+        <h3 style="margin-bottom:0;"><i data-lucide="cloud"></i><span data-en="Multi-Cloud AI Infrastructure Analysis" data-zh="多雲 AI 基礎設施市場分析">Multi-Cloud AI Infrastructure Analysis</span></h3>
+        <span style="background:rgba(245,165,36,.14);color:#F5A524;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 10px;border-radius:20px;white-space:nowrap;"><i data-lucide="star" class="badge-ico"></i>Featured</span>
       </div>
       <p data-en="From 2M+ scraped records to a live GPU pricing tracker — compared AWS, Azure, and GCP on services, AI, and market share, then automated a weekly pipeline that snapshots ~5,000 GPU prices into a SQLite star schema and a live dashboard." data-zh="從 200 萬+ 筆爬取資料到 GPU 價格即時追蹤——比較 AWS、Azure、GCP 的服務、AI 與市占，並自動化每週 pipeline，將約 5,000 筆 GPU 價格寫入 SQLite 星型架構並發布線上儀表板。">From 2M+ scraped records to a live GPU pricing tracker — compared AWS, Azure, and GCP on services, AI, and market share, then automated a weekly pipeline that snapshots ~5,000 GPU prices into a SQLite star schema and a live dashboard.</p>
       <div class="project-tags">
@@ -504,8 +999,8 @@
     <!-- Card 3: Aerospace (Featured) -->
     <div class="project-card" onclick="openModal('p2')">
       <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem;">
-        <h3 style="margin-bottom:0;" data-en="✈️ U.S. Aerospace Innovation Atlas" data-zh="✈️ 美國航太創新地圖">✈️ U.S. Aerospace Innovation Atlas</h3>
-        <span style="background:#0F3D2E;color:#6EE7B7;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 10px;border-radius:20px;white-space:nowrap;">⭐ Featured</span>
+        <h3 style="margin-bottom:0;"><i data-lucide="plane"></i><span data-en="U.S. Aerospace Innovation Atlas" data-zh="美國航太創新地圖">U.S. Aerospace Innovation Atlas</span></h3>
+        <span style="background:rgba(245,165,36,.14);color:#F5A524;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 10px;border-radius:20px;white-space:nowrap;"><i data-lucide="star" class="badge-ico"></i>Featured</span>
       </div>
       <p data-en="Mapped 16 years of U.S. aerospace patents (5,200+) across 300+ metro areas — and caught a silent data bug that had erased Los Angeles, the #1 metro, from the map; fixed it with CBSA-code joins and validated against official USPTO totals." data-zh="繪製 16 年、300+ 個都會區的 5,200+ 件美國航太專利——並抓到一個讓第一名洛杉磯從地圖上消失的資料錯誤；改以 CBSA 代碼連結修復，數字與官方 USPTO 統計完全一致。">Mapped 16 years of U.S. aerospace patents (5,200+) across 300+ metro areas — and caught a silent data bug that had erased Los Angeles, the #1 metro, from the map; fixed it with CBSA-code joins and validated against official USPTO totals.</p>
       <div class="project-tags">
@@ -515,7 +1010,7 @@
     </div>
       <!-- NFL -->
       <div class="project-card" onclick="openModal('p4')">
-        <h3 data-en="🏈 NFL Offensive Performance Dashboard" data-zh="🏈 NFL 進攻表現儀表板">🏈 NFL Offensive Performance Dashboard</h3>
+        <h3><i data-lucide="trophy"></i><span data-en="NFL Offensive Performance Dashboard" data-zh="NFL 進攻表現儀表板">NFL Offensive Performance Dashboard</span></h3>
         <p data-en="Analyzed 22.6K+ player-week records (2021–2024, 600+ players, 32 teams) from nflverse and built Power BI + Plotly dashboards that separate volume leaders from efficiency leaders (EPA, target share)." data-zh="分析 nflverse 共 2.26 萬+ 筆球員單週資料（2021–2024、600+ 名球員、32 隊），以 Power BI＋Plotly 製作儀表板，區分產量型與效率型球員（EPA、目標佔比）。">Analyzed 22.6K+ player-week records (2021–2024, 600+ players, 32 teams) from nflverse and built Power BI + Plotly dashboards that separate volume leaders from efficiency leaders (EPA, target share).</p>
         <div class="project-tags">
           <span class="tag">Power BI</span><span class="tag">Python</span><span class="tag">Plotly</span>
@@ -531,7 +1026,7 @@
     <div class="projects-grid">
       <!-- City Score -->
       <div class="project-card" onclick="openModal('p1')">
-        <h3 data-en="🗺️ City Score Analytics" data-zh="🗺️ 城市宜居評分分析">🗺️ City Score Analytics</h3>
+        <h3><i data-lucide="map"></i><span data-en="City Score Analytics" data-zh="城市宜居評分分析">City Score Analytics</span></h3>
         <p data-en="Turned 16,000+ records across 6 socioeconomic factors into a single 0–100 livability index ranking 17 ZIP codes, visualized as interactive choropleth maps for location decisions." data-zh="整合 1.6 萬+ 筆、涵蓋六項社會經濟指標的資料，建立 0–100 宜居指數並為 17 個郵遞區排名，以互動地圖支援選址決策。">Turned 16,000+ records across 6 socioeconomic factors into a single 0–100 livability index ranking 17 ZIP codes, visualized as interactive choropleth maps for location decisions.</p>
         <div class="project-tags">
           <span class="tag">Python</span><span class="tag">Plotly</span><span class="tag">GeoPandas</span>
@@ -548,8 +1043,8 @@
   <div style="margin-bottom:1.5rem;">
     <div class="extra-card">
       <img src="extra1.jpg" alt="Student Association" class="extra1-img">
-      <span style="background:#0F3D2E;color:#6EE7B7;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 10px;border-radius:20px;white-space:nowrap;display:inline-block;margin-bottom:.6rem;">⭐ Featured</span>
-      <h4 data-en="🏛️ Department of Business Administration Student Association" data-zh="🏛️ 企業管理學系學生會">🏛️ Department of Business Administration Student Association</h4>
+      <span style="background:rgba(245,165,36,.14);color:#F5A524;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 10px;border-radius:20px;white-space:nowrap;display:inline-block;margin-bottom:.6rem;"><i data-lucide="star" class="badge-ico"></i>Featured</span>
+      <h4><i data-lucide="landmark"></i><span data-en="Department of Business Administration Student Association" data-zh="企業管理學系學生會">Department of Business Administration Student Association</span></h4>
       <div class="role" data-en="Public Relations Director | Sep 2023 – Jun 2024" data-zh="公關長｜2023 年 9 月－2024 年 6 月">Public Relations Director | Sep 2023 – Jun 2024</div>
       <ul>
         <li data-en="Led the planning and execution of corporate visit projects, including partnership discussions, event flow design, scheduling, and on-site coordination." data-zh="主導企業參訪專案的規劃與執行，包含合作洽談、活動流程設計、時程安排及現場協調">Led the planning and execution of corporate visit projects, including partnership discussions, event flow design, scheduling, and on-site coordination.</li>
@@ -560,8 +1055,8 @@
   </div>
   <div class="extra-grid" style="margin-bottom:2rem;">
     <div class="extra-card">
-      <img src="extra2.jpg" alt="Volunteer Tutor" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:1rem;">
-      <h4 data-en="🤝 Changhua County Government Underprivileged Family Support Program" data-zh="🤝 彰化縣政府弱勢家庭扶助計畫">🤝 Changhua County Government Underprivileged Family Support Program</h4>
+      <img src="extra2.jpg" alt="Volunteer Tutor" style="width:100%;height:200px;object-fit:cover;object-position:center 30%;border-radius:12px;margin-bottom:1rem;">
+      <h4><i data-lucide="heart-handshake"></i><span data-en="Changhua County Government Underprivileged Family Support Program" data-zh="彰化縣政府弱勢家庭扶助計畫">Changhua County Government Underprivileged Family Support Program</span></h4>
       <div class="role" data-en="Volunteer Tutor & Youth Mentor | Sep 2023 – Feb 2025" data-zh="志工家教與青少年導師｜2023 年 9 月－2025 年 2 月">Volunteer Tutor & Youth Mentor | Sep 2023 – Feb 2025</div>
       <ul>
         <li data-en="Mentored and tutored students from disadvantaged households, supporting both academic progress and personal development." data-zh="陪伴並輔導弱勢家庭學生，支持其學業進步與個人成長">Mentored and tutored students from disadvantaged households, supporting both academic progress and personal development.</li>
@@ -571,7 +1066,7 @@
     </div>
     <div class="extra-card">
       <img src="extra3.jpeg" alt="Tennis Club" style="width:100%;height:auto;object-fit:contain;border-radius:12px;margin-bottom:1rem;background:#0F172A;">
-      <h4 data-en="🎾 Tennis Club" data-zh="🎾 網球社">🎾 Tennis Club</h4>
+      <h4><i data-lucide="activity"></i><span data-en="Tennis Club" data-zh="網球社">Tennis Club</span></h4>
       <ul style="margin-top:.6rem;">
         <li data-en="Long-term passion for tennis." data-zh="長期熱愛網球與運動資料分析">Long-term passion for tennis.</li>
         <li data-en="Former member of the university tennis team." data-zh="曾為大學網球隊成員">Former member of the university tennis team.</li>
@@ -585,17 +1080,17 @@
   <h2 class="section-title" data-en="Contact" data-zh="聯絡我">Contact</h2>
   <div class="contact-grid">
     <a class="contact-item" href="mailto:lee.chew@northeastern.edu">
-      <div class="icon">📧</div>
+      <div class="icon"><i data-lucide="mail"></i></div>
       <h4 data-en="Email" data-zh="電子郵件">Email</h4>
       <p>lee.chew@northeastern.edu</p>
     </a>
     <a class="contact-item" href="tel:6172869011">
-      <div class="icon">📱</div>
+      <div class="icon"><i data-lucide="phone"></i></div>
       <h4 data-en="Phone" data-zh="電話">Phone</h4>
       <p>617-286-9011</p>
     </a>
     <a class="contact-item" href="https://www.linkedin.com/in/che-wei-lee-6b377a276/" target="_blank">
-      <div class="icon">💼</div>
+      <div class="icon"><svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></div>
       <h4>LinkedIn</h4>
       <p>che-wei-lee-6b377a276</p>
     </a>
@@ -611,6 +1106,9 @@
 <footer>
   <p data-en="© 2025 Che-Wei (Jarvis) Lee · Built with HTML, CSS & ❤️ · Boston, MA" data-zh="© 2025 李哲維（Jarvis）· 以 HTML、CSS & ❤️ 打造 · 美國麻州波士頓">© 2025 Che-Wei (Jarvis) Lee · Built with HTML, CSS & ❤️ · Boston, MA</p>
 </footer>
+
+</div><!-- /#smooth-content -->
+</div><!-- /#smooth-wrapper -->
 
 <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
   <div class="modal" id="modalBox">
@@ -653,8 +1151,8 @@ const projects = {
   p8: {
     label: 'Apr 2026 – Present · MLB Stats API · Updated daily',
     labelZH: '2026 年 4 月－至今｜MLB 官方 API｜每日自動更新',
-    title: '⚾ MLB 2026 Playoff Predictor',
-    titleZH: '⚾ MLB 2026 季後賽預測系統',
+    title: '<i data-lucide="target"></i>MLB 2026 Playoff Predictor',
+    titleZH: '<i data-lucide="target"></i>MLB 2026 季後賽預測系統',
     meta: 'Machine Learning · Monte Carlo Simulation · CI/CD Automation · Live Forecasting',
     metaZH: '機器學習・蒙地卡羅模擬・CI/CD 自動化・即時預測',
     images: ['mlb-odds.png','mlb-tracker.png','mlb-today.png'],
@@ -686,8 +1184,8 @@ const projects = {
   p1: {
     label: 'Oct – Dec 2025 · Prince William County, VA',
     labelZH: '2025 年 10 月－12 月｜維吉尼亞州 Prince William County',
-    title: '🗺️ City Score Analytics: County Livability Index',
-    titleZH: '🗺️ 城市評分分析：縣市宜居指數',
+    title: '<i data-lucide="map"></i>City Score Analytics: County Livability Index',
+    titleZH: '<i data-lucide="map"></i>城市評分分析：縣市宜居指數',
     meta: 'Geospatial Analysis · Dashboard Design · Socioeconomic Intelligence',
     metaZH: '地理空間分析・儀表板設計・社會經濟智慧',
     images: ['p1-1.png','p1-2.png','p1-3.png'],
@@ -717,8 +1215,8 @@ const projects = {
   p2: {
     label: 'Nov 2025 · U.S. Metro Areas (2000–2015, extended to 2024)',
     labelZH: '2025 年 11 月｜美國都會區（2000–2015，延伸至 2024）',
-    title: '✈️ U.S. Aerospace Innovation Atlas',
-    titleZH: '✈️ 美國航太創新地圖',
+    title: '<i data-lucide="plane"></i>U.S. Aerospace Innovation Atlas',
+    titleZH: '<i data-lucide="plane"></i>美國航太創新地圖',
     meta: 'Geospatial Analysis · Data Pipeline · Interactive Dashboard · BigQuery',
     metaZH: '地理空間分析・資料處理流程・互動儀表板・BigQuery',
     images: ['aero1.png','aero2.png','aero3.png','aero4.png'],
@@ -749,8 +1247,8 @@ const projects = {
   p4: {
     label: '2021–2024 · nflverse Play-by-Play Data',
     labelZH: '2021–2024｜nflverse 逐球資料',
-    title: '🏈 NFL Offensive Performance Analytics Dashboard',
-    titleZH: '🏈 NFL 進攻表現分析儀表板',
+    title: '<i data-lucide="trophy"></i>NFL Offensive Performance Analytics Dashboard',
+    titleZH: '<i data-lucide="trophy"></i>NFL 進攻表現分析儀表板',
     meta: 'Sports Analytics · Power BI · Python · Efficiency Metrics',
     metaZH: '運動分析・Power BI・Python・效率指標',
     images: ['nfl-dashboard.png','nfl-powerbi.png'],
@@ -770,8 +1268,8 @@ const projects = {
   p7: {
     label: 'Spring 2026 – Present · AWS vs. Azure vs. GCP · Live weekly tracker',
     labelZH: '2026 年春季－至今｜AWS vs. Azure vs. GCP｜每週自動追蹤',
-    title: '☁️ Multi-Cloud AI Infrastructure Market Analysis',
-    titleZH: '☁️ 多雲 AI 基礎設施市場分析',
+    title: '<i data-lucide="cloud"></i>Multi-Cloud AI Infrastructure Market Analysis',
+    titleZH: '<i data-lucide="cloud"></i>多雲 AI 基礎設施市場分析',
     meta: 'Cloud Market Intelligence · BI Dashboards · Web Scraping',
     metaZH: '雲端市場情報・BI 儀表板・網路爬蟲',
     images: ['cloud-gpu-map.png','cloud-market-share.png','cloud-1.png','cloud-2.png','cloud-3.png'],
@@ -812,7 +1310,7 @@ function openModal(id) {
 
   const s = (title, content) => `<div class="modal-section"><h4>${title}</h4>${content}</div>`;
   const ul = arr => `<ul>${arr.map(i=>`<li>${i}</li>`).join('')}</ul>`;
-  const tagFn = t => `<span onmouseover="this.style.background='#6EE7B7';this.style.color='#0F172A';this.style.borderColor='#6EE7B7'" onmouseout="this.style.background='#0F3D2E';this.style.color='#6EE7B7';this.style.borderColor='#065F46'" style="background:#0F3D2E;color:#6EE7B7;border:1px solid #065F46;border-radius:20px;padding:.3rem .9rem;font-size:15px;font-weight:500;cursor:default;transition:all .2s;">${t}</span>`;
+  const tagFn = t => `<span class="tag">${t}</span>`;
 
   const motivation = isZH && p.motivationZH ? p.motivationZH : p.motivation;
   const objective  = isZH && p.objectiveZH  ? p.objectiveZH  : p.objective;
@@ -829,7 +1327,7 @@ function openModal(id) {
   document.getElementById('modalContent').innerHTML = `
     <h2>${isZH&&p.titleZH?p.titleZH:p.title}</h2>
     <p class="modal-meta">${isZH&&p.metaZH?p.metaZH:p.meta}</p>
-    ${p.live ? `<div style="margin:.25rem 0 .6rem;"><a href="${p.live}" target="_blank" rel="noopener" class="btn-gh" style="background:#450A0A;color:#FCA5A5;border-color:#7F1D1D;" onclick="gtag('event','live_demo_click',{project_id:'${id}'})">🔴 ${isZH?'線上展示 Live Demo':'Live Demo'}</a></div>` : ''}
+    ${p.live ? `<div style="margin:.25rem 0 .6rem;"><a href="${p.live}" target="_blank" rel="noopener" class="btn-gh" style="background:#450A0A;color:#FCA5A5;border-color:#7F1D1D;" onclick="gtag('event','live_demo_click',{project_id:'${id}'})"><span class="live-dot"></span>${isZH?'線上展示 Live Demo':'Live Demo'}</a></div>` : ''}
     ${p.github ? `<div style="margin:.25rem 0 1.1rem;"><a href="${p.github}" target="_blank" rel="noopener" class="btn-gh"><svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>${isZH?'GitHub 原始碼':'View on GitHub'}</a></div>` : ''}
     ${galleryHTML}
     ${motivation  ? s(lbl.motivation,  `<p>${motivation}</p>`)       : ''}
@@ -842,6 +1340,7 @@ function openModal(id) {
     ${impact      ? s(lbl.impact,      `<p>${impact}</p>`)           : ''}
     ${s(lbl.tools, `<div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem;">${tools.map(tagFn).join('')}</div>`)}
   `;
+  if (window.lucide) lucide.createIcons();
   document.getElementById('modalOverlay').classList.add('active');
   document.body.style.overflow = 'hidden';
 }
@@ -849,9 +1348,9 @@ function openModal(id) {
 function buildGallery(images) {
   const mainContent = images && images.length > 0
     ? `<img id="galleryMain" src="${images[0]}" alt="Project screenshot" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-       <div class="no-img" style="display:none;">📷 Image coming soon</div>
-       <div class="gallery-zoom-hint">🔍 Click to enlarge</div>`
-    : `<div class="no-img">📷 Screenshots coming soon</div>`;
+       <div class="no-img" style="display:none;"><i data-lucide="image"></i> Image coming soon</div>
+       <div class="gallery-zoom-hint"><i data-lucide="zoom-in"></i> Click to enlarge</div>`
+    : `<div class="no-img"><i data-lucide="image"></i> Screenshots coming soon</div>`;
   const thumbs = images && images.length > 1
     ? `<div class="gallery-thumbs">${images.map((src,i)=>`<div class="gallery-thumb ${i===0?'active':''}" onclick="switchGallery(${i})" id="thumb-${i}"><img src="${src}" alt="thumb" onerror="this.style.display='none'"/></div>`).join('')}</div>` : '';
   const clickHandler = images && images.length > 0 ? `onclick="openLightbox(0)"` : '';
@@ -927,27 +1426,7 @@ document.addEventListener('keydown', e => {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* Scroll reveal — exclude hidden "View All" cards so content is never stuck hidden */
-  if('IntersectionObserver' in window){
-    root.classList.add('reveal-on');
-    var sel = 'h2.section-title, .about-card, .course-card, .skill-cat, .tl-card, .project-card, .extra-card, .contact-item';
-    var els = Array.prototype.slice.call(document.querySelectorAll(sel))
-      .filter(function(el){ return !el.closest('#extra-projects'); });
-    els.forEach(function(el){ el.classList.add('reveal'); });
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    els.forEach(function(el){
-      var sibs = el.parentElement
-        ? Array.prototype.slice.call(el.parentElement.children).filter(function(c){ return c.classList.contains('reveal'); })
-        : [];
-      var idx = sibs.indexOf(el);
-      if(idx > 0) el.style.transitionDelay = Math.min(idx * 0.08, 0.4) + 's';
-      io.observe(el);
-    });
-  }
+  /* Section + card reveals are handled by GSAP ScrollTrigger (see motion layer below). */
 
   /* Scroll-spy: highlight the nav link of the section in view */
   var navLinks = Array.prototype.slice.call(document.querySelectorAll('nav ul li a'));
@@ -964,6 +1443,102 @@ document.addEventListener('keydown', e => {
       });
     }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
     secs.forEach(function(s){ spy.observe(s); });
+  }
+})();
+</script>
+
+<!-- Render Lucide icons (replaces emoji) -->
+<script src="js/lucide.min.js"></script>
+<script>if (window.lucide) lucide.createIcons();</script>
+<script>
+  function applyThemeIcon(){
+    var light = document.documentElement.classList.contains('light');
+    var b = document.getElementById('themeBtn');
+    if(b){ b.innerHTML = '<i data-lucide="'+(light?'sun':'moon')+'"></i>'; if(window.lucide) lucide.createIcons(); }
+  }
+  function toggleTheme(){
+    var light = document.documentElement.classList.toggle('light');
+    try{ localStorage.setItem('theme', light?'light':'dark'); }catch(e){}
+    applyThemeIcon();
+  }
+  applyThemeIcon();
+</script>
+
+<!-- ===== GSAP motion layer (local, degrades gracefully) ===== -->
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/ScrollSmoother.min.js"></script>
+<script>
+(function(){
+  if (!window.gsap) return;                       // no GSAP -> CSS fallback, page stays visible
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;                             // reduced-motion -> native scroll, no smoother
+
+  // Premium inertia smooth-scrolling (the "top-tier" feel)
+  var smoother = ScrollSmoother.create({
+    wrapper: '#smooth-wrapper', content: '#smooth-content',
+    smooth: 1.15, smoothTouch: 0, effects: true
+  });
+  // Anchor links -> eased scroll with nav offset
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href');
+      if (id.length > 1 && document.querySelector(id)) { e.preventDefault(); smoother.scrollTo(id, true, 'top 84px'); }
+    });
+  });
+  // Pause smoothing while a project modal is open so the background stays put
+  var mo = document.getElementById('modalOverlay');
+  if (mo) new MutationObserver(function(){ smoother.paused(mo.classList.contains('active')); })
+            .observe(mo, { attributes: true, attributeFilter: ['class'] });
+
+  // Hero entrance
+  gsap.timeline({ defaults: { ease: 'power3.out' } })
+    .from('.hero-photo',      { y: 30, opacity: 0, scale: .9, duration: .8 })
+    .from('.hero-eyebrow',    { y: 16, opacity: 0, duration: .5 }, '-=.4')
+    .from('#hero h1',         { y: 28, opacity: 0, duration: .9 }, '-=.3')
+    .from('#hero p.subtitle', { y: 22, opacity: 0, duration: .7 }, '-=.55')
+    .from('.hero-btns .btn',  { y: 18, opacity: 0, duration: .6, stagger: .1 }, '-=.4')
+    .from('.hero-auth',       { y: 12, opacity: 0, duration: .5 }, '-=.25');
+
+  // Idle float on the portrait
+  gsap.to('.hero-photo', { y: -10, duration: 3.2, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 1.1 });
+
+  // Parallax: background drifts + zooms; content lifts & fades as you leave the hero
+  gsap.to('.hero-bg', { yPercent: 18, scale: 1.12, ease: 'none',
+    scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
+  gsap.to('.hero-content', { yPercent: -8, opacity: .35, ease: 'none',
+    scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
+
+  // Section titles + cards: staggered entrance on scroll.
+  // Wrapped so a misfire can NEVER leave content stuck invisible.
+  var revealEls = gsap.utils.toArray(
+    'h2.section-title, .about-card, .course-card, .skill-cat, .tl-card, .project-card, .extra-card, .contact-item'
+  ).filter(function(el){ return !el.closest('#extra-projects'); });
+  try {
+    gsap.set(revealEls, { opacity: 0, y: 42 });
+    ScrollTrigger.batch(revealEls, {
+      start: 'top 92%',
+      onEnter: function(batch){ gsap.to(batch, { opacity: 1, y: 0, duration: .8, ease: 'power3.out', stagger: .09, overwrite: true }); }
+    });
+    ScrollTrigger.refresh();
+    // Bulletproof safety net: reveal ANY element that enters view but a trigger missed
+    // (fast scroll, anchor jump, or load-timing race). Nothing can stay stuck invisible.
+    var sweepQueued = false;
+    function sweep(){
+      sweepQueued = false;
+      revealEls.forEach(function(el){
+        if (parseFloat(getComputedStyle(el).opacity) >= 0.05) return;
+        if (el.getBoundingClientRect().top < window.innerHeight * 0.95) {
+          gsap.to(el, { opacity: 1, y: 0, duration: .4, overwrite: true });
+        }
+      });
+    }
+    window.addEventListener('scroll', function(){ if(!sweepQueued){ sweepQueued = true; requestAnimationFrame(sweep); } }, { passive: true });
+    window.addEventListener('load', function(){ ScrollTrigger.refresh(); sweep(); });
+    setTimeout(sweep, 1800);
+  } catch (err) {
+    gsap.set(revealEls, { opacity: 1, y: 0 });   // on any error, never hide content
   }
 })();
 </script>
