@@ -1007,7 +1007,39 @@ html.light ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 <section id="projects">
   <h2 class="section-title" data-en="Projects" data-zh="專案">Projects</h2>
   <div class="projects-grid">
-    <!-- Card 1: MLB Playoff Predictor (Featured, Live) -->
+    <!-- Row 1: the two most differentiated - experimentation + LLM -->
+    <div class="project-card" onclick="openModal('p10')">
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem;">
+        <h3 style="margin-bottom:0;"><i data-lucide="flask-conical"></i><span data-en="SplitLab — Experimentation Platform" data-zh="SplitLab 自建實驗平台">SplitLab — Experimentation Platform</span></h3>
+        <span style="background:#450A0A;color:#FCA5A5;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 10px;border-radius:20px;white-space:nowrap;"><span class="live-dot"></span>Live</span>
+      </div>
+      <p data-en="Most A/B projects run one t-test on a downloaded CSV. I built the whole platform — assignment, sequential and Bayesian tests, CUPED, SRM — and then proved it works. Across 1,000 simulated experiments with a known answer, A/A false positives land at 5.3% against a nominal 5%; checking the results ten times inflates an ordinary test to 19.5% while mine holds 0.9%." data-zh="大部分 A/B 專案就是在下載來的 CSV 上跑一次 t-test。我把整個平台做出來——分流、序列檢定、貝氏、CUPED、SRM——然後證明它是對的。在 1,000 次「答案已知」的模擬實驗裡，A/A 偽陽性率落在 5.3%（名目 5%）；而連續看十次結果會讓一般檢定膨脹到 19.5%，我的維持在 0.9%。">Most A/B projects run one t-test on a downloaded CSV. I built the whole platform — assignment, sequential and Bayesian tests, CUPED, SRM — and then proved it works. Across 1,000 simulated experiments with a known answer, A/A false positives land at 5.3% against a nominal 5%; checking the results ten times inflates an ordinary test to 19.5% while mine holds 0.9%.</p>
+      <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag" data-en="A/B Testing" data-zh="A/B 測試">A/B Testing</span>
+          <span class="tag" data-en="Sequential Testing" data-zh="序列檢定">Sequential Testing</span>
+          <span class="tag" data-en="Bayesian" data-zh="貝氏統計">Bayesian</span>
+      </div>
+      <div class="click-hint" data-en="View Case Study &rarr;" data-zh="查看案例 &rarr;">View Case Study &rarr;</div>
+    </div>
+    <div class="project-card" onclick="openModal('p9')">
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem;">
+        <h3 style="margin-bottom:0;"><i data-lucide="message-square-code"></i><span data-en="AskMyDB — Natural-Language SQL" data-zh="AskMyDB 自然語言查詢">AskMyDB — Natural-Language SQL</span></h3>
+        <span style="background:#450A0A;color:#FCA5A5;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 10px;border-radius:20px;white-space:nowrap;"><span class="live-dot"></span>Live</span>
+      </div>
+      <p data-en="Ask a question in plain English; Claude writes the SQL and DuckDB runs it inside your browser against a 1.16M-row, 13-table warehouse — no server. I benchmarked the models on the same 13 questions with an independent model as the judge: Opus 69%, Haiku 38%. That gap is why the app generates SQL with Opus and only lets Haiku summarise the answer." data-zh="用日常英文問一句話，Claude 寫出 SQL，DuckDB 直接在你的瀏覽器裡對一個 116 萬列、13 張表的資料倉儲執行——不需要伺服器。我用同一組 13 題、外加一個獨立模型當評審實測：Opus 對 69%、Haiku 只有 38%。這個差距就是為什麼 SQL 交給 Opus 生成，Haiku 只負責把結果講成人話。">Ask a question in plain English; Claude writes the SQL and DuckDB runs it inside your browser against a 1.16M-row, 13-table warehouse — no server. I benchmarked the models on the same 13 questions with an independent model as the judge: Opus 69%, Haiku 38%. That gap is why the app generates SQL with Opus and only lets Haiku summarise the answer.</p>
+      <div class="project-tags">
+          <span class="tag">SQL</span>
+          <span class="tag">DuckDB-WASM</span>
+          <span class="tag" data-en="LLM Evaluation" data-zh="LLM 評測">LLM Evaluation</span>
+          <span class="tag" data-en="Text-to-SQL" data-zh="自然語言轉 SQL">Text-to-SQL</span>
+      </div>
+      <div class="click-hint" data-en="View Case Study &rarr;" data-zh="查看案例 &rarr;">View Case Study &rarr;</div>
+    </div>
+  </div>
+  <div class="projects-grid" style="margin-top:1.5rem;">
+    <!-- Row 2: production ML + market analysis -->
+    <!-- MLB Playoff Predictor -->
     <div class="project-card" onclick="openModal('p8')">
       <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem;">
         <h3 style="margin-bottom:0;"><i data-lucide="target"></i><span data-en="MLB 2026 Playoff Predictor" data-zh="MLB 2026 季後賽預測系統">MLB 2026 Playoff Predictor</span></h3>
@@ -1077,20 +1109,6 @@ html.light ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
           <span class="tag">Python</span><span class="tag">GeoPandas</span>
           <span class="tag" data-en="Sensitivity Analysis" data-zh="敏感度分析">Sensitivity Analysis</span>
           <span class="tag" data-en="Data Quality" data-zh="資料品質">Data Quality</span>
-        </div>
-        <div class="click-hint" data-en="View Case Study →" data-zh="查看案例 →">View Case Study →</div>
-      </div>
-      <!-- AskMyDB -->
-      <div class="project-card" onclick="openModal('p9')">
-        <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem;">
-          <h3 style="margin-bottom:0;"><i data-lucide="message-square-code"></i><span data-en="AskMyDB — Natural-Language SQL" data-zh="AskMyDB 自然語言查詢">AskMyDB — Natural-Language SQL</span></h3>
-          <span style="background:#450A0A;color:#FCA5A5;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 10px;border-radius:20px;white-space:nowrap;"><span class="live-dot"></span>Live</span>
-        </div>
-        <p data-en="Ask a question in plain English, get SQL, a result table, and a chart — all running in the browser. I also graded the models against each other on the same 45 questions: Opus got 69% right, Haiku 38%. That gap is why the app validates and repairs the SQL before it runs instead of trusting the model." data-zh="用日常英文問一句話，得到 SQL、結果表和圖表，全部在瀏覽器裡跑。我也用同一組 45 個問題實測不同模型：Opus 對 69%、Haiku 只有 38%。這個差距就是為什麼這個 app 會先驗證並修補 SQL 再執行，而不是直接相信模型。">Ask a question in plain English, get SQL, a result table, and a chart — all running in the browser. I also graded the models against each other on the same 45 questions: Opus got 69% right, Haiku 38%. That gap is why the app validates and repairs the SQL before it runs instead of trusting the model.</p>
-        <div class="project-tags">
-          <span class="tag">SQL</span><span class="tag">JavaScript</span>
-          <span class="tag" data-en="LLM Evaluation" data-zh="LLM 評測">LLM Evaluation</span>
-          <span class="tag" data-en="Text-to-SQL" data-zh="自然語言轉 SQL">Text-to-SQL</span>
         </div>
         <div class="click-hint" data-en="View Case Study →" data-zh="查看案例 →">View Case Study →</div>
       </div>
@@ -1374,32 +1392,65 @@ const projects = {
     labelZH: '2026 年 7 月｜完全在瀏覽器內執行',
     title: '<i data-lucide="message-square-code"></i>AskMyDB — Natural-Language SQL Analytics',
     titleZH: '<i data-lucide="message-square-code"></i>AskMyDB 自然語言 SQL 分析助手',
-    meta: 'Text-to-SQL · LLM Evaluation · In-Browser Database · Query Validation',
-    metaZH: '自然語言轉 SQL・LLM 評測・瀏覽器內資料庫・查詢驗證',
+    meta: 'Text-to-SQL · LLM Evaluation · In-Browser Database · Read-Only Guardrails',
+    metaZH: '自然語言轉 SQL・LLM 評測・瀏覽器內資料庫・唯讀防護',
     images: ['askmydb-1.png','askmydb-2.png'],
     live: 'https://jarvislee511.github.io/nl2sql-analytics-assistant/',
     github: 'https://github.com/JarvisLee511/nl2sql-analytics-assistant',
-    motivation: 'Every analyst gets the same request: "can you just pull this number for me?" I wanted to see how far a language model can take a non-technical person before it starts quietly returning wrong answers — and the interesting part turned out to be measuring exactly where that line is.',
-    motivationZH: '每個分析師都會收到同一種請求：「可以幫我拉一下這個數字嗎？」我想知道語言模型能把一個不懂技術的人帶多遠，以及它從哪裡開始「安靜地」給出錯答案——而真正有意思的部分，就是把那條線量出來。',
-    objective: 'To turn plain-language questions into correct SQL against a real schema, and to find out how much the choice of model actually matters — by scoring several of them on the same question set instead of guessing.',
-    objectiveZH: '把日常語言的問題轉成能在真實資料表上跑對的 SQL，並且實際量出「換模型」到底差多少——用同一組題目替幾個模型打分，而不是憑感覺猜。',
-    datasources: ['A synthetic 8-table retail schema (orders, customers, products, returns, and more) — clearly labelled as synthetic on the site','A 45-question benchmark set written by hand, spanning joins, aggregation, window functions, and date logic','Each question paired with a reference answer so results can be graded automatically'],
-    datasourcesZH: ['一組合成的 8 張表零售資料庫（訂單、客戶、商品、退貨等）——網站上明確標示為合成資料','手寫的 45 題評測題組，涵蓋 join、彙總、window function 與日期邏輯','每題都配一個標準答案，讓結果可以自動評分'],
-    overview: ['Built a browser-only analytics assistant: the question goes to the model, the SQL comes back, and the query runs against an in-browser database — no server, no data leaving the page.','Benchmarked models on the same 45 questions and scored execution accuracy against reference answers. Opus reached 69%, Haiku 38% — a 31-point gap on identical prompts.','Redesigned the architecture around that result. Rather than trusting the SQL, the app parses it, checks every table and column against the real schema, blocks anything that writes, and repairs what it can before executing.','Added a chart layer that picks a sensible visual from the shape of the result set, so the answer arrives as a table and a chart rather than raw rows.'],
-    overviewZH: ['做一個完全在瀏覽器內運作的分析助手：問題送給模型、SQL 回來、查詢直接在瀏覽器內的資料庫執行——沒有伺服器，資料不離開頁面。','用同一組 45 題評測不同模型，以標準答案比對執行結果的正確率。Opus 達 69%、Haiku 只有 38%——相同 prompt 下差了 31 個百分點。','根據這個結果重新設計架構。與其相信模型產生的 SQL，這個 app 會先解析它、把每個資料表與欄位對照真實 schema 檢查、擋掉任何寫入操作，能修的先修好再執行。','加上圖表層，依結果集的形狀自動挑合適的視覺化，讓答案以「表格＋圖」的形式呈現，而不是一堆原始資料列。'],
-    methodology: ['Schema-grounded prompting — the model is given the real table and column names, so it is not inventing a schema from the question alone.','Validation before execution — the generated SQL is parsed and every identifier checked against the schema; unknown columns are repaired or rejected rather than run.','Read-only by construction — anything that would write, drop, or alter is blocked at the parser, not by asking the model nicely.','Execution-accuracy grading — models are scored on whether the query returns the reference answer, not on whether the SQL looks plausible.','In-browser database — the whole thing runs client-side, which is also what makes it safe to publish as a public demo.'],
-    methodologyZH: ['以 schema 為基礎的 prompt — 直接把真實的表名與欄位名給模型，讓它不必憑問題自己想像 schema。','執行前先驗證 — 產生的 SQL 會被解析，每個識別字都對照 schema 檢查；不存在的欄位會被修正或拒絕，而不是直接跑。','結構上就是唯讀 — 任何寫入、刪除、修改都在解析階段擋掉，而不是靠「拜託模型不要這樣做」。','以執行結果評分 — 模型的分數看的是查詢有沒有回傳正確答案，而不是 SQL 看起來合不合理。','瀏覽器內資料庫 — 整套都在前端跑，這也正是它能安全地公開當 demo 的原因。'],
-    findings: 'The model choice matters more than the prompt engineering: 69% versus 38% on the same 45 questions, same instructions. Where the weaker model failed was consistent and predictable — multi-table joins and window functions — which is exactly what a validation layer can catch. The honest limitation is that the schema is synthetic, so this measures SQL reasoning rather than performance on messy production data.',
-    findingsZH: '換模型的影響比調 prompt 大得多：同樣 45 題、同樣指令，69% 對 38%。而較弱的模型失敗的地方很一致也可預測——多表 join 和 window function——這剛好就是驗證層能攔下來的東西。必須誠實講的限制是：這組 schema 是合成的，所以它量的是 SQL 推理能力，不是在真實髒資料上的表現。',
-    impact: 'The pattern is reusable wherever a language model produces something executable: never trust the output, validate it against the ground truth you already have, and measure model choice with a benchmark instead of a vibe. The same validate-then-execute layer applies to generated code, API calls, or config.',
-    impactZH: '只要語言模型產生的是「可以被執行的東西」，這個模式就能重複使用：不要相信輸出，拿你手上已經有的事實去驗證它，並且用評測而不是感覺去決定用哪個模型。同一套「先驗證再執行」的做法也適用於生成程式碼、API 呼叫或設定檔。',
-    tools: ['JavaScript','SQL','SQLite (WASM)','Anthropic API','Plotly'],
-    toolsZH: ['JavaScript','SQL','SQLite (WASM)','Anthropic API','Plotly'],
+    motivation: 'Every analyst gets the same request: "can you just pull this number for me?" I wanted to see how far a language model can take someone who cannot write SQL — and, more importantly, where it starts quietly returning answers that are wrong rather than refusing. The interesting part turned out to be measuring exactly where that line sits.',
+    motivationZH: '每個分析師都會收到同一種請求：「可以幫我拉一下這個數字嗎？」我想知道語言模型能把一個不會寫 SQL 的人帶多遠，更重要的是——它從哪裡開始「安靜地」給出錯答案，而不是老實說它不會。而真正有意思的部分，就是把那條線量出來。',
+    objective: 'To turn plain-language questions into SQL that actually runs correctly against a realistic schema, and to find out how much the choice of model matters by scoring several of them on the same questions instead of guessing.',
+    objectiveZH: '把日常語言的問題轉成能在一個接近真實的 schema 上跑對的 SQL，並且用同一組題目替幾個模型打分，實際量出「換模型」到底差多少，而不是憑感覺猜。',
+    datasources: ['A 13-table AWS-reseller procurement and billing warehouse holding 1.16M rows — customers, accounts, usage logs, purchases, invoices, payments, support tickets, regions','Synthetic but reproducible: generated from a fixed seed with realistic patterns — YoY growth, seasonality, customer segments, ~12% churn, ~12% overdue invoices. Labelled as synthetic on the site','A 13-question benchmark, each paired with hand-verified gold SQL so answers can be graded'],
+    datasourcesZH: ['一個 13 張表、116 萬列的 AWS 代理商採購與帳務資料倉儲——客戶、帳號、用量記錄、採購、發票、付款、客服工單、區域','資料是合成的但可重現：固定隨機種子生成，帶有真實的模式——年成長、季節性、客戶分群、約 12% 流失率、約 12% 逾期發票。網站上明確標示為合成資料','一組 13 題的評測題庫，每題都配一份人工驗證過的標準 SQL，讓答案可以被評分'],
+    overview: ['Built a browser-only analytics assistant: the question goes to Claude, the SQL comes back, and DuckDB-WASM runs it against the warehouse inside the page — no backend, no server cost, and no data leaving the tab.','Benchmarked three models on the same 13 questions and had an independent model judge each result against the gold SQL. Opus and Sonnet both reached 69%; Haiku managed 38%.','Let that result set the architecture rather than picking a model by feel: SQL generation goes to Opus, and Haiku is reserved for the cheap job of writing the one-line summary.','Made the demo free to use by pre-generating and hand-verifying the SQL for every example question, so a visitor without an API key still sees real queries running on real data.'],
+    overviewZH: ['做一個完全在瀏覽器內運作的分析助手：問題送給 Claude、SQL 回來、DuckDB-WASM 直接在頁面裡對資料倉儲執行——沒有後端、沒有伺服器成本，資料也不離開這個分頁。','用同一組 13 題評測三個模型，並讓一個獨立的模型比對標準 SQL 來判斷每個結果對不對。Opus 和 Sonnet 都是 69%，Haiku 只有 38%。','然後讓這個結果決定架構，而不是憑感覺挑模型：SQL 生成交給 Opus，Haiku 留給「把結果寫成一句話」這種便宜的工作。','為了讓 demo 免費可用，每個範例問題的 SQL 都預先生成並人工驗證過，所以沒有 API key 的訪客也能看到真的查詢在真的資料上跑。'],
+    methodology: ['Schema-grounded prompting — the model is handed the real table and column names, so it is not inventing a schema from the question alone.','Read-only by construction — the generated SQL must be a single SELECT statement; anything that would write, drop or alter is refused before it reaches the database.','LLM-as-judge against gold SQL — exact result-set matching is the wrong metric, because two correct queries legitimately differ in column order, rounding and naming. A separate model decides correctness, and it never sees which model wrote the query.','Two metrics, not one — valid-SQL rate (does it run at all?) is reported separately from correctness, because they fail for different reasons.','Client-side execution — the whole warehouse ships as Parquet and runs in DuckDB-WASM, which is what makes it safe and free to publish as a public demo.'],
+    methodologyZH: ['以 schema 為基礎的 prompt——直接把真實的表名與欄位名交給模型，讓它不必憑問題自己想像 schema。','結構上就是唯讀——產生的 SQL 必須是單一個 SELECT；任何會寫入、刪除或修改的語句在碰到資料庫之前就被拒絕。','用 LLM 當評審、比對標準 SQL——直接比對結果集是錯的指標，因為兩個都正確的查詢在欄位順序、四捨五入和命名上本來就會不一樣。correctness 由另一個模型判定，而且它不知道這段 SQL 是哪個模型寫的。','兩個指標而不是一個——「SQL 跑不跑得動」和「答案對不對」分開報，因為它們失敗的原因不一樣。','在前端執行——整個資料倉儲以 Parquet 形式送出，在 DuckDB-WASM 裡跑，這也正是它能安全又免費地公開當 demo 的原因。'],
+    findings: 'The choice of model mattered far more than prompt wording: 69% against 38% on identical questions and identical instructions. The weaker model failed predictably — multi-table joins and window functions — which is the useful part, because a predictable failure mode is one you can design around. The honest limitation is that the warehouse is synthetic, so this measures SQL reasoning over a clean schema, not performance on messy production data.',
+    findingsZH: '換模型的影響遠大於改 prompt 的寫法：同樣的題目、同樣的指令，69% 對 38%。而較弱的模型失敗的地方很可預測——多表 join 和 window function——這反而是有用的部分，因為可預測的失敗模式是可以設計繞過的。必須誠實講的限制是：這個資料倉儲是合成的，所以它量的是在乾淨 schema 上的 SQL 推理能力，不是在真實髒資料上的表現。',
+    impact: 'The pattern generalises to anything where a language model produces something executable: do not trust the output, constrain it with the ground truth you already have, and let a benchmark rather than a hunch decide which model you ship. Measuring first also saved money here — the expensive model is used only for the step that needed it.',
+    impactZH: '只要語言模型產生的是「可以被執行的東西」，這個模式就能重複使用：不要相信輸出，用你手上已經有的事實去限制它，並且讓評測而不是直覺決定你要上線哪個模型。先量再決定在這裡也省了錢——貴的模型只用在真的需要它的那一步。',
+    tools: ['JavaScript','SQL','DuckDB-WASM','Claude API','Python','Parquet'],
+    toolsZH: ['JavaScript','SQL','DuckDB-WASM','Claude API','Python','Parquet'],
     results: [
-      { num: '45', label: 'Benchmark questions', labelZH: '評測題數' },
+      { num: '1.16M', label: 'Rows queried in-browser', labelZH: '瀏覽器內可查詢資料列' },
+      { num: '13', label: 'Tables in the warehouse', labelZH: '資料倉儲表數' },
       { num: '69%', label: 'Best model accuracy', labelZH: '最佳模型正確率' },
-      { num: '31 pts', label: 'Gap between models', labelZH: '模型間差距' },
-      { num: '8', label: 'Tables in the schema', labelZH: 'schema 資料表數' }
+      { num: '31 pts', label: 'Gap between models', labelZH: '模型間差距' }
+    ]
+  },
+  p10: {
+    label: 'Jul 2026 · live validation report',
+    labelZH: '2026 年 7 月｜線上驗證報告',
+    title: '<i data-lucide="flask-conical"></i>SplitLab — Self-Built Experimentation Platform',
+    titleZH: '<i data-lucide="flask-conical"></i>SplitLab 自建實驗平台',
+    meta: 'A/B Testing · Sequential & Bayesian Inference · CUPED · Engine Validation',
+    metaZH: 'A/B 測試・序列與貝氏推論・CUPED・引擎驗證',
+    images: ['splitlab-1.png','splitlab-2.png','splitlab-3.png'],
+    live: 'https://jarvislee511.github.io/splitlab-experimentation/',
+    github: 'https://github.com/JarvisLee511/splitlab-experimentation',
+    motivation: 'Experimentation is the one skill nearly every product data role asks about, and the hardest to show without a company\'s traffic behind you. Most portfolio A/B projects therefore run a single t-test on a downloaded CSV — which quietly skips every failure mode that makes real experimentation difficult. So I generated the traffic myself, which had a useful side effect: when you create the data, you know the true answer, and you can grade the engine against it.',
+    motivationZH: '實驗設計幾乎是每個產品資料職位都會問的能力，卻也是最難在沒有公司流量的情況下展示的一項。所以大部分作品集裡的 A/B 專案就是在下載來的 CSV 上跑一次 t-test——而那會不聲不響地跳過所有讓真實實驗變困難的失敗模式。於是我自己生成流量，這帶來一個很有用的副作用：當資料是你造的，你就知道正確答案，也就能拿它來替引擎打分。',
+    objective: 'To build the full lifecycle of an online experiment — assignment, statistics, product analytics, and an automated ship decision — and then to prove the statistics are trustworthy rather than simply asserting that they are.',
+    objectiveZH: '把一個線上實驗的完整生命週期做出來——分流、統計、產品分析、自動化的上線決策——然後證明這些統計是可信的，而不是只是宣稱它們可信。',
+    datasources: ['A purpose-built event-stream simulator that can inject an effect of a chosen size, which is what fixes the true answer in advance and makes validation possible at all','The public Cookie Cats mobile-games experiment — 90,189 real players, testing whether moving the first progression gate from level 30 to 40 helps retention','1,000 independent simulated experiments per validation run, so each error rate is itself an estimate with a sample size behind it'],
+    datasourcesZH: ['一個為此打造的事件流模擬器，可以注入指定大小的效果——這正是「事先固定正確答案」的關鍵，也是驗證能成立的唯一前提','公開的 Cookie Cats 手機遊戲實驗——90,189 位真實玩家，測試把第一道關卡門檻從第 30 關移到第 40 關對留存有沒有幫助','每次驗證跑 1,000 個獨立的模擬實驗，讓每一個誤差率本身都是有樣本數支撐的估計值'],
+    overview: ['Built the platform end to end: deterministic hash bucketing with sticky assignment, a statistics engine written from first principles, funnel / cohort / segment analytics, and a report that returns SHIP, DO NOT SHIP, INCONCLUSIVE or DO NOT TRUST with its reasoning attached.','Validated the engine against known ground truth over 1,000 simulated experiments: the A/A false-positive rate came in at 5.3% against a nominal 5%, interval coverage at 94.7%, and power at 79.7% against a calculated 80%.','Measured what peeking actually costs. Checking an A/A experiment ten times inflates an ordinary fixed-horizon test to 19.5% false positives; the always-valid mSPRT test holds it to 0.9%.','Then pointed the same code at real data and reproduced the published Cookie Cats conclusion on 90,189 players: day-7 retention regresses 0.82pp, so the gate should not move.'],
+    overviewZH: ['把整個平台從頭做完：確定性 hash 分流與 sticky assignment、一套從第一原理寫起的統計引擎、漏斗／同期群／分群分析，以及一份會回傳 SHIP、DO NOT SHIP、INCONCLUSIVE 或 DO NOT TRUST 並附上判斷理由的報告。','用 1,000 個模擬實驗把引擎對照已知的正確答案驗證：A/A 偽陽性率落在 5.3%（名目 5%）、信賴區間覆蓋率 94.7%、檢定力 79.7%（計算值 80%）。','把「偷看結果」的代價量出來。同一個 A/A 實驗看十次，會讓一般的固定樣本檢定膨脹到 19.5% 偽陽性；always-valid 的 mSPRT 檢定把它壓在 0.9%。','然後把同一份程式碼指向真實資料，在 90,189 位玩家上重現了 Cookie Cats 已發表的結論：第 7 天留存下降 0.82pp，所以那道關卡門檻不該移動。'],
+    methodology: ['One bucketing implementation, two callers — the offline simulator and the live API share the same assignment code, so a bug cannot exist in one and not the other.','Injected ground truth — the simulator plants an effect of known size, so the engine can be scored on whether it finds it, at what rate, and with intervals that contain it.','Always-valid inference (mSPRT) for the peeking problem, because a fixed-horizon confidence interval is only valid at the sample size you committed to in advance.','CUPED for variance reduction using a pre-period covariate, which cut variance about 10% here at a correlation of r = 0.32.','SRM checked at α = 0.001 rather than 0.05, following Microsoft ExP practice: genuine mismatches are rare, so a loose threshold cries wolf far more often than it catches a real bug.'],
+    methodologyZH: ['一份分流實作、兩個呼叫端——離線模擬器和線上 API 共用同一段 assignment 程式碼，所以不可能出現「一邊有 bug、另一邊沒有」的情況。','注入已知的正確答案——模擬器植入一個大小已知的效果，於是引擎可以被評分：找不找得到、以什麼比率找到、以及區間有沒有包含它。','用 always-valid 推論（mSPRT）處理偷看問題，因為固定樣本的信賴區間只在你事先承諾的那個樣本數上才有效。','用 CUPED 以前期共變量降低變異，在這裡以 r = 0.32 的相關性把變異降了約 10%。','SRM 的判定門檻設在 α = 0.001 而不是 0.05，依照 Microsoft ExP 的做法：真正的分流失衡很罕見，所以門檻放寬只會讓它誤報遠多於抓到真的 bug。'],
+    findings: 'The headline is that the engine\'s error rates are what it claims they are, which is the only thing that makes any of its other output worth reading. The most useful single number is the peeking pair: 19.5% versus 0.9%. Roughly one in five A/A experiments will hand you a false winner if you watch the dashboard and stop when it turns green — and that is exactly how experiments get read in practice. The Cookie Cats run also surfaced an honest wrinkle worth naming: that dataset carries a mild sample-ratio imbalance (p = 0.0086) which passes at α = 0.001 but would fail at the conventional 0.05.',
+    findingsZH: '最重要的結論是：這個引擎的誤差率真的就是它聲稱的那個數字——而這是它其他所有輸出值得一讀的唯一前提。最有用的單一數字是偷看那一組：19.5% 對 0.9%。如果你盯著儀表板、看到變綠就停，大約每五個 A/A 實驗就會有一個給你一個假的贏家——而現實中大家就是這樣讀實驗的。Cookie Cats 那一輪也帶出一個值得誠實講出來的細節：那份資料有輕微的分流失衡（p = 0.0086），在 α = 0.001 下通過，但在慣用的 0.05 下會被判失敗。',
+    impact: 'What transfers is the habit, not the code: before trusting a measurement system, build a case where you already know the answer and check that the system gets it. That applies to a forecasting model, an ETL pipeline, or a metric definition just as much as to a p-value. It also changed how I read other people\'s results — the first question is no longer what the lift was, but how many times they looked before they stopped.',
+    impactZH: '真正可以帶走的是習慣，不是程式碼：在相信任何測量系統之前，先造一個你已經知道答案的情境，確認它答得出來。這對預測模型、ETL 管線或指標定義都一樣適用，不只對 p-value。它也改變了我讀別人結果的方式——第一個問題不再是「lift 多少」，而是「他們在停下來之前看了幾次」。',
+    tools: ['Python','FastAPI','DuckDB','NumPy','SciPy','pandas','JavaScript'],
+    toolsZH: ['Python','FastAPI','DuckDB','NumPy','SciPy','pandas','JavaScript'],
+    results: [
+      { num: '5.3%', label: 'A/A false positives (target 5%)', labelZH: 'A/A 偽陽性率（目標 5%）' },
+      { num: '0.9%', label: 'Peeking held to, vs 19.5% naive', labelZH: '偷看下的誤報率（一般檢定 19.5%）' },
+      { num: '1,000', label: 'Validation experiments', labelZH: '驗證用模擬實驗數' },
+      { num: '90,189', label: 'Real players re-analysed', labelZH: '重新分析的真實玩家數' }
     ]
   }
 };
