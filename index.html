@@ -58,7 +58,7 @@
     --border:    #334155;
   }
   html { scroll-behavior: smooth; }
-  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; font-size: 20px; }
+  body { font-family: 'Segoe UI', "Microsoft JhengHei", "微軟正黑體", "PingFang TC", "Noto Sans TC", system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; font-size: 20px; }
 
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: #0B1120; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; height: 64px; box-shadow: 0 2px 12px rgba(0,0,0,0.4); }
   nav .logo { color: #fff; font-weight: 700; font-size: 22px; letter-spacing: 1px; }
@@ -336,13 +336,17 @@
   --accent:    #5EEAD4;   /* signature highlight */
   --accent-2:  #818CF8;   /* depth / glow only  */
   --grad: linear-gradient(120deg, #5EEAD4 0%, #38BDF8 48%, #818CF8 100%);
-  --display: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
-  --mono: 'Space Mono', ui-monospace, monospace;
+  /* Latin display/text faces first, then the CJK fallback. The site has a
+     Chinese mode; without these the browser picks a system default, which on
+     Windows is PMingLiU (新細明體). Never let the Latin-only stack ship. */
+  --display: 'Space Grotesk', 'Segoe UI', "Microsoft JhengHei", "微軟正黑體", "PingFang TC", "Noto Sans TC", system-ui, sans-serif;
+  --mono: 'Space Mono', "Microsoft JhengHei", "微軟正黑體", "PingFang TC", "Noto Sans TC", ui-monospace, monospace;
+  --body: 'Inter', "Microsoft JhengHei", "微軟正黑體", "PingFang TC", "Noto Sans TC", system-ui, sans-serif;
 }
 
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--body);
   font-size: 18px;
   background: var(--bg);
   color: var(--text);
@@ -409,10 +413,10 @@ h2.section-title::before {
 }
 #hero h1 { font-family: var(--display); font-size: clamp(46px, 9vw, 108px); letter-spacing: -.035em; line-height: .97; font-weight: 700; }
 #hero h1 span { color: var(--accent); text-shadow: none; }
-#hero p.subtitle { font-family: 'Inter', sans-serif; color: var(--muted); font-weight: 400; font-size: clamp(16px, 1.9vw, 21px); }
+#hero p.subtitle { font-family: var(--body); color: var(--muted); font-weight: 400; font-size: clamp(16px, 1.9vw, 21px); }
 
 /* ----- Buttons ----- */
-.btn { font-family: 'Inter', sans-serif; border-radius: 11px; font-weight: 600; letter-spacing: .005em; padding: .85rem 1.85rem; }
+.btn { font-family: var(--body); border-radius: 11px; font-weight: 600; letter-spacing: .005em; padding: .85rem 1.85rem; }
 .btn-accent { background: var(--accent); color: #04121A; box-shadow: 0 10px 34px -8px rgba(94,234,212,.5); }
 .btn-accent:hover { background: var(--accent); filter: brightness(1.07); box-shadow: 0 16px 44px -8px rgba(94,234,212,.6); }
 .btn-primary { background: rgba(255,255,255,.05); color: var(--text); border: 1px solid var(--border); backdrop-filter: blur(8px); }
@@ -861,7 +865,7 @@ html.light ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
     <img class="hero-photo" src="photo.png" alt="Jarvis Lee" />
     <div class="hero-eyebrow" data-en="Available for Summer / Fall 2026 Co-op" data-zh="開放 2026 暑期／秋季實習">Available for Summer / Fall 2026 Co-op</div>
     <h1 data-en="Che-Wei <span>(Jarvis)</span> Lee" data-zh="李哲維 <span>(Jarvis)</span>">Che-Wei <span>(Jarvis)</span> Lee</h1>
-    <p class="subtitle" data-en="<strong>Data Scientist &amp; Data Analyst</strong> · M.S. Data Analytics Engineering @ Northeastern<br>I build end-to-end ML &amp; analytics that ship to production — like a self-retraining MLB playoff predictor and a live multi-cloud GPU-pricing tracker." data-zh="<strong>資料科學家 &amp; 資料分析師</strong> · 美國東北大學資料分析工程碩士<br>打造真正能上線的 ML 與資料分析——像是每天自動重訓的 MLB 季後賽預測系統，以及橫跨 AWS／Azure／GCP 的即時 GPU 價格追蹤器。"><strong>Data Scientist &amp; Data Analyst</strong> · M.S. Data Analytics Engineering @ Northeastern<br>I build end-to-end ML &amp; analytics that ship to production — like a self-retraining MLB playoff predictor and a live multi-cloud GPU-pricing tracker.</p>
+    <p class="subtitle" data-en="<strong>Data Scientist &amp; Data Analyst</strong> · M.S. Data Analytics Engineering @ Northeastern<br>I build end-to-end ML and analytics that actually ship — a win-probability model that grades every NFL fourth-down call, and a pipeline that has tracked multi-cloud GPU prices every week since June." data-zh="<strong>資料科學家 &amp; 資料分析師</strong> · 美國東北大學資料分析工程碩士<br>做真正會上線的 ML 與資料分析——一個為 NFL 每一次第四檔決策評分的勝率模型，以及一條從六月起每週追蹤 AWS／Azure／GCP GPU 價格的資料管線。"><strong>Data Scientist &amp; Data Analyst</strong> · M.S. Data Analytics Engineering @ Northeastern<br>I build end-to-end ML and analytics that actually ship — a win-probability model that grades every NFL fourth-down call, and a pipeline that has tracked multi-cloud GPU prices every week since June.</p>
     <div class="hero-btns">
       <a class="btn btn-accent" href="resume.pdf" target="_blank"><i data-lucide="file-text"></i><span data-en="View Resume" data-zh="查看履歷">View Resume</span></a>
       <a class="btn btn-primary" href="#projects" data-en="View Projects" data-zh="查看專案">View Projects</a>
@@ -919,7 +923,10 @@ html.light ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
       <span class="tag" data-en="Feature Engineering" data-zh="特徵工程">Feature Engineering</span>
       <span class="tag" data-en="Time-Series Analysis" data-zh="時間序列分析">Time-Series Analysis</span>
       <span class="tag" data-en="Geospatial Analysis" data-zh="地理空間分析">Geospatial Analysis</span>
-      <span class="tag" data-en="Sports Analytics (EPA/efficiency)" data-zh="運動分析（EPA／效率指標）">Sports Analytics (EPA/efficiency)</span>
+      <span class="tag" data-en="Sports Analytics (EPA/win probability)" data-zh="運動分析（EPA／勝率模型）">Sports Analytics (EPA/win probability)</span>
+      <span class="tag" data-en="Sensitivity Analysis" data-zh="敏感度分析">Sensitivity Analysis</span>
+      <span class="tag" data-en="Uncertainty Quantification" data-zh="不確定性量化">Uncertainty Quantification</span>
+      <span class="tag" data-en="A/B Testing &amp; Experiment Design" data-zh="A/B 測試與實驗設計">A/B Testing &amp; Experiment Design</span>
     </div>
     <div class="skill-cat">
       <h4><i data-lucide="briefcase"></i><span data-en="Business Analysis" data-zh="商業分析">Business Analysis</span></h4>
@@ -934,13 +941,18 @@ html.light ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
       <span class="tag">Power BI</span>
       <span class="tag">Plotly</span>
       <span class="tag">Excel</span>
+      <span class="tag" data-en="Interactive Reports (HTML/JS)" data-zh="互動式報告（HTML／JS）">Interactive Reports (HTML/JS)</span>
     </div>
     <div class="skill-cat">
       <h4><i data-lucide="code"></i><span data-en="Programming &amp; AI Tools" data-zh="程式設計與 AI 工具">Programming &amp; AI Tools</span></h4>
       <span class="tag">Python (pandas, NumPy, scikit-learn)</span>
       <span class="tag">SQL</span>
       <span class="tag">R</span>
-      <span class="tag" data-en="AI-Assisted Analysis" data-zh="AI 輔助分析">AI-Assisted Analysis</span>
+      <span class="tag">XGBoost</span>
+      <span class="tag">Git / GitHub Actions</span>
+      <span class="tag" data-en="Model Calibration" data-zh="模型校準">Model Calibration</span>
+      <span class="tag" data-en="LLM Evaluation &amp; Benchmarking" data-zh="LLM 評測與基準測試">LLM Evaluation &amp; Benchmarking</span>
+      <span class="tag" data-en="Testing (pytest)" data-zh="測試（pytest）">Testing (pytest)</span>
     </div>
     <div class="skill-cat">
       <h4><i data-lucide="database"></i><span data-en="Databases &amp; Cloud" data-zh="資料庫與雲端">Databases &amp; Cloud</span></h4>
@@ -951,6 +963,10 @@ html.light ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
       <span class="tag">Microsoft Azure</span>
       <span class="tag">GCP</span>
       <span class="tag">Google BigQuery</span>
+      <span class="tag">SQLite</span>
+      <span class="tag" data-en="Star Schema / Dimensional Modeling" data-zh="星型架構／維度建模">Star Schema / Dimensional Modeling</span>
+      <span class="tag" data-en="Automated Data Pipelines" data-zh="自動化資料管線">Automated Data Pipelines</span>
+      <span class="tag" data-en="Public API Integration" data-zh="公開 API 整合">Public API Integration</span>
     </div>
     <div class="skill-cat">
       <h4><i data-lucide="megaphone"></i><span data-en="Marketing Analytics" data-zh="行銷分析">Marketing Analytics</span></h4>
@@ -1009,9 +1025,10 @@ html.light ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
         <h3 style="margin-bottom:0;"><i data-lucide="cloud"></i><span data-en="Multi-Cloud AI Infrastructure Analysis" data-zh="多雲 AI 基礎設施市場分析">Multi-Cloud AI Infrastructure Analysis</span></h3>
         <span style="background:rgba(245,165,36,.14);color:#F5A524;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 10px;border-radius:20px;white-space:nowrap;"><i data-lucide="star" class="badge-ico"></i>Featured</span>
       </div>
-      <p data-en="From 2M+ scraped records to a live GPU pricing tracker — compared AWS, Azure, and GCP on services, AI, and market share, then automated a weekly pipeline that snapshots ~5,000 GPU prices into a SQLite star schema and a live dashboard." data-zh="從 200 萬+ 筆爬取資料到 GPU 價格即時追蹤——比較 AWS、Azure、GCP 的服務、AI 與市佔，並自動化每週資料管線，將約 5,000 筆 GPU 價格寫入 SQLite 星型架構並發布線上儀表板。">From 2M+ scraped records to a live GPU pricing tracker — compared AWS, Azure, and GCP on services, AI, and market share, then automated a weekly pipeline that snapshots ~5,000 GPU prices into a SQLite star schema and a live dashboard.</p>
+      <p data-en="A pipeline that has been collecting every week since June — 47,123 GPU price points across all three clouds so far, plus ten years of market share rebuilt from SEC filings. Five live pages, a SQLite star schema, and an event study on whether ChatGPT bent the revenue curve." data-zh="一條從六月起每週自動跑的資料管線——目前累積三大雲共 47,123 筆 GPU 價格，另外用 SEC 財報重建了十年市佔率。五個線上頁面、一套 SQLite 星型架構，以及一份「ChatGPT 有沒有真的改變營收曲線」的事件研究。">A pipeline that has been collecting every week since June — 47,123 GPU price points across all three clouds so far, plus ten years of market share rebuilt from SEC filings. Five live pages, a SQLite star schema, and an event study on whether ChatGPT bent the revenue curve.</p>
       <div class="project-tags">
-        <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Tableau</span><span class="tag">GitHub Actions</span>
+        <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">GitHub Actions</span>
+        <span class="tag" data-en="Data Pipelines" data-zh="資料管線">Data Pipelines</span>
       </div>
       <div class="click-hint" data-en="View Case Study →" data-zh="查看案例 →">View Case Study →</div>
     </div>
@@ -1031,11 +1048,15 @@ html.light ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
     </div>
       <!-- NFL -->
       <div class="project-card" onclick="openModal('p4')">
-        <h3><i data-lucide="trophy"></i><span data-en="NFL Offensive Performance Dashboard" data-zh="NFL 進攻表現儀表板">NFL Offensive Performance Dashboard</span></h3>
-        <p data-en="Analyzed 22.6K+ player-week records (2021–2024, 600+ players, 32 teams) from nflverse and built Power BI + Plotly dashboards that separate volume leaders from efficiency leaders (EPA, target share)." data-zh="分析 nflverse 共 2.26 萬+ 筆球員單週資料（2021–2024、600+ 名球員、32 隊），以 Power BI＋Plotly 製作儀表板，區分產量型與效率型球員（EPA、目標佔比）。">Analyzed 22.6K+ player-week records (2021–2024, 600+ players, 32 teams) from nflverse and built Power BI + Plotly dashboards that separate volume leaders from efficiency leaders (EPA, target share).</p>
+        <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem;">
+          <h3 style="margin-bottom:0;"><i data-lucide="trophy"></i><span data-en="NFL Fourth-Down Decision Model" data-zh="NFL 第四檔決策模型">NFL Fourth-Down Decision Model</span></h3>
+          <span style="background:#450A0A;color:#FCA5A5;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 10px;border-radius:20px;white-space:nowrap;"><span class="live-dot"></span>Live</span>
+        </div>
+        <p data-en="Graded all 15,545 NFL fourth downs from 2021–2024 against a win-probability model I fitted myself. It agrees with the coach 65% of the time; the disagreements are worth 22 wins a season league-wide. Ships with a calculator that answers any fourth down instantly." data-zh="用自己訓練的勝率模型，為 2021–2024 年全部 15,545 次第四檔決策評分。模型與教練的選擇有 65% 一致，而分歧的部分全聯盟每季值 22 個勝場。網站附一個計算器，任何第四檔情境都能即時回答。">Graded all 15,545 NFL fourth downs from 2021–2024 against a win-probability model I fitted myself. It agrees with the coach 65% of the time; the disagreements are worth 22 wins a season league-wide. Ships with a calculator that answers any fourth down instantly.</p>
         <div class="project-tags">
-          <span class="tag">Power BI</span><span class="tag">Python</span><span class="tag">Plotly</span>
-          <span class="tag" data-en="Sports Analytics" data-zh="運動分析">Sports Analytics</span>
+          <span class="tag">Python</span><span class="tag">scikit-learn</span>
+          <span class="tag" data-en="Win Probability" data-zh="勝率模型">Win Probability</span>
+          <span class="tag" data-en="Decision Analysis" data-zh="決策分析">Decision Analysis</span>
         </div>
         <div class="click-hint" data-en="View Case Study →" data-zh="查看案例 →">View Case Study →</div>
       </div>
@@ -1047,11 +1068,29 @@ html.light ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
     <div class="projects-grid">
       <!-- City Score -->
       <div class="project-card" onclick="openModal('p1')">
-        <h3><i data-lucide="map"></i><span data-en="City Score Analytics" data-zh="城市宜居評分分析">City Score Analytics</span></h3>
-        <p data-en="Turned 16,000+ records across 6 socioeconomic factors into a single 0–100 livability index ranking 17 ZIP codes, visualized as interactive choropleth maps for location decisions." data-zh="整合 1.6 萬+ 筆、涵蓋六項社會經濟指標的資料，建立 0–100 宜居指數並為 17 個郵遞區排名，以互動地圖支援選址決策。">Turned 16,000+ records across 6 socioeconomic factors into a single 0–100 livability index ranking 17 ZIP codes, visualized as interactive choropleth maps for location decisions.</p>
+        <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem;">
+          <h3 style="margin-bottom:0;"><i data-lucide="map"></i><span data-en="CityScore Livability Index" data-zh="CityScore 宜居指數">CityScore Livability Index</span></h3>
+          <span style="background:#450A0A;color:#FCA5A5;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 10px;border-radius:20px;white-space:nowrap;"><span class="live-dot"></span>Live</span>
+        </div>
+        <p data-en="The crime file I was scoring on had exactly 16,000 rows — and the county API that produced it returns at most 16,000 rows per request. I rebuilt it from source into 25,829 incidents, which changed the ranking, then measured how much of that ranking was ever real: across 10,000 weightings the median area moves 8 places out of 17." data-zh="我用來評分的犯罪資料剛好 16,000 筆——而產生它的郡政府 API 單次最多就是回 16,000 筆。我從來源重建成 25,829 筆，排名整個改變；接著量了一件更重要的事：這個排名本來有多少是真的——在 10,000 組權重下，中位數的區域會移動 17 名中的 8 名。">The crime file I was scoring on had exactly 16,000 rows — and the county API that produced it returns at most 16,000 rows per request. I rebuilt it from source into 25,829 incidents, which changed the ranking, then measured how much of that ranking was ever real: across 10,000 weightings the median area moves 8 places out of 17.</p>
         <div class="project-tags">
-          <span class="tag">Python</span><span class="tag">Plotly</span><span class="tag">GeoPandas</span>
-          <span class="tag" data-en="Geospatial" data-zh="地域分析">Geospatial</span>
+          <span class="tag">Python</span><span class="tag">GeoPandas</span>
+          <span class="tag" data-en="Sensitivity Analysis" data-zh="敏感度分析">Sensitivity Analysis</span>
+          <span class="tag" data-en="Data Quality" data-zh="資料品質">Data Quality</span>
+        </div>
+        <div class="click-hint" data-en="View Case Study →" data-zh="查看案例 →">View Case Study →</div>
+      </div>
+      <!-- AskMyDB -->
+      <div class="project-card" onclick="openModal('p9')">
+        <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem;">
+          <h3 style="margin-bottom:0;"><i data-lucide="message-square-code"></i><span data-en="AskMyDB — Natural-Language SQL" data-zh="AskMyDB 自然語言查詢">AskMyDB — Natural-Language SQL</span></h3>
+          <span style="background:#450A0A;color:#FCA5A5;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 10px;border-radius:20px;white-space:nowrap;"><span class="live-dot"></span>Live</span>
+        </div>
+        <p data-en="Ask a question in plain English, get SQL, a result table, and a chart — all running in the browser. I also graded the models against each other on the same 45 questions: Opus got 69% right, Haiku 38%. That gap is why the app validates and repairs the SQL before it runs instead of trusting the model." data-zh="用日常英文問一句話，得到 SQL、結果表和圖表，全部在瀏覽器裡跑。我也用同一組 45 個問題實測不同模型：Opus 對 69%、Haiku 只有 38%。這個差距就是為什麼這個 app 會先驗證並修補 SQL 再執行，而不是直接相信模型。">Ask a question in plain English, get SQL, a result table, and a chart — all running in the browser. I also graded the models against each other on the same 45 questions: Opus got 69% right, Haiku 38%. That gap is why the app validates and repairs the SQL before it runs instead of trusting the model.</p>
+        <div class="project-tags">
+          <span class="tag">SQL</span><span class="tag">JavaScript</span>
+          <span class="tag" data-en="LLM Evaluation" data-zh="LLM 評測">LLM Evaluation</span>
+          <span class="tag" data-en="Text-to-SQL" data-zh="自然語言轉 SQL">Text-to-SQL</span>
         </div>
         <div class="click-hint" data-en="View Case Study →" data-zh="查看案例 →">View Case Study →</div>
       </div>
@@ -1185,12 +1224,12 @@ const projects = {
     objectiveZH: '以校準後的機率預測 MLB 單場勝負，再用蒙地卡羅模擬推導 2026 季後賽機率——並公開累積無法事後竄改的樣本外紀錄。',
     datasources: ['MLB Stats API — ~27K games (2015–2026), schedules, probable starting pitchers','Per-pitcher game logs across 12 seasons (starter form, FIP, K-BB%)','Transactions API — injury-list moves and call-ups'],
     datasourcesZH: ['MLB 官方 Stats API — 約 2.7 萬場比賽（2015–2026）、賽程、預告先發投手','12 個球季的投手逐場紀錄（先發狀態、FIP、K-BB%）','Transactions API — 傷兵名單異動與升降'],
-    overview: ['Engineered leakage-free pre-game features (Elo ratings, rolling form, starting-pitcher FIP/K-BB%, bullpen fatigue, park effects) for ~27K MLB games, with a strict time-based split — train 2015–23, validate 2024, test 2025–26.','Compared 5 models (Elo baseline, logistic regression, XGBoost, isotonic-calibrated ensemble, Poisson–Skellam) on log loss, Brier score, and calibration, then ran 10,000 Monte Carlo season simulations to produce playoff and World Series odds for all 30 teams.','Automated daily retraining via GitHub Actions — every prediction is logged before first pitch and scored the next morning, building a genuine out-of-sample track record on the live site.'],
-    overviewZH: ['為約 2.7 萬場比賽建立無資料外洩的賽前特徵（Elo、近期狀態、先發投手 FIP/K-BB%、牛棚疲勞、球場效應），採嚴格時間切分——2015–23 訓練、2024 驗證、2025–26 測試。','比較五個模型（Elo 基準、logistic regression、XGBoost、等滲校準 ensemble、Poisson–Skellam）的 log loss、Brier 與校準度，再以 10,000 次蒙地卡羅模擬產出 30 隊的季後賽與世界大賽機率。','以 GitHub Actions 每日自動重訓——每筆預測都在開賽前留檔、隔天早上比對實際結果評分，在線上網站累積真實的樣本外紀錄。'],
+    overview: ['Engineered leakage-free pre-game features (Elo ratings, rolling form, starting-pitcher FIP/K-BB%, bullpen fatigue, park effects) for ~27K MLB games, with a strict time-based split — train 2015–23, validate 2024, test 2025–26.','Compared 5 models (Elo baseline, logistic regression, XGBoost, Elo+LR logistic stack, Poisson–Skellam) on log loss, Brier score, and calibration, then ran 10,000 Monte Carlo season simulations to produce playoff and World Series odds for all 30 teams.','Automated daily retraining via GitHub Actions — every prediction is logged before first pitch and scored the next morning, building a genuine out-of-sample track record on the live site.'],
+    overviewZH: ['為約 2.7 萬場比賽建立無資料外洩的賽前特徵（Elo、近期狀態、先發投手 FIP/K-BB%、牛棚疲勞、球場效應），採嚴格時間切分——2015–23 訓練、2024 驗證、2025–26 測試。','比較五個模型（Elo 基準、logistic regression、XGBoost、Elo+LR logistic 疊合、Poisson–Skellam）的 log loss、Brier 與校準度，再以 10,000 次蒙地卡羅模擬產出 30 隊的季後賽與世界大賽機率。','以 GitHub Actions 每日自動重訓——每筆預測都在開賽前留檔、隔天早上比對實際結果評分，在線上網站累積真實的樣本外紀錄。'],
     methodology: ['Elo Baseline — FiveThirtyEight-style Elo with margin-of-victory multiplier, home advantage, and offseason regression to the mean.','Leakage-Free Features — Every feature is knowable at first pitch: as-of joins for rolling stats, shrunk starter metrics, bullpen 3-day workload.','Model Comparison — Five models evaluated on held-out 2025–26 games; headline metrics are log loss and calibration, not accuracy.','Monte Carlo Simulation — 10,000 simulations of the remaining schedule and full 12-team postseason bracket (Wild Card → World Series).','CI/CD Automation — A daily GitHub Actions job fetches results, scores yesterday, retrains, re-simulates, and republishes the site.','Live Out-of-Sample Tracking — Predictions logged pre-game make the public track record impossible to cherry-pick.'],
     methodologyZH: ['Elo 基準 — FiveThirtyEight 式 Elo：分差乘數、主場優勢、休賽季向平均回歸。','無資料外洩特徵 — 所有特徵在開賽當下皆可得：as-of join 滾動統計、收縮後的先發指標、牛棚三日工作量。','模型比較 — 五個模型在保留的 2025–26 比賽上評估；重點指標是 log loss 與校準度，而非準確率。','蒙地卡羅模擬 — 對剩餘賽程與 12 隊季後賽完整賽制（外卡→世界大賽）模擬 10,000 次。','CI/CD 自動化 — GitHub Actions 每日抓取賽果、為昨日預測評分、重訓、重新模擬並發布網站。','即時樣本外追蹤 — 預測賽前留檔，公開紀錄無法事後挑選。'],
-    findings: "Baseball is close to coin flips — the best teams still lose 60+ games a year — so the right yardstick is log loss and calibration, not accuracy. Beating the Elo baseline at all means the ML features carry real signal, and the live tracker re-scores every model against reality each morning.",
-    findingsZH: '棒球單場勝負接近五五波——最強的球隊一年也會輸 60 場以上——所以正確的衡量標準是 log loss 與校準度，而非準確率。能贏過 Elo 基準就代表 ML 特徵有真實訊號，且線上追蹤器每天早上都用真實賽果重新為各模型評分。',
+    findings: "The ML features do not beat the Elo baseline by more than noise — and that is the result, not a bug. Across 650 games predicted before first pitch, every model\'s confidence interval against Elo spans zero; the best variant is 0.0005 log loss ahead of a rating system with no fitted features at all. That makes sense: Elo already integrates team strength from every game ever played, and the features layered on top are largely functions of the same history. Reporting a 0.001 improvement as a win would be the mistake, so the live site says so on its own Model Tracker.",
+    findingsZH: 'ML 特徵並沒有顯著贏過 Elo 基準——而這就是結論，不是 bug。在 650 場「開賽前就留檔」的預測上，每個模型對 Elo 的信賴區間都跨過零；表現最好的版本只領先「完全沒有訓練特徵的評分系統」0.0005 的 log loss。這是合理的：Elo 已經把每一場比賽的球隊強弱都吸收進去了，而疊在上面的特徵大多是同一段歷史的函數。把 0.001 的差距當成勝利才是真正的錯誤，所以線上網站在自己的 Model Tracker 上就這樣寫。',
     impact: 'A reusable template for probabilistic forecasting under uncertainty: calibrated game-level predictions, simulation-based season odds, and a self-updating pipeline — the same pattern applies to demand forecasting, risk scoring, or any rolling prediction problem.',
     impactZH: '這是「不確定性下機率預測」的可重用範本：校準的單場預測、模擬推導的賽季機率、自我更新的資料管線——同樣模式可套用於需求預測、風險評分等任何滾動預測問題。',
     tools: ['Python','pandas','scikit-learn','XGBoost','Streamlit','GitHub Actions (CI/CD)'],
@@ -1203,34 +1242,36 @@ const projects = {
     ]
   },
   p1: {
-    label: 'Oct – Dec 2025 · Prince William County, VA',
-    labelZH: '2025 年 10 月－12 月｜維吉尼亞州 Prince William County',
-    title: '<i data-lucide="map"></i>City Score Analytics: County Livability Index',
-    titleZH: '<i data-lucide="map"></i>城市評分分析：縣市宜居指數',
-    meta: 'Geospatial Analysis · Dashboard Design · Socioeconomic Intelligence',
-    metaZH: '地理空間分析・儀表板設計・社會經濟智慧',
-    images: ['p1-1.png','p1-2.png','p1-3.png'],
+    label: 'Oct 2025 – Aug 2026 · Prince William County, VA',
+    labelZH: '2025 年 10 月－2026 年 8 月｜維吉尼亞州 Prince William County',
+    title: '<i data-lucide="map"></i>CityScore — a livability index, and how much of it is real',
+    titleZH: '<i data-lucide="map"></i>CityScore 宜居指數——以及它有多少是真的',
+    meta: 'Data Quality · Geospatial Analysis · Sensitivity Analysis · Interactive Report',
+    metaZH: '資料品質・地理空間分析・敏感度分析・互動報告',
+    images: ['city-instrument.png','city-sensitivity.png','city-crime.png'],
+    live: 'https://jarvislee511.github.io/cityscore-livability-index/',
     github: 'https://github.com/JarvisLee511/cityscore-livability-index',
-    motivation: 'Inspired by my long-time interest in Criminal Minds, I became curious about Quantico, Virginia, home to the FBI Academy. This led me to explore whether the surrounding areas in Prince William County maintain stronger livability and socioeconomic indicators, potentially influenced by the presence of major federal institutions.',
-    motivationZH: '受到長期對《犯罪現場》（Criminal Minds）的熱愛啟發，我開始對 FBI 學院所在地——維吉尼亞州匡提科產生好奇，進而探索普林斯威廉縣周邊地區的宜居度與社會經濟指標是否受到重要聯邦機構的影響。',
-    objective: 'To build a ZIP-code-level livability scoring framework that evaluates regional socioeconomic performance and supports location-based decision making.',
-    objectiveZH: '建構 ZIP Code 層級的宜居評分框架，評估區域社會經濟表現並支援地域決策。',
-    datasources: ['U.S. Census Bureau — ACS 5-Year Estimates (income, density, education)','Zillow Home Value Index (ZHVI) — housing prices','Bureau of Labor Statistics — unemployment rate','Prince William County Police — crime reports (ArcGIS Open Data)','ZIP-code geographic boundaries (GeoJSON)'],
-    datasourcesZH: ['美國人口普查局 ACS 5 年估計（收入、人口密度、教育）','Zillow 房價指數（ZHVI）— 房價','美國勞工統計局（BLS）— 失業率','普林斯威廉縣警局犯罪報告（ArcGIS 開放資料）','ZIP Code 地理邊界（GeoJSON）'],
-    overview: ['Built a livability scoring framework across 17 ZIP codes using 16,000+ data points from socioeconomic, housing, education, and public safety datasets.','Performed data cleaning, feature engineering, and geospatial visualization to generate ZIP-level rankings and regional insight dashboards.'],
-    overviewZH: ['運用社會經濟、住房、教育與公共安全資料集的 16,000+ 筆資料，建構橫跨 17 個 ZIP Code 的宜居評分框架。','執行資料清理、特徵工程與地理空間視覺化，生成 ZIP Code 層級排名與區域洞察儀表板。'],
-    methodology: ['Data cleaning and ZIP-code standardization','Weighted composite scoring model (Crime 30%, Income 20%, Education 20%, Housing 10%, Unemployment 10%, Density 10%)','Min-Max normalization to 0–100 index','Geospatial analysis with GeoPandas','Interactive dashboard development with Plotly'],
-    methodologyZH: ['資料清理與 ZIP Code 標準化','加權複合評分模型（犯罪率 30%、收入 20%、教育 20%、房價 10%、失業率 10%、人口密度 10%）','Min-Max 正規化至 0–100 指數','使用 GeoPandas 進行地理空間分析','使用 Plotly 開發互動式儀表板'],
-    findings: 'The top-scoring ZIP codes were 22125 (Triangle), 20169 (Haymarket), 20136 (Bristow), and 20112 — fast-growing western suburbs combining high income, strong educational attainment, low unemployment, and relatively low crime. Crime rate and income correlated most strongly with the final score. Strikingly, Quantico (22134) — home to the FBI Academy and the Behavioral Analysis Unit featured in Criminal Minds — ranked only mid-table (10th of 17): despite the safest crime score, its small residential population, limited housing inventory, and large share of federal/military land dragged down its income and housing components.',
-    findingsZH: '評分最高的 ZIP 為 22125（Triangle）、20169（Haymarket）、20136（Bristow）與 20112，皆為快速發展的西側郊區，兼具高收入、高教育程度、低失業與相對低犯罪率。犯罪率與收入和總分的相關性最強。值得注意的是，Quantico（22134）——FBI 學院與《犯罪現場》中行為分析小組（BAU）的所在地——僅排在中段（17 名中第 10）：雖然犯罪安全分數最高，但居住人口少、房屋庫存有限、且大量土地屬聯邦／軍事用途，拉低了其收入與房價分項。',
-    impact: 'This framework can support real estate analysis, urban planning, market segmentation, and location intelligence for investment decisions.',
-    impactZH: '此框架可支援房地產分析、城市規劃、市場細分及投資決策的地域智慧應用。',
-    tools: ['Python','Plotly','GeoPandas','Pandas','Geospatial Analysis','Dashboard Design'],
-    toolsZH: ['Python','Plotly','GeoPandas','Pandas','地域分析','儀表板設計'],
+    motivation: 'This started as a class project: score 17 ZIP areas on six indicators, rank them, draw a map. It became something else when I went back to check the crime input and found it was not what I thought it was.',
+    motivationZH: '這原本是一份課堂作業：用六個指標為 17 個 ZIP 區評分、排名、畫地圖。後來我回頭去查犯罪資料那一欄，發現它不是我以為的東西——專案就變成另一件事了。',
+    objective: 'To build a defensible 0–100 livability index — which turned out to mean two things nobody usually asks a composite index to do: make every input reproducible from source, and measure how much the ranking depends on the weights that produced it.',
+    objectiveZH: '做一個站得住腳的 0–100 宜居指數——結果這件事包含兩個平常沒人會要求複合指數做到的部分：讓每個輸入都能從來源重現，以及量出排名到底有多依賴產生它的那組權重。',
+    datasources: ['Prince William County Police — ArcGIS feature service, 25,829 incidents in calendar 2025','U.S. Census Bureau — 2020 ZCTA cartographic boundaries (the 17 ZIP areas)','U.S. Census ACS — income, population density, education','Zillow Home Value Index — housing prices','Bureau of Labor Statistics — unemployment'],
+    datasourcesZH: ['Prince William County 警局 — ArcGIS feature service，2025 全年 25,829 筆案件','美國人口普查局 — 2020 ZCTA 邊界檔（17 個 ZIP 區）','Census ACS — 收入、人口密度、教育程度','Zillow 房價指數（ZHVI）— 房價','美國勞工統計局（BLS）— 失業率'],
+    overview: ['Found that the crime file the scores were built on was a truncated export: exactly 16,000 rows, against a service whose per-request cap is exactly 16,000 and which reports 23,914 incidents in the same date window. It held about two thirds of its own window.','Rebuilt it from the source API, paging past the cap for all 25,829 incidents in 2025, and assigned each one to a ZIP area by point-in-polygon against Census boundaries. The rebuilt rate agrees with the original column at Spearman +0.115 — close to unrelated.','Flagged three areas whose crime count is not a safety measurement at all: the independent City of Manassas and MCB Quantico are not policed by the county, so a low count there measures who files the paperwork.','Measured the ranking against 10,000 weightings sampled uniformly over the simplex, and shipped an interactive report where the reader moves the six weights and watches the table reorder.'],
+    overviewZH: ['發現用來評分的犯罪資料是一份被截斷的匯出檔：剛好 16,000 筆，而它的來源服務單次上限剛好是 16,000，且同一個時間範圍內該服務回報 23,914 筆。這個檔案只裝了它自己時間範圍的約三分之二。','從來源 API 重建，分頁繞過上限抓下 2025 全年 25,829 筆，再用點在多邊形內判斷把每一筆指派到 ZIP 區。重建後的犯罪率和原本那一欄的秩相關只有 +0.115——幾乎無關。','標出三個「案件數根本不是安全指標」的區域：獨立市 Manassas 和 Quantico 海軍陸戰隊基地都不歸郡警局管，那裡數字低代表的是誰寫報告。','用 10,000 組在單形上均勻抽樣的權重去檢驗排名，並做出一份互動報告——讀者可以自己拉那六條權重，看排名重排。'],
+    methodology: ['Provenance first — every input has to be reproducible from its public source, or it does not go in. One script rebuilds the boundaries and the incidents from the Census and the county API.','Spatial join — incidents carry coordinates but the public feed leaves the ZIP field null, so assignment is point-in-polygon against ZCTA boundaries. 99.8% land inside the 17 areas.','Explicit direction choices — crime and unemployment are obviously "lower is better"; housing and density are arguments. The original code scored expensive housing as better while its own chart was labelled "Higher = Cheaper". Both arguable directions are now tested, not asserted.','Weight sensitivity — 10,000 draws from a uniform Dirichlet over the six weights, re-ranking each time, reporting each area\'s rank distribution rather than its rank.','Small-population honesty — Occoquan has 917 residents, so its rate rests on a few dozen incidents; a Poisson interval says how little that pins down.'],
+    methodologyZH: ['來源優先 — 每個輸入都必須能從公開來源重現，不然就不放進來。一支腳本就能從 Census 和郡政府 API 重建邊界與案件資料。','空間連接 — 案件有座標，但公開資料的 ZIP 欄位全是 null，所以只能用點在多邊形內判斷對應到 ZCTA 邊界。99.8% 落在這 17 區內。','把方向選擇講明 — 犯罪率和失業率顯然是「越低越好」；房價和人口密度則是可以吵的。原本的程式把房價越貴算成分數越高，而畫它的圖標題卻寫著「Higher = Cheaper」。現在兩個有爭議的方向都是實測，不是宣稱。','權重敏感度 — 對六個權重做 10,000 次均勻 Dirichlet 抽樣，每次重新排名，回報的是每個區域的「名次分布」而不是名次。','對小人口誠實 — Occoquan 只有 917 人，它的犯罪率建立在數十件案件上；Poisson 區間會說明這其實釘不住什麼。'],
+    findings: 'The ranking is mostly not a ranking. Across every possible weighting of the six indicators the median ZIP area moves 8 places out of 17, and only 2 of the 17 hold their position within three places. Changing nothing but the direction of the two arguable indicators moves ranks by up to 5 places. What survives is narrower, and it is the part worth saying: Occoquan is top-five under 99.9% of all weightings, Manassas/Sudley and Triangle are bottom-five under more than 90%, and everything between those two ends is a restatement of the weights that produced it.',
+    findingsZH: '這個排名大部分不算是排名。在六個指標所有可能的加權方式下，中位數的 ZIP 區會移動 17 名中的 8 名，只有 2 個區域能把名次守在三名以內。什麼都不改、只換掉那兩個有爭議指標的方向，名次就會差到 5 名。真正站得住的結論比較窄，但那才是值得講的：Occoquan 在 99.9% 的權重下都進前五、Manassas/Sudley 與 Triangle 在超過 90% 的權重下都在後五，而中間那一段只是產生它的那組權重的複述。',
+    impact: 'Any scorecard that combines several things into one number has this problem — vendor scoring, credit rating, employee performance, site selection. Two habits transfer: verify that each input is what its name says before you build on it, and report the rank distribution rather than the rank.',
+    impactZH: '任何把好幾件事合成一個數字的評分卡都有同樣的問題——供應商評分、信用評等、員工績效、選址。可以帶走的習慣有兩個：在往上蓋之前先確認每個輸入真的是它名字說的那個東西；以及回報名次的分布，而不是名次。',
+    tools: ['Python','pandas','GeoPandas','Shapely','matplotlib','NumPy'],
+    toolsZH: ['Python','pandas','GeoPandas','Shapely','matplotlib','NumPy'],
     results: [
-      { num: '17', label: 'ZIP Codes Scored', labelZH: '評分 ZIP 區域' },
-      { num: '6', label: 'Weighted Factors', labelZH: '加權因子' },
-      { num: '0–100', label: 'Composite Index', labelZH: '綜合指數' }
+      { num: '25,829', label: 'Incidents rebuilt from source', labelZH: '從來源重建的案件數' },
+      { num: '10,000', label: 'Weightings tested', labelZH: '測試的權重組數' },
+      { num: '8 / 17', label: 'Median rank swing', labelZH: '名次中位移動幅度' },
+      { num: '2', label: 'Areas with a stable rank', labelZH: '名次穩定的區域數' }
     ]
   },
   p2: {
@@ -1241,6 +1282,7 @@ const projects = {
     meta: 'Geospatial Analysis · Data Pipeline · Interactive Dashboard · BigQuery',
     metaZH: '地理空間分析・資料處理流程・互動儀表板・BigQuery',
     images: ['aero1.png','aero2.png','aero3.png','aero4.png'],
+    live: 'https://jarvislee511.github.io/us-aerospace-innovation-atlas/',
     github: 'https://github.com/JarvisLee511/us-aerospace-innovation-atlas',
     motivation: 'After a trip to Houston — home of NASA Johnson Space Center — I wondered: is Houston the U.S. aerospace invention capital? That question turned a one-year class map into this multi-year atlas.',
     motivationZH: '一次休士頓之旅後我開始好奇：NASA 詹森太空中心所在的休士頓，會是美國的航太發明之都嗎？這個問題把一張單一年度的課堂地圖，變成了這個多年度的創新地圖。',
@@ -1253,7 +1295,7 @@ const projects = {
     methodology: ['Data Pipeline — Automated download, cleaning, and a Parquet data warehouse for full reproducibility.','Geospatial Join — Mapped inventor coordinates to CBSA metro boundaries with a CRS-aware GeoPandas spatial join.','Concentration & Growth — Herfindahl index, top-5 share, CAGR, and a shift-share decomposition (national / industry-mix / competitive).','Per-Capita Normalization — Joined Census population to compute patents per 100k residents.','Cloud Extension — Queried Google Patents on BigQuery (CPC B64 / B64G) for aviation-vs-space and assignee companies through 2024.','Interactive Dashboard — Built a multi-tab Plotly Dash app: animated map, rankings, trends, and click-to-drill-down.'],
     methodologyZH: ['資料處理流程 — 自動化下載、清理並建立 Parquet 資料倉儲，確保完整可重現。','地理空間連接 — 以具座標系統的 GeoPandas 空間連接，將發明人座標對應到 CBSA 都會邊界。','集中度與成長 — Herfindahl 指數、前五大占比、CAGR，以及 shift-share 分解（全國／產業結構／在地競爭力）。','人均正規化 — 合併 Census 人口，計算每 10 萬人專利數。','雲端延伸 — 以 BigQuery 查詢 Google Patents（CPC B64／B64G），取得航空對太空與專利權人公司（至 2024）。','互動儀表板 — 建構多分頁 Plotly Dash 應用：動畫地圖、排名、趨勢與點擊下鑽。'],
     findings: 'Aerospace innovation is highly concentrated — the top 5 metros hold ~40% of all patents. Seattle overtook Los Angeles as the top metro around 2013, and the two domains have distinct geographies: Seattle leads aviation (Boeing) while Los Angeles leads space — with Boeing the top assignee in both. The hypothesis that sparked the project — that Houston, home of NASA Johnson Space Center, would dominate — was overturned: Houston never even made the list.',
-    findingsZH: '航太創新高度集中——前五大都會區占了約 40% 的專利。西雅圖約在 2013 年超越洛杉矶成為第一；而航空與太空的地理分布不同：西雅圖主導航空（波音），洛杉矶主導太空——波音在兩者皆為最大專利權人。而開啟這個專案的假設——NASA 詹森太空中心所在的休士頓會是航太發明之都——被資料推翻：休士頓甚至沒有進榜。',
+    findingsZH: '航太創新高度集中——前五大都會區占了約 40% 的專利。西雅圖約在 2013 年超越洛杉磯成為第一；而航空與太空的地理分布不同：西雅圖主導航空（波音），洛杉磯主導太空——波音在兩者皆為最大專利權人。而開啟這個專案的假設——NASA 詹森太空中心所在的休士頓會是航太發明之都——被資料推翻：休士頓甚至沒有進榜。',
     impact: 'The framework supports industry and competitive analysis, R&D site selection, and economic-development decisions — and is reusable for any USPC/CPC technology class.',
     impactZH: '此框架可支援產業與競品分析、研發選址與經濟發展決策，並可套用到任何 USPC／CPC 技術類別。',
     tools: ['Python','pandas','GeoPandas','Plotly Dash','Google BigQuery (SQL)','Parquet'],
@@ -1266,24 +1308,36 @@ const projects = {
     ]
   },
   p4: {
-    label: '2021–2024 · nflverse Play-by-Play Data',
-    labelZH: '2021–2024｜nflverse 逐球資料',
-    title: '<i data-lucide="trophy"></i>NFL Offensive Performance Analytics Dashboard',
-    titleZH: '<i data-lucide="trophy"></i>NFL 進攻表現分析儀表板',
-    meta: 'Sports Analytics · Power BI · Python · Efficiency Metrics',
-    metaZH: '運動分析・Power BI・Python・效率指標',
-    images: ['nfl-dashboard.png','nfl-powerbi.png'],
+    label: 'Jul 2026 · nflverse play-by-play · 2015–2024',
+    labelZH: '2026 年 7 月｜nflverse 逐球資料｜2015–2024',
+    title: '<i data-lucide="trophy"></i>NFL Fourth-Down Decision Model',
+    titleZH: '<i data-lucide="trophy"></i>NFL 第四檔決策模型',
+    meta: 'Win Probability · Decision Analysis · Uncertainty Quantification · Interactive Calculator',
+    metaZH: '勝率模型・決策分析・不確定性量化・互動計算器',
+    images: ['nfl-report.png','nfl-calculator.png','nfl-situations.png','nfl-dashboard.png'],
+    live: 'https://jarvislee511.github.io/nfl-offensive-analytics/',
     github: 'https://github.com/JarvisLee511/nfl-offensive-analytics',
-    overview: ['Analyzed 22,000+ player-week records for 600+ players across all 32 NFL teams (2021–2024 regular seasons), sourced from nflverse play-by-play data.','Cleaned and aggregated weekly box scores into season-level efficiency metrics — EPA, target share, catch %, and completion % — across QB / RB / WR / TE.','Built an interactive dashboard (Power BI + Python/Plotly) that pairs volume leaders with efficiency leaders, so viewers see both who produced the most and who was most efficient.'],
-    overviewZH: ['分析 nflverse 逐球資料中的 2.2 萬+ 筆球員週資料，涵蓋 32 支球隊、600+ 名球員（2021–2024 例行賽）。','將每週資料清理並彙整為球季層級效率指標——EPA、目標佔比、接球成功率、傳球完成率——涵蓋 QB／RB／WR／TE。','以 Power BI 與 Python／Plotly 建構互動儀表板，將「產量排行」與「效率排行」並陳，讓觀者同時看到誰產量最高、誰效率最高。'],
-    methodology: ['Data Collection — Pulled four seasons of player stats directly from the nflverse data releases (~22.6K player-week rows).','Cleaning & Aggregation — Aggregated weekly stats to season-player totals, keeping additive advanced metrics (EPA) correct and recomputing rate stats (catch %, YPC, completion %) from totals.','Efficiency Engineering — Derived EPA, target share, WOPR, yards-per-attempt, and catch % to separate volume from value.','Comparative Analysis — Ranked passing / rushing / receiving leaders and contrasted them against EPA leaders to surface under-the-radar efficiency.','Visualization — Built leaderboards, a targets-vs-receiving-yards efficiency scatter, a QB completion %-vs-EPA scatter, and a four-season league trend.','BI Dashboarding — Delivered both a styled interactive Plotly HTML dashboard and a Power BI version.'],
-    methodologyZH: ['資料收集 — 直接從 nflverse 資料釋出抓取四季球員資料（約 2.26 萬筆球員週資料）。','清理與彙整 — 將每週資料彙整為球員球季總計，正確保留可加總的進階指標（EPA），並由總計重新計算比率指標（接球率、每次跑陣碼數、傳球完成率）。','效率特徵工程 — 衍生 EPA、目標佔比、WOPR、每次傳球碼數與接球率，將產量與價值區分開來。','比較分析 — 將傳/跑/接球排行與 EPA 排行對照，凸顯被低估的高效率球員。','視覺化 — 建構排行榜、目標數對接球碼數的效率散點圖、QB 完成率對 EPA 散點圖，以及四季聯盟趨勢。','BI 儀表板 — 同時交付精緻的互動式 Plotly HTML 儀表板與 Power BI 版本。'],
-    tools: ['Power BI','Python','pandas','Plotly','Sports Analytics','EPA / Efficiency Metrics'],
-    toolsZH: ['Power BI','Python','pandas','Plotly','運動分析','EPA／效率指標'],
+    motivation: "Fourth down is the one play a coach actually chooses. Everything else is executed by players, so it is the cleanest place in the sport to grade a decision separately from how it happened to turn out. I wanted to know how much money is still on the table after a decade of teams supposedly getting smarter.",
+    motivationZH: '第四檔是全場唯一真正由教練「選」出來的一球。其他都是球員執行的結果，所以這裡最適合把決策的好壞和它碰巧的結果分開來評分。我想知道：在大家都說球隊變聰明了的十年之後，桌上還剩多少錢沒被拿走。',
+    objective: 'To value all three options on every fourth down in win probability, then measure how often the coach picked the best one — and to be honest about how much of the answer is really the model talking.',
+    objectiveZH: '為每一次第四檔的三個選項都用勝率估值，量出教練選中最佳選項的比例——並且誠實面對這個答案裡有多少其實是模型自己在說話。',
+    datasources: ['nflverse play-by-play — 10 seasons (2015–2024), 372 columns','387,695 plays behind the win-probability model','15,545 fourth downs graded (2021–2024)'],
+    datasourcesZH: ['nflverse 逐球資料 — 十個球季（2015–2024）、372 個欄位','勝率模型背後的 387,695 球','評分的第四檔決策 15,545 次（2021–2024）'],
+    overview: ['Fitted four models from scratch — conversion, field goal, punt, and win probability. nflverse ships its own win-probability column; I excluded it on purpose, because importing it would make this a lookup instead of a model.','Valued go / punt / kick in win probability for all 15,545 fourth downs. The model agrees with the coach 65% of the time, and the disagreements add up to 22 wins a season across the league (0.69 per team).','Precomputed 113,400 situations into a 348 KB lookup so the site can answer any fourth down instantly — the win-probability model is gradient boosting and cannot run in a browser.','Wrote 34 tests, including one that runs real fourth downs through two independent implementations of the decision engine and requires them to agree.'],
+    overviewZH: ['自行訓練四個模型：推進成功率、射門成功率、棄踢落點分布、勝率。nflverse 本身就附了勝率欄位，我刻意不使用——直接拿來會讓這個專案變成查表，而不是建模。','為全部 15,545 次第四檔用勝率估值「進攻／棄踢／射門」三個選項。模型與教練有 65% 一致，分歧加總起來全聯盟每季值 22 個勝場（平均每隊 0.69）。','把 113,400 個情境預先算成 348 KB 的查表，讓網站能即時回答任何第四檔——勝率模型是梯度提升，不可能在瀏覽器裡跑。','寫了 34 個測試，其中一個把真實的第四檔同時餵進兩份獨立實作的決策引擎，要求結果一致。'],
+    methodology: ['Win probability, not expected points — down seven with two minutes left, expected points says kick; win probability says a field goal leaves you needing two scores in two minutes.','Avoided a selection-bias trap — coaches choose which fourth downs to go for, so fitting conversion on fourth downs alone risks learning "conversion rate given a coach liked the look". The raw gap looked like it confirmed the worry (+12.2 points), but held at fixed field position it was +0.31 points, p = 0.65. Pooling third downs was free: ten times the sample at no cost.','Two engines, cross-checked — a readable one-state-at-a-time reference pinned by tests, and a vectorised one that makes 15,545 decisions tractable. A rewrite is exactly where a sign convention quietly stops matching.','Stress-tested the bias that favours the conclusion — the field-goal model under-rates long attempts, which pushes the engine toward going for it. Handing every kick 8 extra points of make probability still leaves 36% of the kicks coaches took called as go.','Reported uncertainty in two separate flavours — how sure the model is, and how sure we are given that a team-season is only a few dozen live fourth downs. Intervals resample games, not plays.'],
+    methodologyZH: ['用勝率，不用期望得分 — 落後七分、剩兩分鐘，期望得分會叫你踢三分；勝率會告訴你踢進之後仍需要在兩分鐘內再得兩次分。','避開選擇偏誤的陷阱 — 教練會挑哪些第四檔要進攻，所以只用第四檔訓練推進模型，學到的可能是「教練覺得可以打才去打」的成功率。原始差距看起來證實了這個擔憂（+12.2 個百分點），但固定場上位置後只有 +0.31、p = 0.65。合併第三檔資料因此是免費的：十倍樣本、零代價。','兩份引擎互相對照 — 一份可讀、一次處理一個狀態、由測試把每個正負號釘死；另一份向量化，讓 15,545 次決策跑得動。改寫正是正負號會悄悄對不上的地方。','對「有利於自己」的偏誤做壓力測試 — 射門模型會低估長距離射門，這會把引擎推向進攻。把每次射門的成功率硬加 8 個百分點，仍有 36% 教練踢出去的球被判定應該進攻。','把不確定性分成兩種分別回報 — 模型有多確定，以及「一隊一季只有數十次真正的第四檔」之下我們有多確定。區間重抽的是比賽，不是單一球。'],
+    findings: 'Fourth-down aggression rose 61% between 2015 and 2024 — and then stopped. Almost none of that change reached a team\'s own half: on fourth-and-1 teams go 84% of the time in opponent territory and 39% from their own 21–40. Same one yard, opposite behaviour. The single largest pool of disagreement is exactly there — 682 short-yardage decisions from a team\'s own 21–40 where coaches go 24% of the time and the model says 88%, worth 2.4 wins a season on its own. But 16% of all decisions are disagreements worth less than one point of win probability, which is a coin flip and not a mistake; only 6% are worth more than three.',
+    findingsZH: '第四檔的積極度在 2015 到 2024 年間上升了 61%——然後停住。而這個變化幾乎沒有進到自家半場：第四檔剩一碼時，在對手半場有 84% 選擇進攻，在自家 21–40 只有 39%。同樣是一碼，行為完全相反。最大的一塊分歧正好就在那裡——自家 21–40 的短碼數共 682 次決策，教練只有 24% 選擇進攻，模型說 88%，光這一格每季就值 2.4 個勝場。但全部決策中有 16% 是「價值不到一個百分點勝率」的分歧，那是擲銅板而不是失誤；只有 6% 的價值超過三個百分點。',
+    impact: 'The pattern transfers to any repeated operational decision where the choice is observable and the alternatives are enumerable — pricing, inventory reorder points, credit approval. Value every option in the same unit, grade the decision separately from the outcome, and be explicit about which gaps are inside your own resolution.',
+    impactZH: '這個模式可以搬到任何「選擇看得見、選項數得完」的重複性營運決策——定價、補貨點、信用審核。用同一個單位為每個選項估值、把決策的好壞和結果分開評分，並且明確講出哪些差距其實落在自己的解析度之內。',
+    tools: ['Python','pandas','scikit-learn','NumPy','pytest','Plotly'],
+    toolsZH: ['Python','pandas','scikit-learn','NumPy','pytest','Plotly'],
     results: [
-      { num: '22,000+', label: 'Player-week records', labelZH: '球員週資料筆數' },
-      { num: '4 Seasons', label: '2021–2024 · 32 teams', labelZH: '2021–2024・32 隊' },
-      { num: '600+', label: 'Players analyzed', labelZH: '分析球員數' }
+      { num: '15,545', label: 'Fourth downs graded', labelZH: '評分的第四檔決策' },
+      { num: '4', label: 'Models fitted from scratch', labelZH: '自行訓練的模型' },
+      { num: '22', label: 'Wins/season in disagreements', labelZH: '分歧決策每季值的勝場' },
+      { num: '34', label: 'Tests', labelZH: '測試數' }
     ]
   },
   p7: {
@@ -1291,17 +1345,17 @@ const projects = {
     labelZH: '2026 年春季－至今｜AWS vs. Azure vs. GCP｜每週自動追蹤',
     title: '<i data-lucide="cloud"></i>Multi-Cloud AI Infrastructure Market Analysis',
     titleZH: '<i data-lucide="cloud"></i>多雲 AI 基礎設施市場分析',
-    meta: 'Cloud Market Intelligence · BI Dashboards · Web Scraping',
-    metaZH: '雲端市場情報・BI 儀表板・網路爬蟲',
-    images: ['cloud-gpu-map.png','cloud-market-share.png','cloud-1.png','cloud-2.png','cloud-3.png'],
+    meta: 'Cloud Market Intelligence · Automated Data Pipeline · SQL Modeling · BI Dashboards',
+    metaZH: '雲端市場情報・自動化資料管線・SQL 建模・BI 儀表板',
+    images: ['cloud-gpu-map.png','cloud-price-history.png','cloud-prices.png','cloud-market-share.png'],
     live: 'https://jarvislee511.github.io/multi-cloud-ai-infrastructure-analysis/',
     github: 'https://github.com/JarvisLee511/multi-cloud-ai-infrastructure-analysis',
     objective: 'To build a single, comparable view of the AWS, Azure, and GCP cloud markets across service ecosystems, AI offerings, GPU/accelerator infrastructure, global region footprint, and market share.',
     objectiveZH: '建立一個可橫向比較 AWS、Azure、GCP 的雲端市場視圖，涵蓋服務生態、AI 產品、GPU／加速器基礎設施、全球區域佈局與市佔率。',
     datasources: ['Provider global-infrastructure pages (regions/locations)','GPU & accelerator availability and pricing pages','Native service & AI service catalogs','Cloud marketplace listings','Quarterly market-share reporting'],
     datasourcesZH: ['三大供應商全球基礎設施頁面（區域／據點）','GPU 與加速器可用性及定價頁面','原生服務與 AI 服務目錄','雲端市集（Marketplace）清單','每季市佔率資料'],
-    overview: ['Collected and cleaned public cloud data for AWS, Azure, and GCP with Python (requests + BeautifulSoup), standardizing service catalogs, AI services, GPU pricing, and regional deployments across providers.','Engineered comparison features and a per-provider executive KPI table, then built three interactive Tableau dashboards covering global infrastructure, the AI ecosystem, and the AI accelerator landscape.','Extended into a live GPU pricing tracker: a weekly GitHub Actions pipeline snapshots ~5,000 GPU price points per run across ~200 regions into a longitudinal dataset, modeled as a SQLite star schema with window-function SQL analyses.','Compiled 10 years of cloud market-share, revenue, and margin history from SEC filings (every data point source-cited), plus an interrupted time-series event study on the ChatGPT effect and a 12-quarter revenue forecast.'],
-    overviewZH: ['以 Python（requests + BeautifulSoup）蒐集並清理 AWS、Azure、GCP 的公開雲端資料，跨供應商標準化服務目錄、AI 服務、GPU 定價與區域佈署。','建構比較性特徵與各供應商的高階 KPI 彙總表，並製作三個互動式 Tableau 儀表板：全球基礎設施、AI 生態、AI 加速器版圖。','延伸為 GPU 價格即時追蹤：GitHub Actions 每週自動抓取約 5,000 筆 GPU 價格（約 200 個區域），累積長期資料集，並以 SQLite 星型架構與 window function SQL 分析。','彙整 SEC 財報建立 10 年市占率、營收與利潤率歷史（每個數據皆附來源），並完成 ChatGPT 效應的中斷時間序列分析與 12 季營收預測。'],
+    overview: ['Collected and cleaned public cloud data for AWS, Azure, and GCP with Python (requests + BeautifulSoup), standardizing service catalogs, AI services, GPU pricing, and regional deployments across providers.','Engineered comparison features and a per-provider executive KPI table, then built three interactive Tableau dashboards covering global infrastructure, the AI ecosystem, and the AI accelerator landscape.','Extended into a live GPU pricing tracker: a weekly GitHub Actions pipeline snapshots ~5,000 GPU price points per run across ~200 regions, now 47,123 points over 27 snapshots since 2026-06-10, modeled as a SQLite star schema with window-function SQL analyses.','Compiled 10 years of cloud market-share, revenue, and margin history from SEC filings (every data point source-cited), plus an interrupted time-series event study on the ChatGPT effect and a 12-quarter revenue forecast.'],
+    overviewZH: ['以 Python（requests + BeautifulSoup）蒐集並清理 AWS、Azure、GCP 的公開雲端資料，跨供應商標準化服務目錄、AI 服務、GPU 定價與區域佈署。','建構比較性特徵與各供應商的高階 KPI 彙總表，並製作三個互動式 Tableau 儀表板：全球基礎設施、AI 生態、AI 加速器版圖。','延伸為 GPU 價格即時追蹤：GitHub Actions 每週自動抓取約 5,000 筆 GPU 價格（約 200 個區域），自 2026 年 6 月 10 日起已累積 27 次快照、47,123 筆，並以 SQLite 星型架構與 window function SQL 分析。','彙整 SEC 財報建立 10 年市占率、營收與利潤率歷史（每個數據皆附來源），並完成 ChatGPT 效應的中斷時間序列分析與 12 季營收預測。'],
     methodology: ['Data Collection — Scraped provider infrastructure, service catalog, GPU, and pricing pages.','Cleaning & Standardization — Unified naming, deduplicated, handled missing values, and normalized service categories, tracking data quality in a quality report.','Feature Engineering — AI-service identification, GPU classification, category counts, regional summaries, AI service share, and pricing benchmarks.','Integration — Combined datasets into a unified analytical model and an executive KPI table.','BI Visualization — Built three interactive Tableau dashboards for cross-provider comparison.','Automation — A weekly GitHub Actions pipeline keeps collecting GPU prices and republishing the live dashboard.','SQL Layer — A SQLite star schema (provider / region / GPU dimensions × price facts) powering 8 window-function analyses: week-over-week moves, YoY growth via LAG, spot discounts, and regional dispersion.'],
     methodologyZH: ['資料蒐集 — 爬取各供應商的基礎設施、服務目錄、GPU 與定價頁面。','清理與標準化 — 統一命名、去重、處理缺值、正規化服務分類，並以品質報告追蹤資料品質。','特徵工程 — AI 服務辨識、GPU 分類、類別計數、區域彙總、AI 服務佔比與定價基準。','整合 — 將資料集整合為統一分析模型與高階 KPI 表。','BI 視覺化 — 製作三個互動式 Tableau 儀表板進行跨供應商比較。','自動化 — GitHub Actions 每週自動蒐集 GPU 價格並重新發布線上儀表板。','SQL 層 — SQLite 星型架構（供應商／區域／GPU 維度 × 價格事實表），支撐 8 個 window function 分析：週環比價格變動、LAG 年增率、spot 折扣與區域價差。'],
     findings: 'AWS held the largest service ecosystem and market share; Azure operated the broadest global footprint (57 regions); GCP grew the fastest (market share 11% → 15% from 2024 Q4 to 2026 Q1), differentiating through AI focus and proprietary TPUs, while AWS leaned on custom silicon (Trainium, Inferentia). NVIDIA GPUs (H100/A100) remained dominant across all three providers.',
@@ -1309,10 +1363,43 @@ const projects = {
     tools: ['Python','BeautifulSoup','Pandas','SQL (SQLite)','Tableau','Plotly','GitHub Actions'],
     toolsZH: ['Python','BeautifulSoup','Pandas','SQL（SQLite）','Tableau','Plotly','GitHub Actions'],
     results: [
-      { num: '2M+', label: 'Data Records', labelZH: '筆資料' },
-      { num: '~5,000', label: 'GPU prices tracked weekly', labelZH: '每週追蹤 GPU 價格筆數' },
-      { num: '10 yrs', label: 'Market-share history', labelZH: '市占率歷史' },
-      { num: '3', label: 'Tableau Dashboards', labelZH: 'Tableau 儀表板' }
+      { num: '47,123', label: 'GPU price points collected', labelZH: '累積 GPU 價格筆數' },
+      { num: 'Weekly', label: 'Automated since Jun 2026', labelZH: '2026 年 6 月起每週自動' },
+      { num: '10 yrs', label: 'Market history from filings', labelZH: '財報重建的市佔歷史' },
+      { num: '5', label: 'Live analysis pages', labelZH: '線上分析頁面' }
+    ]
+  }  ,
+  p9: {
+    label: 'Jul 2026 · runs entirely in the browser',
+    labelZH: '2026 年 7 月｜完全在瀏覽器內執行',
+    title: '<i data-lucide="message-square-code"></i>AskMyDB — Natural-Language SQL Analytics',
+    titleZH: '<i data-lucide="message-square-code"></i>AskMyDB 自然語言 SQL 分析助手',
+    meta: 'Text-to-SQL · LLM Evaluation · In-Browser Database · Query Validation',
+    metaZH: '自然語言轉 SQL・LLM 評測・瀏覽器內資料庫・查詢驗證',
+    images: ['askmydb-1.png','askmydb-2.png'],
+    live: 'https://jarvislee511.github.io/nl2sql-analytics-assistant/',
+    github: 'https://github.com/JarvisLee511/nl2sql-analytics-assistant',
+    motivation: 'Every analyst gets the same request: "can you just pull this number for me?" I wanted to see how far a language model can take a non-technical person before it starts quietly returning wrong answers — and the interesting part turned out to be measuring exactly where that line is.',
+    motivationZH: '每個分析師都會收到同一種請求：「可以幫我拉一下這個數字嗎？」我想知道語言模型能把一個不懂技術的人帶多遠，以及它從哪裡開始「安靜地」給出錯答案——而真正有意思的部分，就是把那條線量出來。',
+    objective: 'To turn plain-language questions into correct SQL against a real schema, and to find out how much the choice of model actually matters — by scoring several of them on the same question set instead of guessing.',
+    objectiveZH: '把日常語言的問題轉成能在真實資料表上跑對的 SQL，並且實際量出「換模型」到底差多少——用同一組題目替幾個模型打分，而不是憑感覺猜。',
+    datasources: ['A synthetic 8-table retail schema (orders, customers, products, returns, and more) — clearly labelled as synthetic on the site','A 45-question benchmark set written by hand, spanning joins, aggregation, window functions, and date logic','Each question paired with a reference answer so results can be graded automatically'],
+    datasourcesZH: ['一組合成的 8 張表零售資料庫（訂單、客戶、商品、退貨等）——網站上明確標示為合成資料','手寫的 45 題評測題組，涵蓋 join、彙總、window function 與日期邏輯','每題都配一個標準答案，讓結果可以自動評分'],
+    overview: ['Built a browser-only analytics assistant: the question goes to the model, the SQL comes back, and the query runs against an in-browser database — no server, no data leaving the page.','Benchmarked models on the same 45 questions and scored execution accuracy against reference answers. Opus reached 69%, Haiku 38% — a 31-point gap on identical prompts.','Redesigned the architecture around that result. Rather than trusting the SQL, the app parses it, checks every table and column against the real schema, blocks anything that writes, and repairs what it can before executing.','Added a chart layer that picks a sensible visual from the shape of the result set, so the answer arrives as a table and a chart rather than raw rows.'],
+    overviewZH: ['做一個完全在瀏覽器內運作的分析助手：問題送給模型、SQL 回來、查詢直接在瀏覽器內的資料庫執行——沒有伺服器，資料不離開頁面。','用同一組 45 題評測不同模型，以標準答案比對執行結果的正確率。Opus 達 69%、Haiku 只有 38%——相同 prompt 下差了 31 個百分點。','根據這個結果重新設計架構。與其相信模型產生的 SQL，這個 app 會先解析它、把每個資料表與欄位對照真實 schema 檢查、擋掉任何寫入操作，能修的先修好再執行。','加上圖表層，依結果集的形狀自動挑合適的視覺化，讓答案以「表格＋圖」的形式呈現，而不是一堆原始資料列。'],
+    methodology: ['Schema-grounded prompting — the model is given the real table and column names, so it is not inventing a schema from the question alone.','Validation before execution — the generated SQL is parsed and every identifier checked against the schema; unknown columns are repaired or rejected rather than run.','Read-only by construction — anything that would write, drop, or alter is blocked at the parser, not by asking the model nicely.','Execution-accuracy grading — models are scored on whether the query returns the reference answer, not on whether the SQL looks plausible.','In-browser database — the whole thing runs client-side, which is also what makes it safe to publish as a public demo.'],
+    methodologyZH: ['以 schema 為基礎的 prompt — 直接把真實的表名與欄位名給模型，讓它不必憑問題自己想像 schema。','執行前先驗證 — 產生的 SQL 會被解析，每個識別字都對照 schema 檢查；不存在的欄位會被修正或拒絕，而不是直接跑。','結構上就是唯讀 — 任何寫入、刪除、修改都在解析階段擋掉，而不是靠「拜託模型不要這樣做」。','以執行結果評分 — 模型的分數看的是查詢有沒有回傳正確答案，而不是 SQL 看起來合不合理。','瀏覽器內資料庫 — 整套都在前端跑，這也正是它能安全地公開當 demo 的原因。'],
+    findings: 'The model choice matters more than the prompt engineering: 69% versus 38% on the same 45 questions, same instructions. Where the weaker model failed was consistent and predictable — multi-table joins and window functions — which is exactly what a validation layer can catch. The honest limitation is that the schema is synthetic, so this measures SQL reasoning rather than performance on messy production data.',
+    findingsZH: '換模型的影響比調 prompt 大得多：同樣 45 題、同樣指令，69% 對 38%。而較弱的模型失敗的地方很一致也可預測——多表 join 和 window function——這剛好就是驗證層能攔下來的東西。必須誠實講的限制是：這組 schema 是合成的，所以它量的是 SQL 推理能力，不是在真實髒資料上的表現。',
+    impact: 'The pattern is reusable wherever a language model produces something executable: never trust the output, validate it against the ground truth you already have, and measure model choice with a benchmark instead of a vibe. The same validate-then-execute layer applies to generated code, API calls, or config.',
+    impactZH: '只要語言模型產生的是「可以被執行的東西」，這個模式就能重複使用：不要相信輸出，拿你手上已經有的事實去驗證它，並且用評測而不是感覺去決定用哪個模型。同一套「先驗證再執行」的做法也適用於生成程式碼、API 呼叫或設定檔。',
+    tools: ['JavaScript','SQL','SQLite (WASM)','Anthropic API','Plotly'],
+    toolsZH: ['JavaScript','SQL','SQLite (WASM)','Anthropic API','Plotly'],
+    results: [
+      { num: '45', label: 'Benchmark questions', labelZH: '評測題數' },
+      { num: '69%', label: 'Best model accuracy', labelZH: '最佳模型正確率' },
+      { num: '31 pts', label: 'Gap between models', labelZH: '模型間差距' },
+      { num: '8', label: 'Tables in the schema', labelZH: 'schema 資料表數' }
     ]
   }
 };
